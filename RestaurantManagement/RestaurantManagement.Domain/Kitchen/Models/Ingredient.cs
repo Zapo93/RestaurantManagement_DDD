@@ -1,0 +1,20 @@
+﻿using RestaurantManagement.Domain.Common;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace RestaurantManagement.Domain.Kitchen.Models
+{
+    public class Ingredient: ValueObject
+    {
+        internal Ingredient(string name, int quantityInGrams) 
+        {
+            Name = name;
+            QuantityInGrams = quantityInGrams;
+        }
+
+        public string Name { get; private set; }
+        //TODO Validate - it should not be negative value
+        public int QuantityInGrams { get; private set; }
+    }
+}

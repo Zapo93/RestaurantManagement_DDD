@@ -1,0 +1,12 @@
+- The kitchen creates new recipes with ingredients
+- The kitchen takes orders/requests
+	= An order has id, many items, status and optional delay, date created  
+	= An item represents a recipe and an optional note
+		== Each item has individual status
+	= The order and order items statuses could be set individually or to the whole order.
+
+- The service domain creates order for a particular table, which contains a list of the ordered dishes
+	= The order contains the price of the whole orders
+	= It contains the kitchen requests
+- The service domain creates dishes from recepies and adds prices and description and maybe an image
+?- The dishes in the service - the "Menu" could be activated and deactivated
