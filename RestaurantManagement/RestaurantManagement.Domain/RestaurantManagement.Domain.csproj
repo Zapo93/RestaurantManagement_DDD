@@ -11,7 +11,8 @@
 
   <ItemGroup>
     <Folder Include="Kitchen\Factories\" />
-    <Folder Include="Serving\" />
+    <Folder Include="Serving\Exceptions\" />
+    <Folder Include="Serving\Factories\" />
   </ItemGroup>
 
 </Project>
