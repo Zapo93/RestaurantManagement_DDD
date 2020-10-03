@@ -26,10 +26,10 @@ namespace RestaurantManagement.Domain.Kitchen.Models
             items.Add(newRequestItem);
         }
 
-        public void ChangeStatus(RequestStatus newStatus) 
+        public void SetStatus(RequestStatus newStatus) 
         {
             this.Status.ValidateNewStatus(newStatus);
-            //TODO test if the if statement works without equals
+            //TODO test if the if statement works without .equals()
             if (newStatus == RequestStatus.Ready) 
             {
                 SetAllItemsToReady();
@@ -46,6 +46,15 @@ namespace RestaurantManagement.Domain.Kitchen.Models
             }
         }
 
-        
+        public void SetItemStatus(int itemId, RequestStatus newStatus) 
+        {
+            foreach (RequestItem item in Items)
+            {
+                if (item.Id == itemId) 
+                {
+                    item.SetStatus(newStatus);
+                }
+            }
+        }
     }
 }
