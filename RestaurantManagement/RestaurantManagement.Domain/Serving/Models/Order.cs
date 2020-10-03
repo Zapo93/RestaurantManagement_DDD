@@ -33,8 +33,14 @@ namespace RestaurantManagement.Domain.Serving.Models
             items.Add(item);
         }
 
+        public void AddItem(OrderItem newItem)
+        {
+            items.Add(newItem);
+        }
+
         public void AddKitchenRequestById(int kitchenRequestId) 
         {
+            //TODO check if the id is unique
             kitchenRequestIds.Add(kitchenRequestId);
         }
 

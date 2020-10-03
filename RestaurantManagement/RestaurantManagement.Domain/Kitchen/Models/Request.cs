@@ -26,6 +26,11 @@ namespace RestaurantManagement.Domain.Kitchen.Models
             items.Add(newRequestItem);
         }
 
+        public void AddItem(RequestItem newRequestItem)
+        {
+            items.Add(newRequestItem);
+        }
+
         public void SetStatus(RequestStatus newStatus) 
         {
             this.Status.ValidateNewStatus(newStatus);

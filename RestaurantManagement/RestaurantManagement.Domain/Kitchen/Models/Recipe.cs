@@ -9,12 +9,12 @@ namespace RestaurantManagement.Domain.Kitchen.Models
     {
         internal Recipe(
                 string name,
-                string howToPrepare,
+                string preparation,
                 string description
             ) 
         {
             this.Name = name;
-            this.HowToPrepare = howToPrepare;
+            this.Preparation = preparation;
             this.Description = description;
             ingredients = new List<Ingredient>();
         }
@@ -22,14 +22,19 @@ namespace RestaurantManagement.Domain.Kitchen.Models
         private readonly List<Ingredient> ingredients;
 
         public string Name { get; private set; }
-        public string HowToPrepare { get; private set; }
-        public string Description { get; private set; }
+        public string Preparation { get; private set; }
+        public string? Description { get; private set; }
 
         public IReadOnlyCollection<Ingredient> Ingredients => ingredients.AsReadOnly();
 
         public void AddIngredient(string name, int quantityInGrams) 
         {
             Ingredient newIngredient = new Ingredient(name, quantityInGrams);
+            ingredients.Add(newIngredient);
+        }
+
+        public void AddIngredient(Ingredient newIngredient) 
+        {
             ingredients.Add(newIngredient);
         }
     }
