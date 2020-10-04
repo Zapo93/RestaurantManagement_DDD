@@ -9,6 +9,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RestaurantManagement.Domain;
+using RestaurantManagement.Application;
+using RestaurantManagement.Infrastructure;
+using MediatR;
+using System.Reflection;
+using RestaurantManagement.Web;
 
 namespace RestaurantManagement
 {
@@ -24,7 +30,11 @@ namespace RestaurantManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services
+                .AddDomain()
+                .AddApplication()
+                .AddInfrastructure()
+                .AddWebComponents();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

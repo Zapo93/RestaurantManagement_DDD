@@ -1,4 +1,5 @@
-﻿using RestaurantManagement.Application.Serving.Commands.CreateDish;
+﻿using MediatR;
+using RestaurantManagement.Application.Serving.Commands.CreateDish;
 using RestaurantManagement.Domain.Serving.Factories;
 using RestaurantManagement.Domain.Serving.Models;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
 {
-    public class CreateOrderCommand
+    public class CreateOrderCommand: IRequest<CreateOrderOutputModel>
     {
         public int AssigneeId = default!;
         public int? TableId = null;
@@ -23,7 +24,7 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
             Items = new List<OrderItemInputModel>();
         }
 
-        public class CreateOrderCommandHandler
+        public class CreateOrderCommandHandler: IRequestHandler<CreateOrderCommand, CreateOrderOutputModel>
         {
             private readonly IOrderFactory OrderFactory;
             private readonly IOrderRepository OrderRepository;

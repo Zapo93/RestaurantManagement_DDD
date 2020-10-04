@@ -1,4 +1,5 @@
-﻿using RestaurantManagement.Domain.Kitchen.Factories;
+﻿using MediatR;
+using RestaurantManagement.Domain.Kitchen.Factories;
 using RestaurantManagement.Domain.Kitchen.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagement.Application.Kitchen.Commands.CreateRequest
 {
-    public class CreateRequestCommand
+    public class CreateRequestCommand: IRequest<CreateRequestOutputModel>
     {
         public List<RequestItemInputModel> Items;
 
@@ -18,7 +19,7 @@ namespace RestaurantManagement.Application.Kitchen.Commands.CreateRequest
             Items = new List<RequestItemInputModel>();
         }
 
-        public class CreateRequestCommandHandler 
+        public class CreateRequestCommandHandler: IRequestHandler<CreateRequestCommand, CreateRequestOutputModel>
         {
             private readonly IRequestFactory RequestFactory;
             private readonly IRequestRepository RequestRepository;

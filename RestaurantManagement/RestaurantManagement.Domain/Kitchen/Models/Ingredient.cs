@@ -7,7 +7,8 @@ namespace RestaurantManagement.Domain.Kitchen.Models
 {
     public class Ingredient: ValueObject
     {
-        internal Ingredient(string name, int quantityInGrams) 
+		//TODO change back to internal if the JSON serializer works with internal
+        public Ingredient(string name, int quantityInGrams) 
         {
             Name = name;
             QuantityInGrams = quantityInGrams;

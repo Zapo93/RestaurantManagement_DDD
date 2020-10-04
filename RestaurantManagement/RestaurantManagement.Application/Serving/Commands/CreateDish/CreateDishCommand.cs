@@ -1,4 +1,5 @@
-﻿using RestaurantManagement.Domain.Serving.Factories;
+﻿using MediatR;
+using RestaurantManagement.Domain.Serving.Factories;
 using RestaurantManagement.Domain.Serving.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagement.Application.Serving.Commands.CreateDish
 {
-    public class CreateDishCommand
+    public class CreateDishCommand: IRequest<CreateDishOutputModel>
     {
         public string Name = default!;
         public int RecipeId = default!;
@@ -16,7 +17,7 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateDish
         public Money Price = null!;
         public Uri ImageUrl = default!;
 
-        public class CreateDishCommandHandler
+        public class CreateDishCommandHandler: IRequestHandler<CreateDishCommand, CreateDishOutputModel>
         {
             private readonly IDishRepository DishRepository;
             private readonly IDishFactory DishFactory;
@@ -31,6 +32,7 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateDish
 
             public async Task<CreateDishOutputModel> Handle(CreateDishCommand command, CancellationToken cancellationToken) 
             {
+                //TODO check if a dish for this recipe already exists!
                 DishFactory
                     .WithName(command.Name)
                     .WithRecipeId(command.RecipeId)

@@ -1,4 +1,5 @@
-﻿using RestaurantManagement.Domain.Common;
+﻿using MediatR;
+using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Domain.Kitchen.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus
 {
-    public class SetRequestStatusCommand
+    public class SetRequestStatusCommand: IRequest
     {
         public int RequestId;
         public int? NewRequestStatus;
@@ -19,7 +20,7 @@ namespace RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus
             ItemStatuses = new List<ItemStatus>();
         }
 
-        public class SetRequestStatusHandler 
+        public class SetRequestStatusHandler: IRequestHandler<SetRequestStatusCommand, Unit>
         {
             private readonly IRequestRepository RequestRepository;
 
@@ -28,7 +29,7 @@ namespace RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus
                 RequestRepository = requestRepository;
             }
 
-            public async Task Handle(SetRequestStatusCommand command, CancellationToken cancellationToken) 
+            public async Task<Unit> Handle(SetRequestStatusCommand command, CancellationToken cancellationToken) 
             {
                 Request request = await RequestRepository.GetRequestById(command.RequestId, cancellationToken);
 
@@ -43,6 +44,8 @@ namespace RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus
                 }
 
                 await RequestRepository.Save(request, cancellationToken);
+
+                return new Unit();
             }
         }
     }

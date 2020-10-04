@@ -1,4 +1,5 @@
-﻿using RestaurantManagement.Domain.Kitchen.Factories;
+﻿using MediatR;
+using RestaurantManagement.Domain.Kitchen.Factories;
 using RestaurantManagement.Domain.Kitchen.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagement.Application.Kitchen.Commands.CreateRecipe
 {
-    public class CreateRecipeCommand
+    public class CreateRecipeCommand: IRequest<CreateRecipeOutputModel>
     {
         public string Name = default!;
         public string Preparation = default!;
@@ -22,7 +23,7 @@ namespace RestaurantManagement.Application.Kitchen.Commands.CreateRecipe
             Ingredients = new List<Ingredient>();
         }
 
-        public class CreateRecipeCommandHandler
+        public class CreateRecipeCommandHandler: IRequestHandler<CreateRecipeCommand,CreateRecipeOutputModel>
         {
             private readonly IRecipeRepository RecipeRepository;
             private readonly IRecipeFactory RecipeFactory;
