@@ -10,7 +10,7 @@ namespace RestaurantManagement.Domain.Serving.Factories
     public class OrderFactory : IOrderFactory
     {
         private int AssigneeId = default!;
-        private int TableId = default!;
+        private int? TableId = null;
 
         private List<OrderItem> Items;
         private List<int> KitchenRequestIds;
@@ -46,7 +46,7 @@ namespace RestaurantManagement.Domain.Serving.Factories
             return this;
         }
 
-        public IOrderFactory WithTableId(int tableId)
+        public IOrderFactory WithTableId(int? tableId)
         {
             TableId = tableId;
 

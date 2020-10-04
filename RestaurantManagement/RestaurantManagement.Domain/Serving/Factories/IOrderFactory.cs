@@ -9,7 +9,7 @@ namespace RestaurantManagement.Domain.Serving.Factories
     public interface IOrderFactory: IFactory<Order>
     {
         IOrderFactory WithAssignee(int assigneeId);
-        IOrderFactory WithTableId(int tableId);
+        IOrderFactory WithTableId(int? tableId);
         IOrderFactory WithItem(Dish dish, string note);
         IOrderFactory WithKitchenRequestId(int kitchenRequestId);
     }

@@ -3,3 +3,5 @@
 /RestaurantManagement/RestaurantManagement/bin
 /RestaurantManagement/RestaurantManagement.Domain/obj
 /RestaurantManagement/RestaurantManagement.Domain/bin
+/RestaurantManagement/RestaurantManagement.Application/bin
+/RestaurantManagement/RestaurantManagement.Application/obj
