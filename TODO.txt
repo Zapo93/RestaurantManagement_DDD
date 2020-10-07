@@ -1,0 +1,23 @@
+- Add Queries
+	= Get all recipies
+		== Get all active recipies
+		== Add method activate/deactivate to recipies with private property that keeps the information
+	= Get all kitchen requests
+		== With option for not finished requests
+	= Get all orders
+		== With oprion for filtering for status/table/assignee
+	
+- Add Commands
+	= Change request status
+	= Change order status/close order
+	= Add items to order
+	
+- Add events
+	= Request created - the request reference id is created in the serving domain and is set to the kitchen domain with the event in order to be used later for reference from the kitchen domain
+	= Request status changed
+	= Order status changed - contains order id, request id, table id, and assignee id and is primarily used to notify the assignee for the change.
+	
+- Add Hosting domain
+
+- Add validations
+- Add tests	
