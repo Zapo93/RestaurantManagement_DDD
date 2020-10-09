@@ -11,3 +11,14 @@
 	= It contains the kitchen requests
 - The service domain creates dishes from recepies and adds prices and description and maybe an image
 - The dishes in the service - the "Menu" could be activated and deactivated
+
+- Hosting domain creates tables.
+	= The table has individual schedules for each day.
+		== Each day has reservations
+	= The table has name, restaurant name or id, number of seats
+	= The table domain object has method to check if the table is Reserved at current time. Being free means that a reservation could be made.
+	= The default reservation duration is 4hours or until the closing hours 
+	= Make the closing hours a parameter(constant). 
+	= A table reservation can be deleted.
+	= A table reservation can be closed. When it is closed its time range end is changed to the current time.
+	

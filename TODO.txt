@@ -17,7 +17,26 @@
 	= Request status changed
 	= Order status changed - contains order id, request id, table id, and assignee id and is primarily used to notify the assignee for the change.
 	
-- Add Hosting domain
-
+- Add Hosting bounded context
+	= Define Table agregate root with name restaurant name or id, number of seats, and value object table options.
+	Table options could be with different name? Table options contain for smokers, next to window, etc.
+	Each table has collection of schedules.
+	= Schedule entity, which corresponds to time period - in this case it will be used for a day. 
+	Each schedule has collection of reservations. It also has usefull methods.
+	= A reservation has optional guest value object and DateTimeRange. 
+	= The Guest value object has first name, last name and phone number.
+	
+- Add Hosting commands
+	= Add create table
+	= Add add reservation commands - the command could have datetime in the future or no date time as param.
+	No datetime param means that the reservation starts now and is to be used for sitting guests on a free table.
+	= Add Delete Reservation
+	
+- Add Hosting queries
+	= Try to combine this within one command with filters.
+		== Get All tables for a Date
+		== Get All free tables for a DateTime
+		== Get All tables by number of seats
+	
 - Add validations
 - Add tests	
