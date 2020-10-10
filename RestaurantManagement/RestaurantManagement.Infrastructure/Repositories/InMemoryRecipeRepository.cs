@@ -1,4 +1,5 @@
 ﻿using RestaurantManagement.Application.Kitchen;
+using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Domain.Kitchen.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace RestaurantManagement.Infrastructure.Repositories
         public async Task<Recipe> GetRecipeById(int recipeId, CancellationToken cancellationToken)
         {
             return RecipeDataSet[recipeId];
+        }
+
+        public Task<IEnumerable<Recipe>> GetRecipes(Specification<Recipe> recipeSpec, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task Save(Recipe entity, CancellationToken cancellationToken)

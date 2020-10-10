@@ -1,4 +1,5 @@
 ﻿using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Domain.Serving.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace RestaurantManagement.Domain.Serving.Models
             TableId = tableId;
             DateCreated = DateTime.UtcNow;
             AssigneeId = assigneeId;
+            Open = true;
         }
 
         private HashSet<OrderItem> items;
@@ -27,21 +29,43 @@ namespace RestaurantManagement.Domain.Serving.Models
         public DateTime DateCreated { get; private set; }
         public int AssigneeId { get; private set; }
 
-        public void AddItem(Dish dish, string note) 
+        //TODO check if this is initialized correctly when taken from persisense
+        public bool Open { get; private set; }
+
+        public void Close() 
+        {
+            Open = false;
+        }
+
+        public void AddItem(Dish dish, string note)
         {
             OrderItem item = new OrderItem(dish, note);
-            items.Add(item);
+            AddItem(item);
         }
 
         public void AddItem(OrderItem newItem)
         {
-            items.Add(newItem);
+            if (Open)
+            {
+                items.Add(newItem);
+            }
+            else
+            {
+                throw new OrderClosedException("Can not add items on closed order!");
+            }
         }
 
         public void AddKitchenRequestById(int kitchenRequestId) 
         {
-            //TODO check if the id is unique
-            kitchenRequestIds.Add(kitchenRequestId);
+            if (Open)
+            {
+                //TODO check if the id is unique
+                kitchenRequestIds.Add(kitchenRequestId);
+            }
+            else
+            {
+                throw new OrderClosedException("Can not add requests on closed order!");
+            }
         }
 
         public Money TotalPrice { get {return GetTotalPrice(); } }

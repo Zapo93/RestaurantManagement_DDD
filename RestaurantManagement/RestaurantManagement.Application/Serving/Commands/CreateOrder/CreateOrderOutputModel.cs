@@ -11,6 +11,6 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
             OrderId = orderId;
         }
 
-        public object OrderId { get; }
+        public int OrderId { get; }
     }
 }

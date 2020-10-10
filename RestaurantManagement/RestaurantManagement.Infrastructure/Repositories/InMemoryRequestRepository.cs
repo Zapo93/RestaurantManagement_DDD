@@ -1,4 +1,5 @@
 ﻿using RestaurantManagement.Application.Kitchen;
+using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Domain.Kitchen.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace RestaurantManagement.Infrastructure.Repositories
         public async Task<Request> GetRequestById(int requestId, CancellationToken cancellationToken)
         {
             return RequestDataSet[requestId];
+        }
+
+        public Task<IEnumerable<Request>> GetRequests(Specification<Request> specification, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task Save(Request entity, CancellationToken cancellationToken)

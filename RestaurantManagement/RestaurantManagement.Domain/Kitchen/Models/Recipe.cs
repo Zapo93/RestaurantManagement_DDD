@@ -10,12 +10,14 @@ namespace RestaurantManagement.Domain.Kitchen.Models
         internal Recipe(
                 string name,
                 string preparation,
-                string description
+                string description,
+                bool active = true
             ) 
         {
             this.Name = name;
             this.Preparation = preparation;
             this.Description = description;
+            this.Active = active;
             ingredients = new List<Ingredient>();
         }
 
@@ -26,6 +28,18 @@ namespace RestaurantManagement.Domain.Kitchen.Models
         public string? Description { get; private set; }
 
         public IReadOnlyCollection<Ingredient> Ingredients => ingredients.AsReadOnly();
+
+        public bool Active { get; private set; }
+
+        public void Activate() 
+        {
+            Active = true;
+        }
+
+        public void Deactivate() 
+        {
+            Active = false;
+        }
 
         public void AddIngredient(string name, int quantityInGrams) 
         {

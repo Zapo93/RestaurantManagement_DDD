@@ -18,6 +18,12 @@ namespace RestaurantManagement.Domain.Hosting.Models
         private HashSet<Reservation> reservations;
         public IReadOnlyCollection<Reservation> Reservations => reservations.ToList().AsReadOnly();
 
+        internal bool IsFreeInTime(DateTime targetTime)
+        {
+            DateTimeRange dateTimeRange = CreateReservationTimeRangeFromStartTime(targetTime);
+            return IsFreeInTimeRange(dateTimeRange);
+        }
+
         internal Reservation AddReservation(DateTime start, Guest? guest) 
         {
             DateTimeRange newReservationTimeRange = CreateReservationTimeRangeFromStartTime(start);

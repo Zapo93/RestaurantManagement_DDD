@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using static RestaurantManagement.Domain.Hosting.Models.ModelConstants;
 
 namespace RestaurantManagement.Domain.Hosting.Models
 {
@@ -30,6 +31,19 @@ namespace RestaurantManagement.Domain.Hosting.Models
         public string? RestaurantName { get; private set; }
         public int NumberOfSeats { get; private set; }
         public TableDescription Description { get; private set; }
+
+        public bool IsFree(DateTime targetTime)
+        {
+            return ValidateTargetTime(targetTime) 
+                && (GetScheduleForDateTime(targetTime)?.IsFreeInTime(targetTime) ?? true);            
+        }
+
+        private bool ValidateTargetTime(DateTime targetTime) 
+        {
+            DateTimeRange scheduleTimeRange = CreateScheduleTimeRangeFromDateTime(targetTime);
+
+            return scheduleTimeRange.IsDateTimeIn(targetTime);
+        }
 
         public Reservation AddReservation(DateTime start, Guest? guest)
         {

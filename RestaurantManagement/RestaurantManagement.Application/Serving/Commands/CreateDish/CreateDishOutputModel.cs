@@ -7,6 +7,6 @@
             DishId = dishId;
         }
 
-        public object DishId { get; }
+        public int DishId { get; }
     }
 }
