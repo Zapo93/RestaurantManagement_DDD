@@ -12,5 +12,6 @@ namespace RestaurantManagement.Application.Serving
     public interface IOrderRepository : IRepository<Order>
     {
         Task<IEnumerable<Order>> GetOrders(Specification<Order> orderSpec, CancellationToken cancellationToken);
+        Task<Order> GetOrderById(int orderId, CancellationToken cancellationToken);
     }
 }

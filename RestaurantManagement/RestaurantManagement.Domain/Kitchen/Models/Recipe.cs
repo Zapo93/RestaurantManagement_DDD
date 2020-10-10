@@ -33,11 +33,13 @@ namespace RestaurantManagement.Domain.Kitchen.Models
 
         public void Activate() 
         {
+            //TODO Add event
             Active = true;
         }
 
         public void Deactivate() 
         {
+            //TODO Add event
             Active = false;
         }
 
