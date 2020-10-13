@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using RestaurantManagement.Application.Serving.Commands.Common;
 using RestaurantManagement.Application.Serving.Commands.CreateDish;
 using RestaurantManagement.Domain.Serving.Factories;
 using RestaurantManagement.Domain.Serving.Models;
@@ -15,12 +16,10 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
         public int AssigneeId = default!;
         public int? TableId = null;
 
-        public List<int> KitchenRequestsIds;
         public List<OrderItemInputModel> Items;
 
         public CreateOrderCommand() 
         {
-            KitchenRequestsIds = new List<int>();
             Items = new List<OrderItemInputModel>();
         }
 
@@ -46,16 +45,15 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
                     .WithAssignee(command.AssigneeId)
                     .WithTableId(command.TableId);
 
+                List<OrderItem> orderItems = new List<OrderItem>();
+
                 foreach(var item in command.Items)
                 {
                     Dish dish = await DishRepository.GetDishById(item.DishId,cancellationToken);
-                    OrderFactory.WithItem(dish, item.Note);
+                    orderItems.Add(new OrderItem(dish,item.Note));
                 }
 
-                foreach (int kitchenRequestId in command.KitchenRequestsIds) 
-                {
-                    OrderFactory.WithKitchenRequestId(kitchenRequestId);
-                }
+                OrderFactory.WithItems(orderItems);
 
                 Order newOrder = OrderFactory.Build();
                 await OrderRepository.Save(newOrder, cancellationToken);

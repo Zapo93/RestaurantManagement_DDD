@@ -1,4 +1,4 @@
-- Add Queries
+- Add Queries -------X
 	= Get all recipies ---X
 		== Get all active recipies ----X
 	= Get all kitchen requests ------X
@@ -9,19 +9,27 @@
 	
 	= Get Entities or at least AgregateRoots by ID if needed
 	
-- Add Commands
+- Add Commands --------X
 	= Add method activate/deactivate to recipies with private property that keeps the information -------X
 	= Change request status -----X
 	= Change order status/close order-----X
-	= Change AddItems method to take a collection of items instead of one item. This is done so the method could generate an event
-	which generates a request in the kitchen bounded context.
-	= Add items to order
+	= Change AddItems method to take a collection of items instead of one item. ----------X
+	This is done so the method could generate an event which generates a request in the kitchen bounded context.
+	= Add items to order ----------X
 	
 - Add events
-	= Request created - the request reference id is created in the serving domain and is set to the kitchen domain with the event in order to be used later for reference from the kitchen domain
+	= OrderItemsAdded - the request reference id is created in the serving bounded context and is set to the kitchen bounded context with the event in order to be used later for reference from the kitchen domain
 	= Request status changed
 	= Order status changed - contains order id, request id, table id, and assignee id and is primarily used to notify the assignee for the change.
 	= Recipe activated/deactivated - the corresponding dish must be deactivated/activated
+	
+- Add event handlers
+	= OrderItemsAdded - the kitchen bounded context handles this by creating a request 
+	with the eventId as a reference to the order.
+	= RequestStatusChanged - the serving bounded context calls method to change the status of the order,
+	which fires an Event - order status changed described above
+	= Recipe ActiveChanged - changes the state of the corresponding dish
+	
 	
 - Add Hosting bounded context --------X
 	= Define Table agregate root with name, restaurant name or id, number of seats, 

@@ -1,4 +1,5 @@
 ﻿using RestaurantManagement.Application.Serving;
+using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Domain.Serving.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace RestaurantManagement.Infrastructure.Repositories
         public async Task<Dish> GetDishById(int dishId, CancellationToken cancellationToken)
         {
             return DishDataSet[dishId];
+        }
+
+        public Task<IEnumerable<Dish>> GetDishes(Specification<Dish> dishSpec, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task Save(Dish entity, CancellationToken cancellationToken)

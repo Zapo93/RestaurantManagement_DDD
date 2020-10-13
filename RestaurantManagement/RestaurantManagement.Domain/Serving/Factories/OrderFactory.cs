@@ -31,10 +31,9 @@ namespace RestaurantManagement.Domain.Serving.Factories
             return this;
         }
 
-        public IOrderFactory WithItem(Dish dish, string note)
+        public IOrderFactory WithItems(IEnumerable<OrderItem> newItems)
         {
-            OrderItem newItem = new OrderItem(dish,note);
-            Items.Add(newItem);
+            Items.AddRange(newItems);
 
             return this;
         }
@@ -62,16 +61,7 @@ namespace RestaurantManagement.Domain.Serving.Factories
 
             Order newOrder = new Order(AssigneeId,TableId);
 
-            //TODO consider checking if there should be items and requestIds initially
-            foreach (OrderItem item in Items) 
-            {
-                newOrder.AddItem(item);
-            }
-
-            foreach (int kitchenRequestId in KitchenRequestIds) 
-            {
-                newOrder.AddKitchenRequestById(kitchenRequestId);
-            }
+            newOrder.AddItems(Items);
 
             return newOrder;
         }

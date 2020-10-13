@@ -13,6 +13,11 @@ namespace RestaurantManagement.Infrastructure.Repositories
     {
         private static Dictionary<int, Order> OrderDataSet = new Dictionary<int, Order>();
 
+        public Task<Order> GetOrderById(int orderId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IEnumerable<Order>> GetOrders(Specification<Order> orderSpec, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();

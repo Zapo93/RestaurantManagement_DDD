@@ -10,7 +10,6 @@ namespace RestaurantManagement.Domain.Serving.Factories
     {
         IOrderFactory WithAssignee(int assigneeId);
         IOrderFactory WithTableId(int? tableId);
-        IOrderFactory WithItem(Dish dish, string note);
-        IOrderFactory WithKitchenRequestId(int kitchenRequestId);
+        IOrderFactory WithItems(IEnumerable<OrderItem> items);
     }
 }

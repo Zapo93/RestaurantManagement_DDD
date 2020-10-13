@@ -10,19 +10,19 @@ namespace RestaurantManagement.Domain.Serving.Models
     {
         internal Order(int assigneeId, int? tableId = null)
         {
-            items = new HashSet<OrderItem>();
-            kitchenRequestIds = new HashSet<int>();
+            items = new List<OrderItem>();
+            kitchenRequestIds = new HashSet<string>();
             TableId = tableId;
             DateCreated = DateTime.UtcNow;
             AssigneeId = assigneeId;
             Open = true;
         }
 
-        private HashSet<OrderItem> items;
+        private List<OrderItem> items;
         public IReadOnlyCollection<OrderItem> Items => items.ToList().AsReadOnly();
 
-        private HashSet<int> kitchenRequestIds;
-        public IReadOnlyCollection<int> KitchenRequestIds => kitchenRequestIds.ToList().AsReadOnly();
+        private HashSet<string> kitchenRequestIds;
+        public IReadOnlyCollection<string> KitchenRequestIds => kitchenRequestIds.ToList().AsReadOnly();
 
         public int? TableId { get; private set; }
 
@@ -37,17 +37,13 @@ namespace RestaurantManagement.Domain.Serving.Models
             Open = false;
         }
 
-        public void AddItem(Dish dish, string note)
-        {
-            OrderItem item = new OrderItem(dish, note);
-            AddItem(item);
-        }
-
-        public void AddItem(OrderItem newItem)
+        public void AddItems(IEnumerable<OrderItem> newItems)
         {
             if (Open)
             {
-                items.Add(newItem);
+                items.AddRange(newItems);
+                string requestId = GenerateKitchenRequestId();
+                AddKitchenRequestById(requestId);
             }
             else
             {
@@ -55,17 +51,14 @@ namespace RestaurantManagement.Domain.Serving.Models
             }
         }
 
-        public void AddKitchenRequestById(int kitchenRequestId) 
+        private string GenerateKitchenRequestId() 
         {
-            if (Open)
-            {
-                //TODO check if the id is unique
-                kitchenRequestIds.Add(kitchenRequestId);
-            }
-            else
-            {
-                throw new OrderClosedException("Can not add requests on closed order!");
-            }
+            return new Guid().ToString().Substring(0, 8);
+        }
+
+        private void AddKitchenRequestById(string kitchenRequestId)
+        {
+            kitchenRequestIds.Add(kitchenRequestId);
         }
 
         public Money TotalPrice { get {return GetTotalPrice(); } }
