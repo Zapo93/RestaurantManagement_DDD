@@ -1,4 +1,4 @@
-- Add Queries -------X
+- Add Queries
 	= Get all recipies ---X
 		== Get all active recipies ----X
 	= Get all kitchen requests ------X
@@ -6,6 +6,7 @@
 	= Get all orders ---------X
 		== With oprion for filtering for status/table/assignee--X
 	= Get all dishes ---------X
+	= Get reservation by guest and datetime
 	
 	= Get Entities or at least AgregateRoots by ID if needed
 	
