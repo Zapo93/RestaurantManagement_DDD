@@ -8,18 +8,19 @@ namespace RestaurantManagement.Domain.Kitchen.Models
 {
     public class Request: Entity<int>, IAggregateRoot
     {
-        internal Request() 
+        internal Request(string creatorReferenceId) 
         {
             items = new HashSet<RequestItem>();
             DateCreated = DateTime.UtcNow;
             Status = RequestStatus.Pending;
+            CreatorReferenceId = creatorReferenceId;
         }
 
         private HashSet<RequestItem> items;
         public IReadOnlyCollection<RequestItem> Items => this.items.ToList().AsReadOnly();
         public DateTime DateCreated { get; private set; }
         public RequestStatus Status { get; private set; }
-
+        public string CreatorReferenceId { get; private set; }
         public void AddItem(Recipe recipe, string note) 
         {
             var newRequestItem = new RequestItem(recipe,note);

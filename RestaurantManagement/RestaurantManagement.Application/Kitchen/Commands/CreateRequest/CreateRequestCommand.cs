@@ -11,6 +11,7 @@ namespace RestaurantManagement.Application.Kitchen.Commands.CreateRequest
 {
     public class CreateRequestCommand: IRequest<CreateRequestOutputModel>
     {
+        public string CreatorReferenceId = default!;
         public List<RequestItemInputModel> Items;
 
         //TODO test if this is initialized correctly by JSON serializer
@@ -37,6 +38,8 @@ namespace RestaurantManagement.Application.Kitchen.Commands.CreateRequest
 
             public async Task<CreateRequestOutputModel> Handle(CreateRequestCommand command, CancellationToken cancellationToken) 
             {
+                RequestFactory.WithCreatorReferenceId(command.CreatorReferenceId);
+
                 foreach (var item in command.Items) 
                 {
                     Recipe recipe = await RecipeRepository.GetRecipeById(item.RecipeId, cancellationToken);

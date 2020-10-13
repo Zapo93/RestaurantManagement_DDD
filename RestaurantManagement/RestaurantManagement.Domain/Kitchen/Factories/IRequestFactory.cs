@@ -8,6 +8,7 @@ namespace RestaurantManagement.Domain.Kitchen.Factories
 {
     public interface IRequestFactory: IFactory<Request>
     {
+        IRequestFactory WithCreatorReferenceId(string creatorReferenceId);
         IRequestFactory WithItem(Recipe recipe, string note);
     }
 }
