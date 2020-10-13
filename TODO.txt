@@ -13,6 +13,8 @@
 	= Add method activate/deactivate to recipies with private property that keeps the information -------X
 	= Change request status -----X
 	= Change order status/close order-----X
+	= Change AddItems method to take a collection of items instead of one item. This is done so the method could generate an event
+	which generates a request in the kitchen bounded context.
 	= Add items to order
 	
 - Add events
@@ -37,12 +39,12 @@
 	for sitting guests on a free table.
 	= Add Delete Reservation ------X
 	
-- Add Hosting queries
+- Add Hosting queries --------X
 	= Try to combine this within one command with filters.
 		== Get All free tables for a DateTime -----X
 		== Get All tables by number of seats ---------X
 		== Get All tables with schedule only for a specified Date - finish this when you are more familiar with 
-		the EF core. Is it even necessary?
+		the EF core. Is it even necessary? - It is not necessary - can be done if needed in a real application.
 		
 - Add validations
 
