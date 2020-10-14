@@ -1,4 +1,6 @@
 ﻿using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Domain.Common.Models;
+using RestaurantManagement.Domain.Kitchen.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -33,14 +35,14 @@ namespace RestaurantManagement.Domain.Kitchen.Models
 
         public void Activate() 
         {
-            //TODO Add event
             Active = true;
+            RaiseEvent(new RecipeActivationChanged(Id,Active));
         }
 
         public void Deactivate() 
         {
-            //TODO Add event
             Active = false;
+            RaiseEvent(new RecipeActivationChanged(Id, Active));
         }
 
         public void AddIngredient(string name, int quantityInGrams) 

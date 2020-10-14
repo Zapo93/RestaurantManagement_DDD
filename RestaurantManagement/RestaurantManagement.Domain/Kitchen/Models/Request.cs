@@ -1,4 +1,6 @@
 ﻿using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Domain.Common.Models;
+using RestaurantManagement.Domain.Kitchen.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +44,7 @@ namespace RestaurantManagement.Domain.Kitchen.Models
             }
 
             this.Status = newStatus;
+            RaiseEvent(new RequestStatusChangedEvent(CreatorReferenceId,Id));
         }
 
         private void SetAllItemsToReady() 

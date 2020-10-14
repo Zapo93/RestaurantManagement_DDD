@@ -1,12 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Common
+namespace RestaurantManagement.Domain.Common.Models
 {
-    public abstract class Entity<TId>
+    public abstract class Entity<TId>: IEntity
         where TId : struct
     {
+        private readonly ICollection<IDomainEvent> events;
+
+        protected Entity() 
+        {
+            this.events = new List<IDomainEvent>();
+        }
+
+        public IReadOnlyCollection<IDomainEvent> Events { get{ return this.events.ToList().AsReadOnly(); } }
+
+        protected void RaiseEvent(IDomainEvent newEvent) 
+        {
+            this.events.Add(newEvent);
+        }
+
+        public void ClearEvents() 
+        {
+            this.events.Clear();
+        }
+
         public TId Id { get; private set; } = default;
 
         public override bool Equals(object? obj)
@@ -52,5 +72,6 @@ namespace RestaurantManagement.Domain.Common
         public static bool operator !=(Entity<TId>? first, Entity<TId>? second) => !(first == second);
 
         public override int GetHashCode() => (this.GetType().ToString() + this.Id).GetHashCode();
+
     }
 }

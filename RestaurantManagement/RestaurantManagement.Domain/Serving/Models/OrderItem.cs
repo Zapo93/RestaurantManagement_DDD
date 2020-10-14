@@ -1,4 +1,5 @@
 ﻿using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Domain.Common.Models;
 
 namespace RestaurantManagement.Domain.Serving.Models
 {

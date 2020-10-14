@@ -1,4 +1,6 @@
 ﻿using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Domain.Common.Models;
+using RestaurantManagement.Domain.Serving.Events;
 using RestaurantManagement.Domain.Serving.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -44,6 +46,7 @@ namespace RestaurantManagement.Domain.Serving.Models
                 items.AddRange(newItems);
                 string requestId = GenerateKitchenRequestId();
                 AddKitchenRequestById(requestId);
+                GenerateAddedItemsEvent(requestId, newItems);
             }
             else
             {
@@ -59,6 +62,18 @@ namespace RestaurantManagement.Domain.Serving.Models
         private void AddKitchenRequestById(string kitchenRequestId)
         {
             kitchenRequestIds.Add(kitchenRequestId);
+        }
+
+        private void GenerateAddedItemsEvent(string requestId, IEnumerable<OrderItem> newItems)
+        {
+            OrderItemsAddedEvent newEvent = new OrderItemsAddedEvent(Id,requestId);
+
+            foreach (OrderItem item in newItems) 
+            {
+                newEvent.AddItem(item.Dish.RecipeId, item.Note); 
+            }
+
+            RaiseEvent(newEvent);
         }
 
         public Money TotalPrice { get {return GetTotalPrice(); } }

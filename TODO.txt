@@ -19,10 +19,11 @@
 	= Add items to order ----------X
 	
 - Add events
-	= OrderItemsAdded - the request reference id is created in the serving bounded context and is set to the kitchen bounded context with the event in order to be used later for reference from the kitchen domain
-	= Request status changed
+	= OrderItemsAdded - the request reference id is created in the serving bounded context and is set to the kitchen bounded context ----------X
+	with the event in order to be used later for reference from the kitchen domain
+	= Request status changed----------X
 	= Order status changed - contains order id, request id, table id, and assignee id and is primarily used to notify the assignee for the change.
-	= Recipe activated/deactivated - the corresponding dish must be deactivated/activated
+	= Recipe activated/deactivated - the corresponding dish must be deactivated/activated---------X
 	
 - Add event handlers
 	= OrderItemsAdded - the kitchen bounded context handles this by creating a request 

@@ -1,4 +1,5 @@
 ﻿using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Domain.Common.Models;
 using RestaurantManagement.Domain.Hosting.Exceptions;
 using System;
 using System.Collections.Generic;
