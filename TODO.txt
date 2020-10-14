@@ -55,7 +55,9 @@
 		== Get All tables by number of seats ---------X
 		== Get All tables with schedule only for a specified Date - finish this when you are more familiar with 
 		the EF core. Is it even necessary? - It is not necessary - can be done if needed in a real application.
-		
+	
+- Add static Create methods for OrderItem and other ValueObjects that currently have public constructors, to encapsulate the constructor.
+	
 - Add validations
 
 - Add tests	

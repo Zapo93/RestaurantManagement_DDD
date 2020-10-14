@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Application.Common.Contracts;
 using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Infrastructure.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,8 @@ namespace RestaurantManagement.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            return services.AddRepositories();
+            return services.AddRepositories()
+                    .AddTransient<IEventDispatcher, EventDispatcher>();
         }
 
         private static IServiceCollection AddRepositories(this IServiceCollection services)
