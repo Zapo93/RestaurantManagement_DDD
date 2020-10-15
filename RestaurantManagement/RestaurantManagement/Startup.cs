@@ -33,7 +33,7 @@ namespace RestaurantManagement
             services
                 .AddDomain()
                 .AddApplication()
-                .AddInfrastructure()
+                .AddInfrastructure(Configuration)
                 .AddWebComponents();
         }
 

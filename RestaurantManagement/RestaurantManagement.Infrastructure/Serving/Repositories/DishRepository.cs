@@ -1,9 +1,11 @@
-﻿using RestaurantManagement.Application.Serving;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantManagement.Application.Serving;
 using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Domain.Serving.Models;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,17 +21,21 @@ namespace RestaurantManagement.Infrastructure.Serving.Repositories
 
         public Task<Dish> GetDishById(int dishId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return this
+                 .All()
+                 .FirstOrDefaultAsync(dish => dish.Id == dishId, cancellationToken);
         }
 
-        public Task<Dish> GetDishByRecipeId(int recipeId, CancellationToken none)
+        public Task<Dish> GetDishByRecipeId(int recipeId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return this
+                 .All()
+                 .FirstOrDefaultAsync(dish => dish.RecipeId == recipeId, cancellationToken);
         }
 
-        public Task<IEnumerable<Dish>> GetDishes(Specification<Dish> dishSpec, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Dish>> GetDishes(Specification<Dish> dishSpec, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await this.Data.Dishes.Where(dishSpec).ToListAsync();
         }
     }
 }

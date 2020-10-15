@@ -1,9 +1,11 @@
-﻿using RestaurantManagement.Application.Serving;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantManagement.Application.Serving;
 using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Domain.Serving.Models;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,7 +21,9 @@ namespace RestaurantManagement.Infrastructure.Serving.Repositories
 
         public Task<Order> GetOrderById(int orderId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return this
+                 .All()
+                 .FirstOrDefaultAsync(order => order.Id == orderId, cancellationToken);
         }
 
         public Task<Order> GetOrderByRequestId(string creatorReferenceId)
@@ -27,9 +31,9 @@ namespace RestaurantManagement.Infrastructure.Serving.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Order>> GetOrders(Specification<Order> orderSpec, CancellationToken cancellationToken)
+        public async Task<IEnumerable<Order>> GetOrders(Specification<Order> orderSpec, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await this.Data.Orders.Where(orderSpec).ToListAsync();
         }
     }
 }

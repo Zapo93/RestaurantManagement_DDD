@@ -1,9 +1,11 @@
-﻿using RestaurantManagement.Application.Hosting;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantManagement.Application.Hosting;
 using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Domain.Hosting.Models;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,19 +19,30 @@ namespace RestaurantManagement.Infrastructure.Hosting.Repositories
         {
         }
 
-        public Task DeleteReservation(int reservationId, CancellationToken cancellationToken)
+        public async Task DeleteReservation(int reservationId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            Reservation targetRes = await this.Data.Reservations.FindAsync(reservationId);
+
+            if (targetRes == null) 
+            {
+                return;
+            }
+
+            this.Data.Reservations.Remove(targetRes);
+
+            await this.Data.SaveChangesAsync(cancellationToken);
         }
 
-        public Task<IReadOnlyCollection<Table>> GetTables(Specification<Table> tableSpecification, CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<Table>> GetTables(Specification<Table> tableSpecification, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return await this.Data.Tables.Where(tableSpecification).ToListAsync();
         }
 
         public Task<Table> GetTableWithScheduleForTime(int tableId, DateTime start, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return this
+                 .All()
+                 .FirstOrDefaultAsync(table => table.Id == tableId, cancellationToken);
         }
     }
 }
