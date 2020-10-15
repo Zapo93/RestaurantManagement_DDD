@@ -13,5 +13,6 @@ namespace RestaurantManagement.Application.Serving
     {
         Task<Dish> GetDishById(int dishId, CancellationToken cancellationToken);
         Task<IEnumerable<Dish>> GetDishes(Specification<Dish> dishSpec, CancellationToken cancellationToken);
+        Task<Dish> GetDishByRecipeId(int recipeId, CancellationToken none);
     }
 }

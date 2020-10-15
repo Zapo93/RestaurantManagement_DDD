@@ -13,5 +13,6 @@ namespace RestaurantManagement.Application.Serving
     {
         Task<IEnumerable<Order>> GetOrders(Specification<Order> orderSpec, CancellationToken cancellationToken);
         Task<Order> GetOrderById(int orderId, CancellationToken cancellationToken);
+        Task<Order> GetOrderByRequestId(string creatorReferenceId);
     }
 }

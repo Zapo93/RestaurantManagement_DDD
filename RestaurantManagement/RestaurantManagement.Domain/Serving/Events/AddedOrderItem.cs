@@ -2,8 +2,8 @@
 {
     public class AddedOrderItem
     {
-        private int RecipeId;
-        private string? Note;
+        public readonly int RecipeId;
+        public readonly string? Note;
 
         public AddedOrderItem(int recipeId, string? note)
         {

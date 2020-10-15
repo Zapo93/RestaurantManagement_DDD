@@ -26,11 +26,11 @@
 	= Recipe activated/deactivated - the corresponding dish must be deactivated/activated---------X
 	
 - Add event handlers
-	= OrderItemsAdded - the kitchen bounded context handles this by creating a request 
+	= OrderItemsAdded - the kitchen bounded context handles this by creating a request -----X
 	with the eventId as a reference to the order.
-	= RequestStatusChanged - the serving bounded context calls method to change the status of the order,
+	= RequestStatusChanged - the serving bounded context calls method to change the status of the order, -------X
 	which fires an Event - order status changed described above
-	= Recipe ActiveChanged - changes the state of the corresponding dish
+	= ActiveRecipeChanged - changes the state of the corresponding dish ---------X
 	
 	
 - Add Hosting bounded context --------X

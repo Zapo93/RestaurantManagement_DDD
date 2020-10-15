@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using RestaurantManagement.Application.Common.Contracts;
 using RestaurantManagement.Application.Kitchen;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,19 @@ namespace RestaurantManagement.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            return services.AddMediatR(Assembly.GetExecutingAssembly());
+            return services.AddMediatR(Assembly.GetExecutingAssembly())
+                .AddEventHandlers();
+        }
+
+        public static IServiceCollection AddEventHandlers(this IServiceCollection services)
+        {
+            return services
+                .Scan(scan => scan
+                    .FromCallingAssembly()
+                    .AddClasses(classes => classes
+                        .AssignableTo(typeof(IEventHandler<>)))
+                    .AsImplementedInterfaces()
+                    .WithTransientLifetime());
         }
     }
 }
