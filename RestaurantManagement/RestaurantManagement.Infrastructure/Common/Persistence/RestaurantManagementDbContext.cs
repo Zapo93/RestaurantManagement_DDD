@@ -45,6 +45,14 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence
 
         public DbSet<Reservation> Reservations{ get; set; } = default!;
 
+        public DbSet<Ingredient> Ingredients { get; set; } = default!;
+
+        public DbSet<RequestItem> RequestItems { get; set; } = default!;
+
+        public DbSet<OrderItem> OrderItems { get; set; } = default!;
+
+        public DbSet<Schedule> Schedules { get; set; } = default!;
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             this.savesChangesTracker.Push(new object());

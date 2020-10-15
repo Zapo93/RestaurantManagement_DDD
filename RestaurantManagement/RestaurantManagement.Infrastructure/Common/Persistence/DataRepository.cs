@@ -19,9 +19,11 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence
 
         protected IQueryable<TEntity> All() => this.Data.Set<TEntity>();
 
-        public Task Save(TEntity entity, CancellationToken cancellationToken)
+        public async Task Save(TEntity entity, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            this.Data.Update(entity);
+
+            await this.Data.SaveChangesAsync(cancellationToken);
         }
     }
 }

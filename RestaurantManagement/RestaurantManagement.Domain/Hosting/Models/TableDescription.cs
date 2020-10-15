@@ -11,6 +11,7 @@ namespace RestaurantManagement.Domain.Hosting.Models
             this.IsIndoor = indoor;
         }
 
+        private TableDescription() { }
         public string Location { get; private set; }
         public bool AreSmokersAllowed { get; private set; }
         public bool IsIndoor { get; private set; }

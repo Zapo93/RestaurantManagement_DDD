@@ -14,6 +14,8 @@ namespace RestaurantManagement.Domain.Kitchen.Models
             QuantityInGrams = quantityInGrams;
         }
 
+        private Ingredient() { }
+
         public string Name { get; private set; }
         //TODO Validate - it should not be negative value
         public int QuantityInGrams { get; private set; }

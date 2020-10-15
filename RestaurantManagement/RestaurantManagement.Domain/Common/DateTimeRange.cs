@@ -15,8 +15,10 @@ namespace RestaurantManagement.Domain.Common
             this.End = end;
         }
 
-        public readonly DateTime Start;
-        public readonly DateTime End;
+        private DateTimeRange() { }
+
+        public DateTime Start { get; }
+        public DateTime End { get; }
 
         private void Validate(DateTime start, DateTime end) 
         {

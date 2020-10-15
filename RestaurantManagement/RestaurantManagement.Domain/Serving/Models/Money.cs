@@ -11,6 +11,7 @@ namespace RestaurantManagement.Domain.Serving.Models
             CurrencyAbbreviation = "BGN";
         }
 
+        private Money() { }
         public double Value { get; private set; }
         public string CurrencyAbbreviation { get; private set; }
 

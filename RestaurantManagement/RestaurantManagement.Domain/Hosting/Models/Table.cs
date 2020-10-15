@@ -26,6 +26,8 @@ namespace RestaurantManagement.Domain.Hosting.Models
             schedules = new HashSet<Schedule>();
         }
 
+        private Table() { }
+
         private HashSet<Schedule> schedules;
         public ReadOnlyCollection<Schedule> Schedules => schedules.ToList().AsReadOnly();
         public string Name { get; private set; }

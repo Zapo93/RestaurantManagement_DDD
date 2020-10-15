@@ -23,6 +23,8 @@ namespace RestaurantManagement.Domain.Kitchen.Models
             ingredients = new List<Ingredient>();
         }
 
+        private Recipe() { }
+
         private readonly List<Ingredient> ingredients;
 
         public string Name { get; private set; }

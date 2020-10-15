@@ -12,6 +12,8 @@ namespace RestaurantManagement.Domain.Hosting.Models
             this.Guest = guest;
         }
 
+        private Reservation() { }
+
         public DateTimeRange TimeRange { get; private set; }
         public Guest? Guest { get; private set; }
 

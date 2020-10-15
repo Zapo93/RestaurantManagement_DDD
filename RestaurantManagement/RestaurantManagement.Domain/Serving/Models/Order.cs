@@ -20,6 +20,8 @@ namespace RestaurantManagement.Domain.Serving.Models
             Open = true;
         }
 
+        private Order() { }
+
         private List<OrderItem> items;
         public IReadOnlyCollection<OrderItem> Items => items.ToList().AsReadOnly();
 

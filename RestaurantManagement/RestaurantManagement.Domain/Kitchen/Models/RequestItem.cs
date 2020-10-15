@@ -15,6 +15,7 @@ namespace RestaurantManagement.Domain.Kitchen.Models
             this.Status = RequestStatus.Pending;
         }
 
+        private RequestItem() { }
         public Recipe Recipe { get; private set; }
         public string? Note { get; private set; }
 

@@ -22,6 +22,8 @@ namespace RestaurantManagement.Domain.Common
             this.Name = name;
         }
 
+        protected Enumeration() { }
+
         public override string ToString() => this.Name;
 
         public static IEnumerable<T> GetAll<T>() where T : Enumeration

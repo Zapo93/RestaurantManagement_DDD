@@ -18,7 +18,7 @@ namespace RestaurantManagement.Infrastructure.Hosting.Configuration
                 .OwnsOne(r => r.TimeRange, o =>
                 {
                     o.WithOwner();
-
+                    
                     o.Property(tr => tr.Start);
                     o.Property(tr => tr.End);
                 });

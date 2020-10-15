@@ -11,6 +11,7 @@ namespace RestaurantManagement.Domain.Serving.Models
             Note = note;
         }
 
+        private OrderItem() { }
         public Dish Dish { get; private set; }
         public string? Note { get; private set; }
     }

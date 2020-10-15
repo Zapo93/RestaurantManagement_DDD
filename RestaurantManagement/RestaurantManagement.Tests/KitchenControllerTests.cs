@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestaurantManagement.Application;
 using RestaurantManagement.Application.Kitchen.Commands.CreateRecipe;
@@ -24,10 +25,12 @@ namespace RestaurantManagement.Tests
             IServiceCollection services = new ServiceCollection();
             services.AddDomain()
                 .AddApplication()
-                //.AddInfrastructure()
-                .AddWebComponents();
+                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true");
+            var serviceProviderFactory = new DefaultServiceProviderFactory();
 
-            var kitchenController = new KitchenController();
+            IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
+
+            IMediator Mediator = serviceProvider.GetService<IMediator>();
 
             var createRecipeCommand = new CreateRecipeCommand();
 
@@ -37,13 +40,21 @@ namespace RestaurantManagement.Tests
 
             createRecipeCommand.Ingredients.Add(new Ingredient("Qdene", 500));
 
-            var createRecipeOutput = await kitchenController.CreateRecipe(createRecipeCommand);
+            CreateRecipeOutputModel createRecipeOutput;
+            try
+            {
+                createRecipeOutput = await Mediator.Send(createRecipeCommand);
+            }
+            catch (Exception e)
+            {
+                 throw;
+            }
 
             var recipiesQuery = new GetRecipesQuery();
             recipiesQuery.OnlyActive = true;
 
-            var recipesResult = await kitchenController.GetRecipiesQuery(recipiesQuery);
-            var recipe = recipesResult.Value.Recipes.FirstOrDefault(recipe => recipe.Id == createRecipeOutput.Value.RecipeId);
+            var recipesResult = await Mediator.Send(recipiesQuery);
+            var recipe = recipesResult.Recipes.FirstOrDefault(recipe => recipe.Id == createRecipeOutput.RecipeId);
 
             Assert.AreEqual(createRecipeCommand.Name, recipe.Name);
             Assert.AreEqual(createRecipeCommand.Description, recipe.Description);

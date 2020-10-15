@@ -18,6 +18,8 @@ namespace RestaurantManagement.Domain.Kitchen.Models
             CreatorReferenceId = creatorReferenceId;
         }
 
+        private Request() { }
+
         private HashSet<RequestItem> items;
         public IReadOnlyCollection<RequestItem> Items => this.items.ToList().AsReadOnly();
         public DateTime DateCreated { get; private set; }

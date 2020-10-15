@@ -15,6 +15,7 @@ namespace RestaurantManagement.Domain.Hosting.Models
             reservations = new HashSet<Reservation>();
         }
 
+        private Schedule() { }
         public DateTimeRange TimeRange { get; private set; }
         private HashSet<Reservation> reservations;
         public IReadOnlyCollection<Reservation> Reservations => reservations.ToList().AsReadOnly();

@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement.Application", "RestaurantManagement.Application\RestaurantManagement.Application.csproj", "{288F76A7-1A2E-4B2A-86FF-C0AABE6A1CED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagement.Infrastructure", "RestaurantManagement.Infrastructure\RestaurantManagement.Infrastructure.csproj", "{8F2B478C-4951-4C79-A350-29DB67368FFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement.Infrastructure", "RestaurantManagement.Infrastructure\RestaurantManagement.Infrastructure.csproj", "{8F2B478C-4951-4C79-A350-29DB67368FFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagement.Web", "RestaurantManagement.Web\RestaurantManagement.Web.csproj", "{70BE5EEA-3B3E-4A05-B941-BD3EBB1C06DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement.Web", "RestaurantManagement.Web\RestaurantManagement.Web.csproj", "{70BE5EEA-3B3E-4A05-B941-BD3EBB1C06DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagement.Tests", "RestaurantManagement.Tests\RestaurantManagement.Tests.csproj", "{FFECFF11-BFF4-4D5D-B120-5CAE4FF60104}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{70BE5EEA-3B3E-4A05-B941-BD3EBB1C06DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70BE5EEA-3B3E-4A05-B941-BD3EBB1C06DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70BE5EEA-3B3E-4A05-B941-BD3EBB1C06DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFECFF11-BFF4-4D5D-B120-5CAE4FF60104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFECFF11-BFF4-4D5D-B120-5CAE4FF60104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFECFF11-BFF4-4D5D-B120-5CAE4FF60104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFECFF11-BFF4-4D5D-B120-5CAE4FF60104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,6 +13,8 @@ namespace RestaurantManagement.Domain.Hosting.Models
             this.PhoneNumber = phoneNumber;
         }
 
+        private Guest() { }
+
         public readonly string FirstName;
         public readonly string LastName;
         public readonly string PhoneNumber;

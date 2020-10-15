@@ -9,3 +9,5 @@
 /RestaurantManagement/RestaurantManagement.Web/obj
 /RestaurantManagement/RestaurantManagement.Infrastructure/bin
 /RestaurantManagement/RestaurantManagement.Infrastructure/obj
+/RestaurantManagement/RestaurantManagement.Tests/obj
+/RestaurantManagement/RestaurantManagement.Tests/bin

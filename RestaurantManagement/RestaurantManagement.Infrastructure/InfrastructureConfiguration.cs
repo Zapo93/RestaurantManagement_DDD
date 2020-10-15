@@ -26,6 +26,16 @@ namespace RestaurantManagement.Infrastructure
                     .AddTransient<IEventDispatcher, EventDispatcher>();
         }
 
+        public static IServiceCollection AddInfrastructure(
+            this IServiceCollection services,
+            string dbConnectionString)
+        {
+            return services
+                    .AddRepositories()
+                    .AddDatabase(dbConnectionString)
+                    .AddTransient<IEventDispatcher, EventDispatcher>();
+        }
+
         private static IServiceCollection AddRepositories(this IServiceCollection services)
             => services
                 .Scan(scan => scan
@@ -47,7 +57,21 @@ namespace RestaurantManagement.Infrastructure
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>());
-                //.AddTransient<IInitializer, DatabaseInitializer>();
+        //.AddTransient<IInitializer, DatabaseInitializer>();
+
+        private static IServiceCollection AddDatabase(
+            this IServiceCollection services,
+            string dbConnectionString)
+            => services
+                .AddDbContext<RestaurantManagementDbContext>(options => options
+                    .UseSqlServer(
+                        dbConnectionString,
+                        sqlServer => sqlServer
+                            .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName)))
+                .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
+                .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
+                .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>());
+        //.AddTransient<IInitializer, DatabaseInitializer>();
 
     }
 }

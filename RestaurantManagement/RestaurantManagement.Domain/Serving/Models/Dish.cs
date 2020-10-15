@@ -21,6 +21,7 @@ namespace RestaurantManagement.Domain.Serving.Models
             Active = true;
         }
 
+        private Dish() { }
         public string Name { get; private set; }
         public int RecipeId { get; private set; }
         public string Description { get; private set; }
