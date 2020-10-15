@@ -26,7 +26,6 @@ namespace RestaurantManagement.Domain.Serving.Models
         public string Description { get; private set; }
         public Money Price { get; private set; }
         public Uri? ImageUrl { get; private set; }
-
         public bool Active { get; private set; }
 
         public void Activate() 

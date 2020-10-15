@@ -10,7 +10,7 @@ namespace RestaurantManagement.Infrastructure.Hosting
     internal interface IHostingDbContext: IDbContext
     {
         DbSet<Table> Tables { get; }
-
         DbSet<Reservation> Reservations { get; }
+        DbSet<Schedule> Schedules { get; }
     }
 }

@@ -10,7 +10,8 @@ namespace RestaurantManagement.Infrastructure.Kitchen
     internal interface IKitchenDbContext: IDbContext
     {
         DbSet<Recipe> Recipes { get; }
-
         DbSet<Request> Requests { get; }
+        DbSet<Ingredient> Ingredients{ get; }
+        DbSet<RequestItem> RequestItems{ get; }
     }
 }
