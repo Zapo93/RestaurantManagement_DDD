@@ -10,6 +10,8 @@ namespace RestaurantManagement.Domain.Serving.Models
             this.RequestId = value;
         }
 
+        private KitchenRequest() { }
+
         public string RequestId { get; }
     }
 }
