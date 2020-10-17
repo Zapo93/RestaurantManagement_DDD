@@ -15,8 +15,8 @@ namespace RestaurantManagement.Domain.Hosting.Models
 
         private Guest() { }
 
-        public readonly string FirstName;
-        public readonly string LastName;
-        public readonly string PhoneNumber;
+        public string FirstName { get;}
+        public string LastName { get;}
+        public string PhoneNumber { get;}
     }
 }

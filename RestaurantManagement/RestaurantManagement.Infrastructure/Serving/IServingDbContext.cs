@@ -12,5 +12,6 @@ namespace RestaurantManagement.Infrastructure.Serving
         DbSet<Dish> Dishes { get; }
         DbSet<Order> Orders { get; }
         DbSet<OrderItem> OrderItems { get; }
+        DbSet<KitchenRequest> KitchenRequests { get; }
     }
 }

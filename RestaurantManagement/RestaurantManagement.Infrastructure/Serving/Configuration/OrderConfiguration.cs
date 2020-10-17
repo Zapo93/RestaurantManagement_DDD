@@ -38,11 +38,11 @@ namespace RestaurantManagement.Infrastructure.Serving.Configuration
                 .SetField("items");
 
             builder
-                .HasMany(o => o.KitchenRequestIds)
+                .HasMany(o => o.KitchenRequests)
                 .WithOne()
                 .Metadata
                 .PrincipalToDependent
-                .SetField("kitchenRequestIds");
+                .SetField("kitchenRequests");
         }
     }
 }

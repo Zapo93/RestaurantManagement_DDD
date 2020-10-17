@@ -13,7 +13,7 @@ namespace RestaurantManagement.Domain.Serving.Models
         internal Order(int assigneeId, int? tableId = null)
         {
             items = new List<OrderItem>();
-            kitchenRequestIds = new HashSet<string>();
+            kitchenRequests = new HashSet<KitchenRequest>();
             TableId = tableId;
             DateCreated = DateTime.UtcNow;
             AssigneeId = assigneeId;
@@ -25,7 +25,7 @@ namespace RestaurantManagement.Domain.Serving.Models
         private List<OrderItem> items;
         public IReadOnlyCollection<OrderItem> Items => items.ToList().AsReadOnly();
 
-        private readonly HashSet<string> kitchenRequestIds;
+        private readonly HashSet<KitchenRequest> kitchenRequests;
 
         public void ChangeRequestStatus(string requestId)
         {
@@ -38,7 +38,7 @@ namespace RestaurantManagement.Domain.Serving.Models
             RaiseEvent(newEvent);
         }
 
-        public IReadOnlyCollection<string> KitchenRequestIds => kitchenRequestIds.ToList().AsReadOnly();
+        public IReadOnlyCollection<KitchenRequest> KitchenRequests => kitchenRequests.ToList().AsReadOnly();
 
         public int? TableId { get; private set; }
 
@@ -75,7 +75,8 @@ namespace RestaurantManagement.Domain.Serving.Models
 
         private void AddKitchenRequestById(string kitchenRequestId)
         {
-            kitchenRequestIds.Add(kitchenRequestId);
+            var newKitchenRequest = new KitchenRequest(kitchenRequestId);
+            this.kitchenRequests.Add(newKitchenRequest);
         }
 
         private void GenerateAddedItemsEvent(string requestId, IEnumerable<OrderItem> newItems)

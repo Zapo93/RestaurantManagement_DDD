@@ -54,6 +54,8 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence
 
         public DbSet<Schedule> Schedules { get; set; } = default!;
 
+        public DbSet<KitchenRequest> KitchenRequests { get; set; } = default!;
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             this.savesChangesTracker.Push(new object());
