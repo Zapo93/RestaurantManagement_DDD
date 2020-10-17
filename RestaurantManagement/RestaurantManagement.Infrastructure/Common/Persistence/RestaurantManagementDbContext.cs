@@ -10,6 +10,7 @@ using RestaurantManagement.Infrastructure.Serving;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -83,6 +84,13 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence
             }
 
             return 0;
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            base.OnModelCreating(builder);
         }
     }
 }

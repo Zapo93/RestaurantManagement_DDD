@@ -28,8 +28,8 @@ namespace RestaurantManagement.Domain.Hosting.Models
 
         private Table() { }
 
-        private HashSet<Schedule> schedules;
-        public ReadOnlyCollection<Schedule> Schedules => schedules.ToList().AsReadOnly();
+        private readonly HashSet<Schedule> schedules;
+        public IReadOnlyCollection<Schedule> Schedules => schedules.ToList().AsReadOnly();
         public string Name { get; private set; }
         public string? RestaurantName { get; private set; }
         public int NumberOfSeats { get; private set; }

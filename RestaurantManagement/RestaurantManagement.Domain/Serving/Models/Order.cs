@@ -25,7 +25,7 @@ namespace RestaurantManagement.Domain.Serving.Models
         private List<OrderItem> items;
         public IReadOnlyCollection<OrderItem> Items => items.ToList().AsReadOnly();
 
-        private HashSet<string> kitchenRequestIds;
+        private readonly HashSet<string> kitchenRequestIds;
 
         public void ChangeRequestStatus(string requestId)
         {
