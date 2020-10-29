@@ -56,8 +56,8 @@ namespace RestaurantManagement.Infrastructure
                             .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName)))
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
-                .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>());
-        //.AddTransient<IInitializer, DatabaseInitializer>();
+                .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
+                .AddTransient<IInitializer, DatabaseInitializer>();
 
         private static IServiceCollection AddDatabase(
             this IServiceCollection services,
@@ -70,8 +70,8 @@ namespace RestaurantManagement.Infrastructure
                             .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName)))
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
-                .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>());
-        //.AddTransient<IInitializer, DatabaseInitializer>();
+                .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
+                .AddTransient<IInitializer, DatabaseInitializer>();
 
     }
 }

@@ -41,14 +41,8 @@ namespace RestaurantManagement.Tests
             createRecipeCommand.Ingredients.Add(new Ingredient("Qdene", 500));
 
             CreateRecipeOutputModel createRecipeOutput;
-            try
-            {
-                createRecipeOutput = await Mediator.Send(createRecipeCommand);
-            }
-            catch (Exception e)
-            {
-                 throw;
-            }
+
+            createRecipeOutput = await Mediator.Send(createRecipeCommand);
 
             var recipiesQuery = new GetRecipesQuery();
             recipiesQuery.OnlyActive = true;

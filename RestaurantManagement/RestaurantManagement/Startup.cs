@@ -53,6 +53,8 @@ namespace RestaurantManagement
             {
                 endpoints.MapControllers();
             });
+
+            app.Initialize();
         }
     }
 }
