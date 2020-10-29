@@ -53,11 +53,11 @@ namespace RestaurantManagement.Domain.Kitchen.Models
         {
             foreach (RequestItem item in Items) 
             {
-                item.SetStatus(RequestStatus.Ready);
+                item.SetStatus(RequestItemStatus.Ready);
             }
         }
 
-        public void SetItemStatus(int itemId, RequestStatus newStatus) 
+        public void SetItemStatus(int itemId, RequestItemStatus newStatus) 
         {
             foreach (RequestItem item in Items)
             {

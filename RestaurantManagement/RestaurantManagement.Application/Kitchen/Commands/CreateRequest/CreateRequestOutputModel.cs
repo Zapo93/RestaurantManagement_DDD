@@ -11,6 +11,6 @@ namespace RestaurantManagement.Application.Kitchen.Commands.CreateRequest
             RequestId = requestId;
         }
 
-        public object RequestId { get; }
+        public int RequestId { get; }
     }
 }

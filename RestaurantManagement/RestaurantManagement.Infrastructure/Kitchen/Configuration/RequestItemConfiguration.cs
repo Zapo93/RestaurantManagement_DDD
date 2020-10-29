@@ -20,15 +20,16 @@ namespace RestaurantManagement.Infrastructure.Kitchen.Configuration
                    .IsRequired()
                    .HasMaxLength(MaxDefaultStringLenght);
 
-                builder
-                    .OwnsOne(
-                        r => r.Status,
-                        s => {
-                            s.WithOwner();
-                            s.Property(sr => sr.Value);
-                        });
+            builder
+                .OwnsOne(
+                    r => r.Status,
+                    s => {
+                        //s.WithOwner(); 
+                        //s.Property(sr => sr.Name);
+                        s.Property(sr => sr.Value);
+                    });
 
-                builder
+            builder
                     .HasOne(r => r.Recipe)
                     .WithMany()
                     .HasForeignKey("RecipeId");

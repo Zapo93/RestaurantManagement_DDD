@@ -3,7 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestaurantManagement.Application;
 using RestaurantManagement.Application.Kitchen.Commands.CreateRecipe;
+using RestaurantManagement.Application.Kitchen.Commands.CreateRequest;
 using RestaurantManagement.Application.Kitchen.Queries.GetRecipes;
+using RestaurantManagement.Application.Kitchen.Queries.GetRequests;
 using RestaurantManagement.Domain;
 using RestaurantManagement.Domain.Kitchen.Models;
 using RestaurantManagement.Infrastructure;
@@ -17,7 +19,7 @@ using System.Threading.Tasks;
 namespace RestaurantManagement.Tests
 {
     [TestClass]
-    public class KitchenControllerTests
+    public class KitchenUseCasesTests
     {
         [TestMethod]
         public async Task CreateRecipe_NewRecipe_SuccessfullRead() 
@@ -53,6 +55,42 @@ namespace RestaurantManagement.Tests
             Assert.AreEqual(createRecipeCommand.Name, recipe.Name);
             Assert.AreEqual(createRecipeCommand.Description, recipe.Description);
             Assert.AreEqual(createRecipeCommand.Preparation, recipe.Preparation);
+        }
+
+        [TestMethod]
+        public async Task CreateRequest_NewRequest_SuccessfullRead()
+        {
+            IServiceCollection services = new ServiceCollection();
+            services.AddDomain()
+                .AddApplication()
+                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true");
+            var serviceProviderFactory = new DefaultServiceProviderFactory();
+
+            IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
+
+            IMediator Mediator = serviceProvider.GetService<IMediator>();
+
+            var createRequestCommand = new CreateRequestCommand();
+
+            createRequestCommand.CreatorReferenceId = "TestId";
+            createRequestCommand.Items.Add(new RequestItemInputModel(1,"Bez Chesun"));
+            createRequestCommand.Items.Add(new RequestItemInputModel(2, "Bez Chesun"));
+
+            CreateRequestOutputModel createRequestOutput;
+
+            createRequestOutput = await Mediator.Send(createRequestCommand);
+
+            var getRequestsQuery = new GetRequestsQuery();
+
+            var getRequestsResult = await Mediator.Send(getRequestsQuery);
+            var request = getRequestsResult.Requests.FirstOrDefault(request => request.Id == createRequestOutput.RequestId);
+
+            Assert.AreEqual(request.CreatorReferenceId, request.CreatorReferenceId);
+            foreach (var item in request.Items) 
+            {
+                var commandItem = createRequestCommand.Items.FirstOrDefault(commandItem => commandItem.RecipeId == item.Recipe.Id);
+                Assert.AreEqual(item.Recipe.Id, commandItem.RecipeId);
+            }
         }
     }
 }

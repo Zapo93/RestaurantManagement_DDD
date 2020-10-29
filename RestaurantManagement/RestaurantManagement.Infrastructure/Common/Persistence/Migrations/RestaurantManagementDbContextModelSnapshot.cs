@@ -432,7 +432,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         .WithMany("Items")
                         .HasForeignKey("RequestId");
 
-                    b.OwnsOne("RestaurantManagement.Domain.Kitchen.Models.RequestStatus", "Status", b1 =>
+                    b.OwnsOne("RestaurantManagement.Domain.Kitchen.Models.RequestItemStatus", "Status", b1 =>
                         {
                             b1.Property<int>("RequestItemId")
                                 .ValueGeneratedOnAdd()

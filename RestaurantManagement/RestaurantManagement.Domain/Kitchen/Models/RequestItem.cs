@@ -12,16 +12,16 @@ namespace RestaurantManagement.Domain.Kitchen.Models
         {
             this.Recipe = recipe;
             this.Note = note!;
-            this.Status = RequestStatus.Pending;
+            this.Status = RequestItemStatus.Pending;
         }
 
         private RequestItem() { }
         public Recipe Recipe { get; private set; }
         public string? Note { get; private set; }
 
-        public RequestStatus Status { get; private set; }
+        public RequestItemStatus Status { get; private set; }
 
-        public void SetStatus(RequestStatus newStatus) 
+        public void SetStatus(RequestItemStatus newStatus) 
         {
             this.Status.ValidateNewStatus(newStatus);
             this.Status = newStatus;

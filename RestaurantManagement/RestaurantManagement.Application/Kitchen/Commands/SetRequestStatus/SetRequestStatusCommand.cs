@@ -35,7 +35,7 @@ namespace RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus
 
                 foreach (ItemStatus itemStatus in command.ItemStatuses) 
                 {
-                    request.SetItemStatus(itemStatus.ItemId, Enumeration.FromValue<RequestStatus>(itemStatus.NewStatus));
+                    request.SetItemStatus(itemStatus.ItemId, Enumeration.FromValue<RequestItemStatus>(itemStatus.NewStatus));
                 }
 
                 if (command.NewRequestStatus != null) 

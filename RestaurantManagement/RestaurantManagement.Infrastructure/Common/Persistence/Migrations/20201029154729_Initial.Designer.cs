@@ -10,7 +10,7 @@ using RestaurantManagement.Infrastructure.Common.Persistence;
 namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
 {
     [DbContext(typeof(RestaurantManagementDbContext))]
-    [Migration("20201017075848_Initial")]
+    [Migration("20201029154729_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -434,7 +434,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         .WithMany("Items")
                         .HasForeignKey("RequestId");
 
-                    b.OwnsOne("RestaurantManagement.Domain.Kitchen.Models.RequestStatus", "Status", b1 =>
+                    b.OwnsOne("RestaurantManagement.Domain.Kitchen.Models.RequestItemStatus", "Status", b1 =>
                         {
                             b1.Property<int>("RequestItemId")
                                 .ValueGeneratedOnAdd()

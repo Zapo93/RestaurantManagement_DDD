@@ -26,7 +26,8 @@ namespace RestaurantManagement.Infrastructure.Kitchen.Configuration
                 .OwnsOne(
                     r => r.Status,
                     s => {
-                        s.WithOwner(); 
+                        //s.WithOwner(); 
+                        //s.Property(sr => sr.Name);
                         s.Property(sr => sr.Value); 
                     });
 
