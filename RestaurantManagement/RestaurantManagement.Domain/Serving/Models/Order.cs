@@ -57,6 +57,7 @@ namespace RestaurantManagement.Domain.Serving.Models
         {
             if (Open)
             {
+                ValidateOrderItems(newItems);
                 items.AddRange(newItems);
                 string requestId = GenerateKitchenRequestId();
                 AddKitchenRequestById(requestId);
@@ -65,6 +66,17 @@ namespace RestaurantManagement.Domain.Serving.Models
             else
             {
                 throw new OrderClosedException("Can not add items on closed order!");
+            }
+        }
+
+        private void ValidateOrderItems(IEnumerable<OrderItem> newItems) 
+        {
+            foreach (var item in newItems) 
+            {
+                if (item.Dish == null)
+                {
+                    throw new InvalidDishException("Dish does not exist!");
+                }
             }
         }
 

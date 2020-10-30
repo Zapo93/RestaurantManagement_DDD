@@ -14,7 +14,6 @@ namespace RestaurantManagement.Infrastructure.Serving.Configuration
 
             builder
                 .Property(oi => oi.Note)
-                .IsRequired()
                 .HasMaxLength(MaxDefaultStringLenght);
 
             builder

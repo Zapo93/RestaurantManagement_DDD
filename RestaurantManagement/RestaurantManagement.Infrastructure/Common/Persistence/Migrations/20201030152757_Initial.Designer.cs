@@ -10,7 +10,7 @@ using RestaurantManagement.Infrastructure.Common.Persistence;
 namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
 {
     [DbContext(typeof(RestaurantManagementDbContext))]
-    [Migration("20201029154729_Initial")]
+    [Migration("20201030152757_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -161,7 +161,6 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -267,7 +266,6 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 

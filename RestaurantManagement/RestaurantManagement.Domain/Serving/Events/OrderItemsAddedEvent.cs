@@ -19,7 +19,7 @@ namespace RestaurantManagement.Domain.Serving.Events
             items = new List<AddedOrderItem>();
         }
 
-        internal void AddItem(int recipeId, string note) 
+        internal void AddItem(int recipeId, string? note) 
         {
             items.Add(new AddedOrderItem(recipeId,note));
         }

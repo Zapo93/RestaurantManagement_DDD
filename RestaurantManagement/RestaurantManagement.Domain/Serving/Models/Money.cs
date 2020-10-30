@@ -4,7 +4,7 @@ namespace RestaurantManagement.Domain.Serving.Models
 {
     public class Money : ValueObject
     {
-        internal Money(double ammountInLev) 
+        public Money(double ammountInLev) 
         {
             //TODO validate value. It must not be negative.
             Value = ammountInLev;

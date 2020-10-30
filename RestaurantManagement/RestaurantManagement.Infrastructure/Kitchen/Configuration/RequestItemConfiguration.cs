@@ -17,7 +17,6 @@ namespace RestaurantManagement.Infrastructure.Kitchen.Configuration
 
                 builder
                    .Property(i => i.Note)
-                   .IsRequired()
                    .HasMaxLength(MaxDefaultStringLenght);
 
             builder

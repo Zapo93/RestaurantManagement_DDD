@@ -118,7 +118,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DishId = table.Column<int>(nullable: false),
-                    Note = table.Column<string>(maxLength: 50, nullable: false),
+                    Note = table.Column<string>(maxLength: 50, nullable: true),
                     OrderId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -166,7 +166,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RecipeId = table.Column<int>(nullable: false),
-                    Note = table.Column<string>(maxLength: 50, nullable: false),
+                    Note = table.Column<string>(maxLength: 50, nullable: true),
                     Status_Value = table.Column<int>(nullable: true),
                     RequestId = table.Column<int>(nullable: true)
                 },

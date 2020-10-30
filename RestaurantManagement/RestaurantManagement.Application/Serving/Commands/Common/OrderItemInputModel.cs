@@ -2,7 +2,15 @@
 {
     public class OrderItemInputModel
     {
-        public readonly int DishId;
-        public readonly string? Note;
+        public OrderItemInputModel() { }
+
+        public OrderItemInputModel(int dishId, string? note = null!) 
+        {
+            this.DishId = dishId;
+            this.Note = note;
+        }
+
+        public int DishId { get; }
+        public string? Note { get; }
     }
 }
