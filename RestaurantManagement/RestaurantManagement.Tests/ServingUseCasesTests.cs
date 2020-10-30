@@ -53,6 +53,34 @@ namespace RestaurantManagement.Tests
         }
 
         [TestMethod]
+        public async Task CreateDish_RecipeAlreadyAdded_ExceptionThrown()
+        {
+            IServiceCollection services = new ServiceCollection();
+            services.AddDomain()
+                .AddApplication()
+                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true");
+            var serviceProviderFactory = new DefaultServiceProviderFactory();
+
+            IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
+
+            IMediator Mediator = serviceProvider.GetService<IMediator>();
+
+            var createDishCommand = new CreateDishCommand();
+            createDishCommand.Description = "Vkusno";
+            createDishCommand.Name = "Mnogo Vkusna Mandja";
+            createDishCommand.RecipeId = 2;
+            createDishCommand.Price = new Money(10);
+            await Mediator.Send(createDishCommand);
+
+            createDishCommand = new CreateDishCommand();
+            createDishCommand.Description = "Vkusno";
+            createDishCommand.Name = "Oshte Po Vkusna Mandja";
+            createDishCommand.RecipeId = 2;
+            createDishCommand.Price = new Money(10);
+            await Assert.ThrowsExceptionAsync<InvalidDishException>(() => Mediator.Send(createDishCommand));
+        }
+
+        [TestMethod]
         public async Task CreateOrder_NewOrder_SuccessfullRead()
         {
             IServiceCollection services = new ServiceCollection();
@@ -68,14 +96,14 @@ namespace RestaurantManagement.Tests
             var createDishCommand = new CreateDishCommand();
             createDishCommand.Description = "Vkusno";
             createDishCommand.Name = "Mnogo Vkusna Mandja";
-            createDishCommand.RecipeId = 1;
+            createDishCommand.RecipeId = 3;
             createDishCommand.Price = new Money(10);
             await Mediator.Send(createDishCommand);
 
             createDishCommand = new CreateDishCommand();
             createDishCommand.Description = "Vkusno";
             createDishCommand.Name = "Oshte Po Vkusna Mandja";
-            createDishCommand.RecipeId = 1;
+            createDishCommand.RecipeId = 4;
             createDishCommand.Price = new Money(10);
             await Mediator.Send(createDishCommand);
 

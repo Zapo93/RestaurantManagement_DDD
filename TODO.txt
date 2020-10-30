@@ -60,5 +60,8 @@
 	
 - Add validations
 
+- Prevent the creation of dishes with the same RecipeId!
+
 - Add tests	
+	= Make tests run without having to delete the DB every time.
 	= Extract repeating loginc into methods in the tests

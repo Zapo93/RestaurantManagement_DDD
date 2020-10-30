@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using RestaurantManagement.Domain.Serving.Exceptions;
 using RestaurantManagement.Domain.Serving.Factories;
 using RestaurantManagement.Domain.Serving.Models;
 using System;
@@ -32,7 +33,13 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateDish
 
             public async Task<CreateDishOutputModel> Handle(CreateDishCommand command, CancellationToken cancellationToken) 
             {
-                //TODO check if a dish for this recipe already exists!
+
+                var existingDish = await DishRepository.GetDishByRecipeId(command.RecipeId,cancellationToken);
+                if (existingDish != null) 
+                {
+                    throw new InvalidDishException("Recipe already represented by another dish!");
+                }
+
                 DishFactory
                     .WithName(command.Name)
                     .WithRecipeId(command.RecipeId)
