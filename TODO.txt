@@ -61,3 +61,4 @@
 - Add validations
 
 - Add tests	
+	= Extract repeating loginc into methods in the tests

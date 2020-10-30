@@ -12,6 +12,7 @@ namespace RestaurantManagement.Application.Kitchen.Queries.GetRequests
 {
     public class GetRequestsQuery: IRequest<GetRequestsOutputModel>
     {
+        public int? RequestId = default!;
         public bool OnlyAvailable = false;
 
         public class GetRequestsQueryHandler : IRequestHandler<GetRequestsQuery, GetRequestsOutputModel>
@@ -32,7 +33,8 @@ namespace RestaurantManagement.Application.Kitchen.Queries.GetRequests
 
             private Specification<Request> GetRequestSpecification(GetRequestsQuery query) 
             {
-                return new OnlyOpenRequestsSpecification(query.OnlyAvailable);
+                return new OnlyOpenRequestsSpecification(query.OnlyAvailable)
+                    .And(new RequestByIdSpecification(query.RequestId)); ;
             }
         }
     }

@@ -26,9 +26,12 @@ namespace RestaurantManagement.Infrastructure.Serving.Repositories
                  .FirstOrDefaultAsync(order => order.Id == orderId, cancellationToken);
         }
 
-        public Task<Order> GetOrderByRequestId(string creatorReferenceId)
+        public Task<Order> GetOrderByRequestId(string creatorReferenceId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return this
+                 .All()
+                 .Where(order => order.KitchenRequests.Any(kitchenRequest => kitchenRequest.RequestId == creatorReferenceId))
+                 .FirstOrDefaultAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<Order>> GetOrders(Specification<Order> orderSpec, CancellationToken cancellationToken)

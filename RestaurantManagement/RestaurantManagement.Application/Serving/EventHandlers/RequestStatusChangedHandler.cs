@@ -20,9 +20,12 @@ namespace RestaurantManagement.Application.Serving.EventHandlers
 
         public async Task Handle(RequestStatusChangedEvent domainEvent)
         {
-            Order targetOrder = await OrderRepository.GetOrderByRequestId(domainEvent.CreatorReferenceId);
-            targetOrder.ChangeRequestStatus(domainEvent.CreatorReferenceId);
-            await OrderRepository.Save(targetOrder,CancellationToken.None);
+            Order targetOrder = await OrderRepository.GetOrderByRequestId(domainEvent.CreatorReferenceId, CancellationToken.None);
+            if (targetOrder != null)
+            {
+                targetOrder.ChangeRequestStatus(domainEvent.CreatorReferenceId);
+                await OrderRepository.Save(targetOrder, CancellationToken.None); 
+            }
         }
     }
 }
