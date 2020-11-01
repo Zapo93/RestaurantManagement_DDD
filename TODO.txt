@@ -65,7 +65,7 @@
 - There is a problem with reading multiple children from the DB i.e. Schedules in Table - see GetTables test where
 none of the tables have schedules. Also there is a problem with deleting from the db - it gets deleted but when
 multiple commands are called in the same test EF thinks that it is not deleted. However in this case the schedules are
-correct!
+correct - See DeleteReservation Test.
 
 - Add tests	
 	= Make tests run without having to delete the DB every time.
