@@ -5,7 +5,7 @@ namespace RestaurantManagement.Domain.Hosting.Models
 {
     public class Guest:ValueObject
     {
-        internal Guest(string firstName, string lastName, string phoneNumber) 
+        public Guest(string firstName, string lastName, string phoneNumber) 
         {
             this.FirstName = firstName;
             this.LastName = lastName;

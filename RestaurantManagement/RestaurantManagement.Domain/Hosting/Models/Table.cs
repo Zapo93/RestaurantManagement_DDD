@@ -62,12 +62,15 @@ namespace RestaurantManagement.Domain.Hosting.Models
 
         public Schedule? GetScheduleForDateTime(DateTime targetTime)
         {
-            foreach (Schedule sched in schedules)
+            if (schedules != null)
             {
-                if (sched.TimeRange.IsDateTimeIn(targetTime))
+                foreach (Schedule sched in schedules)
                 {
-                    return sched;
-                }
+                    if (sched.TimeRange.IsDateTimeIn(targetTime))
+                    {
+                        return sched;
+                    }
+                } 
             }
 
             return null;

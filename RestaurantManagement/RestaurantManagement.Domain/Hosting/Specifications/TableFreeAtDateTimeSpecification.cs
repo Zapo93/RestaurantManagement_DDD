@@ -9,16 +9,24 @@ namespace RestaurantManagement.Domain.Hosting.Specifications
 {
     public class TableFreeAtDateTimeSpecification: Specification<Table>
     {
-        private readonly DateTime TargetTime = default!;
+        private readonly DateTime? TargetTime = null;
 
-        public TableFreeAtDateTimeSpecification(DateTime targetTime) 
+        public TableFreeAtDateTimeSpecification(DateTime? targetTime) 
         {
             this.TargetTime = targetTime;
         }
 
+        protected override bool Include => this.TargetTime != null;
+
         public override Expression<Func<Table, bool>> ToExpression()
         {
-            return table => table.IsFree(TargetTime);
+            if (TargetTime == null) 
+            {
+                return table => true;
+            }
+
+            //The method IsFree can not be translated to SQL! Another way must be used to get the free tables.
+            return table => table.IsFree(TargetTime.Value);
         }
     }
 }

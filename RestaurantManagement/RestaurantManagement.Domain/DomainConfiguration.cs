@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Domain.Hosting.Services;
 
 namespace RestaurantManagement.Domain
 {
@@ -7,7 +8,8 @@ namespace RestaurantManagement.Domain
     {
         public static IServiceCollection AddDomain(this IServiceCollection services) 
         {
-            return services.AddFactories();
+            return services.AddFactories()
+                .AddTransient<ITablesScheduleService,TablesScheduleService>();
         }
 
         private static IServiceCollection AddFactories(this IServiceCollection services)

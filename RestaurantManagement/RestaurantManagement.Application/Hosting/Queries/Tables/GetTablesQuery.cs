@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Domain.Hosting.Services;
 using RestaurantManagement.Domain.Hosting.Specifications;
 using System;
 using System.Collections.Generic;
@@ -13,16 +14,18 @@ namespace RestaurantManagement.Application.Hosting.Queries.Tables
 {
     public class GetTablesQuery: IRequest<GetTablesOutputModel>
     {
-        public DateTime FreeTablesTargetTime = default!;
+        public DateTime? FreeTablesTargetTime = null!;
         public int MinimumNumberOfSeats = default!;
 
         public class GetTablesQueryHandler : IRequestHandler<GetTablesQuery, GetTablesOutputModel>
         {
             private readonly ITableRepository TableRepository;
+            private readonly ITablesScheduleService TablesScheduleService;
 
-            public GetTablesQueryHandler(ITableRepository tableRepository) 
+            public GetTablesQueryHandler(ITableRepository tableRepository, ITablesScheduleService tablesScheduleService)
             {
                 this.TableRepository = tableRepository;
+                this.TablesScheduleService = tablesScheduleService;
             }
             public async Task<GetTablesOutputModel> Handle(GetTablesQuery request, CancellationToken cancellationToken)
             {
@@ -30,13 +33,17 @@ namespace RestaurantManagement.Application.Hosting.Queries.Tables
 
                 IReadOnlyCollection<Table> tables = await TableRepository.GetTables(tableSpecification, cancellationToken);
 
+                if (request.FreeTablesTargetTime.HasValue) 
+                {
+                    tables = TablesScheduleService.GetFreeTablesForTargetTime(tables, request.FreeTablesTargetTime.Value);
+                }
+                
                 return new GetTablesOutputModel(tables);
             }
 
             private Specification<Table> GetTableSpecification(GetTablesQuery request)
             {
-                return new TableFreeAtDateTimeSpecification(request.FreeTablesTargetTime)
-                    .And(new TableMinimumSeatsSpecification(request.MinimumNumberOfSeats));
+                return new TableMinimumSeatsSpecification(request.MinimumNumberOfSeats);
             }
         }
     }
