@@ -5,21 +5,22 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using static RestaurantManagement.Domain.Hosting.Models.ModelConstants;
 
 namespace RestaurantManagement.Domain.Hosting.Models
 {
-    public class Table: Entity<int>, IAggregateRoot
+    public class Table : Entity<int>, IAggregateRoot
     {
         internal Table(
-            string name, 
-            int numberOfSeats, 
-            TableDescription tableDescription, 
-            string? restaurantName = null) 
+            string name,
+            int numberOfSeats,
+            TableDescription tableDescription,
+            string? restaurantName = null)
         {
             this.Name = name;
-            this.NumberOfSeats = numberOfSeats; 
+            this.NumberOfSeats = numberOfSeats;
             this.Description = tableDescription;
             this.RestaurantName = RestaurantName;
 
@@ -29,7 +30,7 @@ namespace RestaurantManagement.Domain.Hosting.Models
         private Table() { }
 
         private readonly HashSet<Schedule> schedules;
-        public IReadOnlyCollection<Schedule> Schedules => schedules.ToList().AsReadOnly();
+        public IReadOnlyCollection<Schedule>? Schedules => schedules?.ToList().AsReadOnly();
         public string Name { get; private set; }
         public string? RestaurantName { get; private set; }
         public int NumberOfSeats { get; private set; }
@@ -37,8 +38,8 @@ namespace RestaurantManagement.Domain.Hosting.Models
 
         public bool IsFree(DateTime targetTime)
         {
-            return ValidateTargetTime(targetTime) 
-                && (GetScheduleForDateTime(targetTime)?.IsFreeInTime(targetTime) ?? true);            
+            return ValidateTargetTime(targetTime)
+                && (GetScheduleForDateTime(targetTime)?.IsFreeInTime(targetTime) ?? true);
         }
 
         private bool ValidateTargetTime(DateTime targetTime) 

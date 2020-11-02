@@ -20,19 +20,21 @@ namespace RestaurantManagement.Web.Controllers
         }
 
         [HttpPost]
+        [Route("Reservations")]
         public async Task<ActionResult<AddReservationOutputModel>> AddReservation(AddReservationCommand addReservationCommand)
         {
             return await Send(addReservationCommand);
         }
 
         [HttpDelete]
+        [Route("Reservations")]
         public async Task<ActionResult<Unit>> DeleteReservation([FromQuery]DeleteReservationCommand deleteReservationCommand)
         {
             return await Send(deleteReservationCommand);
         }
 
         [HttpGet]
-        public async Task<ActionResult<GetTablesOutputModel>> GetDishes([FromQuery] GetTablesQuery tablesQuery)
+        public async Task<ActionResult<GetTablesOutputModel>> GetTables([FromQuery] GetTablesQuery tablesQuery)
         {
             return await Send(tablesQuery);
         }

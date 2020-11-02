@@ -9,7 +9,7 @@ namespace RestaurantManagement.Application.Hosting.Commands.DeleteReservation
 {
     public class DeleteReservationCommand: IRequest<Unit>
     {
-        public int ReservationId = default!;
+        public int ReservationId { get; set; }
 
         public class DeleteReservationCommandHandler : IRequestHandler<DeleteReservationCommand>
         {

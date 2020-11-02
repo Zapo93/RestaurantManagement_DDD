@@ -35,13 +35,18 @@ namespace RestaurantManagement.Infrastructure.Hosting.Repositories
 
         public async Task<IReadOnlyCollection<Table>> GetTables(Specification<Table> tableSpecification, CancellationToken cancellationToken)
         {
-            return await this.Data.Tables.Where(tableSpecification).ToListAsync();
+            return await this.Data.Tables
+                        .Where(tableSpecification)
+                        .Include("Schedules.Reservations")
+                        .ToListAsync();
         }
 
         public Task<Table> GetTableWithScheduleForTime(int tableId, DateTime start, CancellationToken cancellationToken)
         {
             return this
                  .All()
+                 .Include(t => t.Schedules) //This sintaksis does the same thing as Include("Schedules.Reservations") 
+                 .ThenInclude(s => s.Reservations)
                  .FirstOrDefaultAsync(table => table.Id == tableId, cancellationToken);
         }
     }

@@ -23,6 +23,8 @@ namespace RestaurantManagement.Infrastructure.Serving.Repositories
         {
             return this
                  .All()
+                 .Include("Items.Dish")
+                 .Include("KitchenRequests")
                  .FirstOrDefaultAsync(order => order.Id == orderId, cancellationToken);
         }
 
@@ -31,12 +33,18 @@ namespace RestaurantManagement.Infrastructure.Serving.Repositories
             return this
                  .All()
                  .Where(order => order.KitchenRequests.Any(kitchenRequest => kitchenRequest.RequestId == creatorReferenceId))
+                 .Include("Items.Dish")
+                 .Include("KitchenRequests")
                  .FirstOrDefaultAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<Order>> GetOrders(Specification<Order> orderSpec, CancellationToken cancellationToken)
         {
-            return await this.Data.Orders.Where(orderSpec).ToListAsync();
+            return await this.Data.Orders
+                .Where(orderSpec)
+                .Include("Items.Dish")
+                 .Include("KitchenRequests")
+                .ToListAsync();
         }
     }
 }

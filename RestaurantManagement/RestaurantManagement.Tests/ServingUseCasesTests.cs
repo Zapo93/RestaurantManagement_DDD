@@ -148,5 +148,31 @@ namespace RestaurantManagement.Tests
 
             await Assert.ThrowsExceptionAsync<InvalidDishException>(() => Mediator.Send(createOrderCommand));
         }
+
+        [TestMethod]
+        public async Task GetOrders_AllOrders_SuccessfulRead()
+        {
+            IServiceCollection services = new ServiceCollection();
+            services.AddDomain()
+                .AddApplication()
+                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true");
+            var serviceProviderFactory = new DefaultServiceProviderFactory();
+
+            IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
+
+            IMediator Mediator = serviceProvider.GetService<IMediator>();
+
+            var getOrdersQuery = new OrdersQuery();
+            var dbOrders = await Mediator.Send(getOrdersQuery);
+
+            foreach (var order in dbOrders.Orders)
+            {
+                Assert.IsNotNull(order.Items);
+                foreach (var item in order.Items) 
+                {
+                    Assert.IsNotNull(item.Dish);
+                }
+            }
+        }
     }
 }

@@ -23,12 +23,16 @@ namespace RestaurantManagement.Infrastructure.Kitchen.Repositories
         {
             return this
                 .All()
+                .Include("Items.Recipe.Ingredients")
                 .FirstOrDefaultAsync(request => request.Id == requestId, cancellationToken);
         }
 
         public async Task<IEnumerable<Request>> GetRequests(Specification<Request> specification, CancellationToken cancellationToken)
         {
-            return await this.Data.Requests.Where(specification).ToListAsync();
+            return await this.Data.Requests
+                .Where(specification)
+                .Include("Items.Recipe.Ingredients")
+                .ToListAsync();
         }
     }
 }

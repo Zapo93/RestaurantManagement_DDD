@@ -67,6 +67,8 @@ none of the tables have schedules. Also there is a problem with deleting from th
 multiple commands are called in the same test EF thinks that it is not deleted. However in this case the schedules are
 correct - See DeleteReservation Test.
 
+- Fix API paths - currently there are duplicating paths so there will be conflicts when calling the controller methods.
+
 - Add tests	
 	= Make tests run without having to delete the DB every time.
 	= Extract repeating loginc into methods in the tests

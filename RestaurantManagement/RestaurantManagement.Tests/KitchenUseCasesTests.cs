@@ -168,5 +168,31 @@ namespace RestaurantManagement.Tests
                 Assert.AreEqual(item.Recipe.Id, commandItem.RecipeId);
             }
         }
+
+        [TestMethod]
+        public async Task GetRequest_AllRequests_SuccessfullRead()
+        {
+            IServiceCollection services = new ServiceCollection();
+            services.AddDomain()
+                .AddApplication()
+                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true");
+            var serviceProviderFactory = new DefaultServiceProviderFactory();
+
+            IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
+
+            IMediator Mediator = serviceProvider.GetService<IMediator>();
+
+            var getRequestsQuery = new GetRequestsQuery();
+            var getRequestsResult = await Mediator.Send(getRequestsQuery);
+
+            foreach (var request in getRequestsResult.Requests)
+            {
+                Assert.IsNotNull(request.Items);
+                foreach (var item in request.Items) 
+                {
+                    Assert.IsNotNull(item.Recipe);
+                }
+            }
+        }
     }
 }

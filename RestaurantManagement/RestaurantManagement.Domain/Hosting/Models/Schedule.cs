@@ -18,7 +18,7 @@ namespace RestaurantManagement.Domain.Hosting.Models
         private Schedule() { }
         public DateTimeRange TimeRange { get; private set; }
         private HashSet<Reservation> reservations;
-        public IReadOnlyCollection<Reservation> Reservations => reservations.ToList().AsReadOnly();
+        public IReadOnlyCollection<Reservation>? Reservations => reservations?.ToList().AsReadOnly();
 
         internal bool IsFreeInTime(DateTime targetTime)
         {
