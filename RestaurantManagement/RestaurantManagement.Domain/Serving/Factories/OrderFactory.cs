@@ -9,7 +9,7 @@ namespace RestaurantManagement.Domain.Serving.Factories
 {
     public class OrderFactory : IOrderFactory
     {
-        private int AssigneeId = default!;
+        private string AssigneeId = default!;
         private int? TableId = null;
 
         private List<OrderItem> Items;
@@ -23,7 +23,7 @@ namespace RestaurantManagement.Domain.Serving.Factories
             KitchenRequestIds = new List<int>();
         }
 
-        public IOrderFactory WithAssignee(int assigneeId)
+        public IOrderFactory WithAssignee(string assigneeId)
         {
             AssigneeId = assigneeId;
             IsAssigneeSet = true;

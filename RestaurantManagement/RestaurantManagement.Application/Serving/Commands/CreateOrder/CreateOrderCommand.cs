@@ -14,7 +14,7 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
 {
     public class CreateOrderCommand: IRequest<CreateOrderOutputModel>
     {
-        public int AssigneeId = default!;
+        public string? AssigneeId = null;
         public int? TableId = null;
 
         public List<OrderItemInputModel> Items;
@@ -45,11 +45,10 @@ namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
 
             public async Task<CreateOrderOutputModel> Handle(CreateOrderCommand command, CancellationToken cancellationToken) 
             {
-                var userId = CurrentUser.UserId;
-                //command.AssigneeId = CurrentUser.UserId;
+                var userId = command.AssigneeId ?? CurrentUser.UserId;
 
                 OrderFactory
-                    .WithAssignee(command.AssigneeId)
+                    .WithAssignee(userId)
                     .WithTableId(command.TableId);
 
                 List<OrderItem> orderItems = new List<OrderItem>();

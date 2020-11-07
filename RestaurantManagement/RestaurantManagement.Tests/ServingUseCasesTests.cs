@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestaurantManagement.Application;
+using RestaurantManagement.Application.Common.Contracts;
 using RestaurantManagement.Application.Serving.Commands.Common;
 using RestaurantManagement.Application.Serving.Commands.CreateDish;
 using RestaurantManagement.Application.Serving.Commands.CreateOrder;
@@ -11,6 +12,7 @@ using RestaurantManagement.Domain;
 using RestaurantManagement.Domain.Serving.Exceptions;
 using RestaurantManagement.Domain.Serving.Models;
 using RestaurantManagement.Infrastructure;
+using RestaurantManagement.Tests.Mock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,7 +88,8 @@ namespace RestaurantManagement.Tests
             IServiceCollection services = new ServiceCollection();
             services.AddDomain()
                 .AddApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T")
+                .AddTransient<ICurrentUser, CurrentUserServiceMock>();
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
@@ -109,7 +112,7 @@ namespace RestaurantManagement.Tests
 
             var createOrderCommand = new CreateOrderCommand();
             createOrderCommand.TableId = 5;
-            createOrderCommand.AssigneeId = 2;
+            createOrderCommand.AssigneeId = "Goshko";
             createOrderCommand.Items.Add(new OrderItemInputModel(1, "Bez Kurkuma"));
             createOrderCommand.Items.Add(new OrderItemInputModel(2));
             var createOrderCommandOutput = await Mediator.Send(createOrderCommand);
@@ -134,7 +137,8 @@ namespace RestaurantManagement.Tests
             IServiceCollection services = new ServiceCollection();
             services.AddDomain()
                 .AddApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T")
+                .AddTransient<ICurrentUser, CurrentUserServiceMock>(); ;
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
@@ -143,7 +147,7 @@ namespace RestaurantManagement.Tests
 
             var createOrderCommand = new CreateOrderCommand();
             createOrderCommand.TableId = 5;
-            createOrderCommand.AssigneeId = 2;
+            createOrderCommand.AssigneeId = "Goshko";
             createOrderCommand.Items.Add(new OrderItemInputModel(-1, "Bez Kurkuma"));
 
             await Assert.ThrowsExceptionAsync<InvalidDishException>(() => Mediator.Send(createOrderCommand));
