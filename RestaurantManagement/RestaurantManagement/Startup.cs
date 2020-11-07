@@ -32,7 +32,7 @@ namespace RestaurantManagement
         {
             services
                 .AddDomain()
-                .AddApplication()
+                .AddApplication(Configuration)
                 .AddInfrastructure(Configuration)
                 .AddWebComponents();
         }
@@ -47,6 +47,7 @@ namespace RestaurantManagement
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
