@@ -69,6 +69,8 @@ correct - See DeleteReservation Test.
 
 - Fix API paths - currently there are duplicating paths so there will be conflicts when calling the controller methods.
 
+- Add the Status Names to the Requests and DB
+
 - Add tests	
 	= Make tests run without having to delete the DB every time.
 	= Extract repeating loginc into methods in the tests

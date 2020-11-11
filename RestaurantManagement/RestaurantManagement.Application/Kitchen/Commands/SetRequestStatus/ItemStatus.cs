@@ -12,7 +12,7 @@
             this.NewStatus = newStatus;
         }
         
-        public int ItemId { get; }
-        public int NewStatus { get; }
+        public int ItemId { get; set; }
+        public int NewStatus { get; set; }
     }
 }

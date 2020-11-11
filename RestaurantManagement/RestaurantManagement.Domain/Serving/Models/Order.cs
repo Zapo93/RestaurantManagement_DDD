@@ -82,7 +82,8 @@ namespace RestaurantManagement.Domain.Serving.Models
 
         private string GenerateKitchenRequestId() 
         {
-            return new Guid().ToString().Substring(0, 8);
+            Guid newGuid = Guid.NewGuid();
+            return newGuid.ToString().Substring(0, 8);
         }
 
         private void AddKitchenRequestById(string kitchenRequestId)

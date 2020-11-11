@@ -10,7 +10,7 @@
             this.Note = note;
         }
 
-        public int DishId { get; }
-        public string? Note { get; }
+        public int DishId { get; set; }
+        public string? Note { get; set; }
     }
 }

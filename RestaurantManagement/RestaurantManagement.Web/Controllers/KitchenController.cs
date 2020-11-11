@@ -15,30 +15,35 @@ namespace RestaurantManagement.Web.Controllers
     public class KitchenController: BaseAPIController
     {
         [HttpPost]
+        [Route("Recipes")]
         public async Task<ActionResult<CreateRecipeOutputModel>> CreateRecipe(CreateRecipeCommand createRecipeCommand) 
         {
             return await Send(createRecipeCommand);
         }
 
-        [HttpPost]
+        [HttpPut]
+        [Route("Recipes")]
         public async Task<ActionResult<Unit>> ChangeRecipeStatus(ChangeRecipeStatusCommand changeRecipeStatusCommand)
         {
             return await Send(changeRecipeStatusCommand);
         }
 
-        [HttpPost]
+        [HttpGet]
+        [Route("Recipes")]
+        public async Task<ActionResult<GetRecipesOutputModel>> GetRecipiesQuery([FromQuery] GetRecipesQuery getRecipesQuery)
+        {
+            return await Send(getRecipesQuery);
+        }
+
+        [HttpPut]
+        [Route("Requests")]
         public async Task<ActionResult<Unit>> SetRequestStatus(SetRequestStatusCommand setRequestStatusCommand)
         {
             return await Send(setRequestStatusCommand);
         }
 
         [HttpGet]
-        public async Task<ActionResult<GetRecipesOutputModel>> GetRecipiesQuery([FromQuery]GetRecipesQuery getRecipesQuery)
-        {
-            return await Send(getRecipesQuery);
-        }
-
-        [HttpGet]
+        [Route("Requests")]
         public async Task<ActionResult<GetRequestsOutputModel>> GetRequestsQuery([FromQuery] GetRequestsQuery getRequestsQuery)
         {
             return await Send(getRequestsQuery);

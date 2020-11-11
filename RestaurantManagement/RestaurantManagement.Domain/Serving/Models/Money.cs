@@ -12,7 +12,7 @@ namespace RestaurantManagement.Domain.Serving.Models
         }
 
         private Money() { }
-        public double Value { get; private set; }
+        public double Value { get; set; }
         public string CurrencyAbbreviation { get; private set; }
 
         public void Add(Money moneyToAdd) 

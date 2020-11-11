@@ -67,7 +67,7 @@ namespace RestaurantManagement.Infrastructure
                     .UseSqlServer(
                         dbConnectionString,
                         sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName)))
+                            .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName))) //,ServiceLifetime.Transient
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
