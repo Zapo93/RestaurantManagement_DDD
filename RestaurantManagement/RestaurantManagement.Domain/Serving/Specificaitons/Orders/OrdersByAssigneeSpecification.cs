@@ -9,9 +9,9 @@ namespace RestaurantManagement.Domain.Serving.Specificaitons.Orders
 {
     public class OrdersByAssigneeSpecification : Specification<Order>
     {
-        private readonly int? AssigneeId = null;
+        private readonly string? AssigneeId = null;
 
-        public OrdersByAssigneeSpecification(int? assigeneeId) 
+        public OrdersByAssigneeSpecification(string? assigeneeId) 
         {
             this.AssigneeId = assigeneeId;
         }

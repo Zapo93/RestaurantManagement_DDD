@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RestaurantManagement.Domain.Common.Models;
 using RestaurantManagement.Domain.Hosting.Models;
 using RestaurantManagement.Domain.Kitchen.Models;
 using RestaurantManagement.Domain.Serving.Models;
 using RestaurantManagement.Infrastructure.Hosting;
+using RestaurantManagement.Infrastructure.Identity;
 using RestaurantManagement.Infrastructure.Kitchen;
 using RestaurantManagement.Infrastructure.Serving;
 using System;
@@ -17,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace RestaurantManagement.Infrastructure.Common.Persistence
 {
-    internal class RestaurantManagementDbContext : DbContext,
+    internal class RestaurantManagementDbContext : IdentityDbContext<User>,        
         IKitchenDbContext,
         IServingDbContext,
         IHostingDbContext

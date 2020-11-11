@@ -14,7 +14,7 @@ namespace RestaurantManagement.Application.Serving.Queries.GetOrders
     public class OrdersQuery: IRequest<GetOrdersOutputModel>
     {
         public bool OnlyOpen = false;
-        public int? AssigneeId = null;
+        public string? AssigneeId = null;
         public int? TableId = null;
 
         public class OrdersQueryHandler : IRequestHandler<OrdersQuery, GetOrdersOutputModel>

@@ -8,7 +8,7 @@ namespace RestaurantManagement.Domain.Serving.Factories
 {
     public interface IOrderFactory: IFactory<Order>
     {
-        IOrderFactory WithAssignee(int assigneeId);
+        IOrderFactory WithAssignee(string assigneeId);
         IOrderFactory WithTableId(int? tableId);
         IOrderFactory WithItems(IEnumerable<OrderItem> items);
     }

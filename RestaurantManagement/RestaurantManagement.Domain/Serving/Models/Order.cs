@@ -10,7 +10,7 @@ namespace RestaurantManagement.Domain.Serving.Models
 {
     public class Order: Entity<int>, IAggregateRoot
     {
-        internal Order(int assigneeId, int? tableId = null)
+        internal Order(string assigneeId, int? tableId = null)
         {
             items = new List<OrderItem>();
             kitchenRequests = new HashSet<KitchenRequest>();
@@ -43,7 +43,7 @@ namespace RestaurantManagement.Domain.Serving.Models
         public int? TableId { get; private set; }
 
         public DateTime DateCreated { get; private set; }
-        public int AssigneeId { get; private set; }
+        public string AssigneeId { get; private set; }
 
         //TODO check if this is initialized correctly when taken from persisense
         public bool Open { get; private set; }

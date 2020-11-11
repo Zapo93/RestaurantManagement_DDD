@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.Application.Serving.Commands.AddItemsToOrder;
 using RestaurantManagement.Application.Serving.Commands.CloseOrder;
@@ -31,6 +32,7 @@ namespace RestaurantManagement.Web.Controllers
 
         [HttpPost]
         [Route("Orders")]
+        [Authorize]
         public async Task<ActionResult<CreateOrderOutputModel>> CreateOrder(CreateOrderCommand createOrderCommand)
         {
             return await Send(createOrderCommand);
