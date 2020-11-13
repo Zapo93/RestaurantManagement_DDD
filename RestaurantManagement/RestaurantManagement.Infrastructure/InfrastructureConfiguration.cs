@@ -68,7 +68,7 @@ namespace RestaurantManagement.Infrastructure
                 .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddTransient<IInitializer, DatabaseInitializer>();
 
-        private static IServiceCollection AddDatabase(
+        private static IServiceCollection AddDatabase(//For Test Purposes
             this IServiceCollection services,
             string dbConnectionString)
             => services
@@ -76,10 +76,10 @@ namespace RestaurantManagement.Infrastructure
                     .UseSqlServer(
                         dbConnectionString,
                         sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName))) //,ServiceLifetime.Transient
+                            .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName)), ServiceLifetime.Transient) //,ServiceLifetime.Transient
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
-                .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
+                .AddTransient<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())//Must be transient
                 .AddTransient<IInitializer, DatabaseInitializer>();
 
         private static IServiceCollection AddIdentity(

@@ -95,7 +95,7 @@ namespace RestaurantManagement.Tests
         }
 
         [TestMethod]
-        public async Task ChangeRequestStatus_NewRequest_SuccessfullRead()
+        public async Task RequestStatusChange_NewRequest_SuccessfullRead()
         {
             IServiceCollection services = new ServiceCollection();
             services.AddDomain()
