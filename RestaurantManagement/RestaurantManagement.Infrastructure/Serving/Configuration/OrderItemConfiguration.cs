@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RestaurantManagement.Domain.Serving.Models;
-using static RestaurantManagement.Domain.Common.ModelConstants.StringConstants;
+using static RestaurantManagement.Common.Domain.ModelConstants.StringConstants;
 
 namespace RestaurantManagement.Infrastructure.Serving.Configuration
 {

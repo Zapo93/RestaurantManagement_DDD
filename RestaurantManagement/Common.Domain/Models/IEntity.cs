@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Common.Models
+namespace RestaurantManagement.Common.Domain.Models
 {
     public interface IEntity
     {

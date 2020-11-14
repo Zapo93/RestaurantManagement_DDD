@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using RestaurantManagement.Domain.Common.Models;
+using RestaurantManagement.Common.Domain.Models;
 using RestaurantManagement.Domain.Hosting.Models;
 using RestaurantManagement.Domain.Kitchen.Models;
 using RestaurantManagement.Domain.Serving.Models;

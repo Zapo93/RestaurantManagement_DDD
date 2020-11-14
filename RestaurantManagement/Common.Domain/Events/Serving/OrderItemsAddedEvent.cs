@@ -1,9 +1,8 @@
-﻿using RestaurantManagement.Common.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Serving.Events
+namespace RestaurantManagement.Common.Domain.Events.Serving
 {
     public class OrderItemsAddedEvent: IDomainEvent
     {

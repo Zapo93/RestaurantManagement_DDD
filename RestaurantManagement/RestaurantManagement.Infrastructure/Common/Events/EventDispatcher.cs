@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Application.Common.Contracts;
-using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Common.Domain;
 
 namespace RestaurantManagement.Infrastructure.Common
 {

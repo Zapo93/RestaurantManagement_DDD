@@ -1,5 +1,5 @@
 ﻿using RestaurantManagement.Application.Common.Contracts;
-using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Domain.Kitchen.Models;
 using System;
 using System.Collections.Generic;

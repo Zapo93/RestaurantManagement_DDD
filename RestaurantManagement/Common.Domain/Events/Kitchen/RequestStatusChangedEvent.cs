@@ -1,9 +1,8 @@
-﻿using RestaurantManagement.Domain.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Kitchen.Events
+namespace RestaurantManagement.Common.Domain.Events.Kitchen
 {
     public class RequestStatusChangedEvent: IDomainEvent
     {

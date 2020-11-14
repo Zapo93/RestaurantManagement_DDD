@@ -1,5 +1,5 @@
-﻿using RestaurantManagement.Domain.Common;
-using RestaurantManagement.Domain.Common.Models;
+﻿using RestaurantManagement.Common.Domain;
+using RestaurantManagement.Common.Domain.Models;
 using RestaurantManagement.Domain.Serving.Events;
 using RestaurantManagement.Domain.Serving.Exceptions;
 using System;

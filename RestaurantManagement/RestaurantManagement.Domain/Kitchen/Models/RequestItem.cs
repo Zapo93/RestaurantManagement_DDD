@@ -1,5 +1,4 @@
-﻿using RestaurantManagement.Domain.Common;
-using RestaurantManagement.Domain.Common.Models;
+﻿using RestaurantManagement.Common.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

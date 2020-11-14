@@ -1,5 +1,5 @@
 ﻿using RestaurantManagement.Application.Common.Contracts;
-using RestaurantManagement.Domain.Kitchen.Events;
+using RestaurantManagement.Common.Domain.Events.Kitchen;
 using RestaurantManagement.Domain.Serving.Models;
 using System;
 using System.Collections.Generic;

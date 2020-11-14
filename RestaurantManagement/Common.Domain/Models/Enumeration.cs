@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Common
+namespace RestaurantManagement.Common.Domain.Models
 {
     public abstract class Enumeration : IComparable
     {

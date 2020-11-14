@@ -1,4 +1,4 @@
-﻿using RestaurantManagement.Domain.Common;
+﻿using RestaurantManagement.Common.Domain.Models;
 
 namespace RestaurantManagement.Domain.Hosting.Models
 {

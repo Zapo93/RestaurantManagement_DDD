@@ -1,13 +1,14 @@
-﻿using RestaurantManagement.Domain.Common.Exceptions;
+﻿using RestaurantManagement.Common.Domain.Exceptions;
+using RestaurantManagement.Common.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Common
+namespace RestaurantManagement.Common.Domain
 {
     public class DateTimeRange: ValueObject
     {
-        internal DateTimeRange(DateTime start, DateTime end) 
+        public DateTimeRange(DateTime start, DateTime end) 
         {
             Validate(start, end);
 

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Domain.Hosting.Models;
 using RestaurantManagement.Domain.Hosting.Services;
 using RestaurantManagement.Domain.Hosting.Specifications;

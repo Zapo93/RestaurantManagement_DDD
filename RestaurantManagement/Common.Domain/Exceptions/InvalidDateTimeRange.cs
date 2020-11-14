@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Common.Exceptions
+namespace RestaurantManagement.Common.Domain.Exceptions
 {
     public class InvalidDateTimeRange: BaseDomainException
     {

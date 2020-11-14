@@ -1,4 +1,4 @@
-﻿namespace RestaurantManagement.Domain.Common
+﻿namespace RestaurantManagement.Common.Domain
 {
     public class ModelConstants
     {

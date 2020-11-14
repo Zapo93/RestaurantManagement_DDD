@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Serialization;
-using RestaurantManagement.Domain.Common;
+﻿using RestaurantManagement.Common.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Common.Models
+namespace RestaurantManagement.Common.Domain.Models
 {
     public abstract class Entity<TId>: IEntity
         where TId : struct

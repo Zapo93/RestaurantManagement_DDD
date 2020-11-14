@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Common
+namespace RestaurantManagement.Common.Domain
 {
     public interface IFactory<out TEntity>
         where TEntity : IAggregateRoot

@@ -4,7 +4,7 @@ using RestaurantManagement.Domain.Kitchen.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using static RestaurantManagement.Domain.Common.ModelConstants.StringConstants;
+using static RestaurantManagement.Common.Domain.ModelConstants.StringConstants;
 
 namespace RestaurantManagement.Infrastructure.Kitchen.Configuration
 {

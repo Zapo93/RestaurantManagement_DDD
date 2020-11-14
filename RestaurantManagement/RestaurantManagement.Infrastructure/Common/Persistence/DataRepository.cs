@@ -1,5 +1,5 @@
 ﻿using RestaurantManagement.Application.Common.Contracts;
-using RestaurantManagement.Domain.Common;
+using RestaurantManagement.Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

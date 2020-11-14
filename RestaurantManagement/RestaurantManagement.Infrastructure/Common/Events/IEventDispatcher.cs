@@ -1,4 +1,4 @@
-﻿using RestaurantManagement.Domain.Common;
+﻿using RestaurantManagement.Common.Domain;
 using System.Threading.Tasks;
 
 namespace RestaurantManagement.Infrastructure.Common

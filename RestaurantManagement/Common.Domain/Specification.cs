@@ -1,4 +1,4 @@
-﻿namespace RestaurantManagement.Domain.Common
+﻿namespace RestaurantManagement.Common.Domain
 {
     using System;
     using System.Collections.Concurrent;

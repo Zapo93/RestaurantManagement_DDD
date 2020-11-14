@@ -7,7 +7,6 @@ using Microsoft.IdentityModel.Tokens;
 using RestaurantManagement.Application.Common;
 using RestaurantManagement.Application.Common.Contracts;
 using RestaurantManagement.Application.Identity;
-using RestaurantManagement.Domain.Common;
 using RestaurantManagement.Infrastructure.Common;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using RestaurantManagement.Infrastructure.Hosting;
