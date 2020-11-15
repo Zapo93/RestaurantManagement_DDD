@@ -16,6 +16,7 @@ using RestaurantManagement.Infrastructure.Serving;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using RestaurantManagement.Common.Infrastructure;
 
 namespace RestaurantManagement.Infrastructure
 {
@@ -26,42 +27,26 @@ namespace RestaurantManagement.Infrastructure
             IConfiguration configuration)
         {
             return services
-                    .AddRepositories()
+                    .AddCommonInfrastructure<RestaurantManagementDbContext>(configuration)
                     .AddDatabase(configuration)
-                    .AddIdentity(configuration)
-                    .AddTransient<IEventDispatcher, EventDispatcher>();
+                    .AddIdentity(configuration);
         }
 
-        public static IServiceCollection AddInfrastructure(
+        public static IServiceCollection AddInfrastructure(//For Test Purposes
             this IServiceCollection services,
             string dbConnectionString,
             string secret)
         {
             return services
-                    .AddRepositories()
+                    .AddCommonInfrastructure<RestaurantManagementDbContext>(dbConnectionString,secret)
                     .AddDatabase(dbConnectionString)
-                    .AddIdentity(secret)
-                    .AddTransient<IEventDispatcher, EventDispatcher>();
+                    .AddIdentity(secret);
         }
-
-        private static IServiceCollection AddRepositories(this IServiceCollection services)
-            => services
-                .Scan(scan => scan
-                    .FromCallingAssembly()
-                    .AddClasses(classes => classes
-                        .AssignableTo(typeof(IRepository<>)))
-                    .AsImplementedInterfaces()
-                    .WithTransientLifetime());
 
         private static IServiceCollection AddDatabase(
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .AddDbContext<RestaurantManagementDbContext>(options => options
-                    .UseSqlServer(
-                        configuration.GetConnectionString("DefaultConnection"),
-                        sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName)))
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
@@ -71,11 +56,6 @@ namespace RestaurantManagement.Infrastructure
             this IServiceCollection services,
             string dbConnectionString)
             => services
-                .AddDbContext<RestaurantManagementDbContext>(options => options
-                    .UseSqlServer(
-                        dbConnectionString,
-                        sqlServer => sqlServer
-                            .MigrationsAssembly(typeof(RestaurantManagementDbContext).Assembly.FullName)), ServiceLifetime.Transient) //,ServiceLifetime.Transient
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddTransient<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())//Must be transient

@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Infrastructure.Common.Persistence
+namespace RestaurantManagement.Common.Infrastructure.Persistence
 {
-    internal interface IDbContext
+    public interface IDbContext
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
 

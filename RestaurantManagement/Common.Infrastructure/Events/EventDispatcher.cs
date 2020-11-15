@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Domain;
 
-namespace RestaurantManagement.Infrastructure.Common
+namespace RestaurantManagement.Common.Infrastructure
 {
     internal class EventDispatcher : IEventDispatcher
     {

@@ -1,9 +1,9 @@
 ﻿using RestaurantManagement.Common.Domain;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Infrastructure.Common
+namespace RestaurantManagement.Common.Infrastructure
 {
-    internal interface IEventDispatcher
+    public interface IEventDispatcher
     {
         Task Dispatch(IDomainEvent domainEvent);
     }

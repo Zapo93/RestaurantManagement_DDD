@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RestaurantManagement.Common.Infrastructure.Persistence;
 using RestaurantManagement.Domain.Kitchen.Models;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using System;

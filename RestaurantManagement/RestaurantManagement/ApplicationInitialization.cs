@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using RestaurantManagement.Infrastructure.Common;
+using RestaurantManagement.Common.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RestaurantManagement.Common.Infrastructure;
 using System;
 using System.Linq;
 using System.Reflection;

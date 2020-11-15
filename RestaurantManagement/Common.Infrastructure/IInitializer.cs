@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Infrastructure.Common
+namespace RestaurantManagement.Common.Infrastructure
 {
     public interface IInitializer
     {

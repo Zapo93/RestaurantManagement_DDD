@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Infrastructure.Common.Persistence
+namespace RestaurantManagement.Common.Infrastructure.Persistence
 {
-    internal abstract class DataRepository<TDbContext, TEntity> : IRepository<TEntity>
+    public abstract class DataRepository<TDbContext, TEntity> : IRepository<TEntity>
         where TDbContext : IDbContext
         where TEntity : class, IAggregateRoot
     {
