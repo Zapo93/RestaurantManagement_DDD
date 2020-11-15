@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using RestaurantManagement.Application.Common.Contracts;
+using RestaurantManagement.Common.Application.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;

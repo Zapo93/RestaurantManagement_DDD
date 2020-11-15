@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
+    <RootNamespace>RestaurantManagement.Common.Application</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,8 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
-    <ProjectReference Include="..\RestaurantManagement.Domain\RestaurantManagement.Domain.csproj" />
+    <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
   </ItemGroup>
 
 </Project>

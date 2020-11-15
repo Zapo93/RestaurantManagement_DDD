@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Common.Contracts
+namespace RestaurantManagement.Common.Application.Contracts
 {
     public interface IRepository<in TEntity>
         where TEntity : IAggregateRoot

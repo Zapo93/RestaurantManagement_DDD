@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using RestaurantManagement.Application.Common.Contracts;
+using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Domain;
 
 namespace RestaurantManagement.Infrastructure.Common

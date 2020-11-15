@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using RestaurantManagement.Application.Common;
+using RestaurantManagement.Common.Application;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;

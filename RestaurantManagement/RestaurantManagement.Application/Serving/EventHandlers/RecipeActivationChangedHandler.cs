@@ -1,4 +1,4 @@
-﻿using RestaurantManagement.Application.Common.Contracts;
+﻿using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Domain.Events.Kitchen;
 using RestaurantManagement.Domain.Serving.Models;
 using System;

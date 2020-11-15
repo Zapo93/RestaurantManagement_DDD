@@ -26,7 +26,7 @@ namespace RestaurantManagement.Common.Domain.Configuration
                         .AddClasses(classes => classes
                             .AssignableTo(typeof(IFactory<>)))
                         .AsMatchingInterface()
-                        .WithTransientLifetime()); ;
+                        .WithTransientLifetime());
         }
         
     }

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestaurantManagement.Application;
-using RestaurantManagement.Application.Common.Contracts;
+using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Application.Serving.Commands.Common;
 using RestaurantManagement.Application.Serving.Commands.CreateDish;
 using RestaurantManagement.Application.Serving.Commands.CreateOrder;

@@ -13,3 +13,5 @@
 /RestaurantManagement/RestaurantManagement.Tests/bin
 /RestaurantManagement/Common.Domain/obj
 /RestaurantManagement/Common.Domain/bin
+/RestaurantManagement/Common.Application/obj
+/RestaurantManagement/Common.Application/bin

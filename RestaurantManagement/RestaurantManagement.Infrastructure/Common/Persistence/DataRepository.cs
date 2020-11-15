@@ -1,4 +1,4 @@
-﻿using RestaurantManagement.Application.Common.Contracts;
+﻿using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Domain;
 using System;
 using System.Collections.Generic;

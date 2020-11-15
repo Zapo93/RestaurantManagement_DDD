@@ -1,4 +1,4 @@
-﻿using RestaurantManagement.Application.Common.Contracts;
+﻿using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Domain.Hosting.Models;
 using System;

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RestaurantManagement.Application.Common.Contracts;
+using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Application.Serving.Commands.Common;
 using RestaurantManagement.Application.Serving.Commands.CreateDish;
 using RestaurantManagement.Domain.Serving.Factories;

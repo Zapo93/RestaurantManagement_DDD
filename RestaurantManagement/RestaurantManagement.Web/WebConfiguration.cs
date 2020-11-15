@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RestaurantManagement.Application.Common.Contracts;
+using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Web.Services;
 using System;
 using System.Collections.Generic;

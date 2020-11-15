@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Common
+namespace RestaurantManagement.Common.Application
 {
     public class ApplicationSettings
     {
