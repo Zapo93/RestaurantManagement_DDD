@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
 
-namespace RestaurantManagement.Web.Services
+namespace RestaurantManagement.Common.Web.Services
 {
-    public class CurrentUserService : ICurrentUser
+    internal class CurrentUserService : ICurrentUser
     {
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {

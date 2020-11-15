@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>RestaurantManagement.Common.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,9 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common.Web\Common.Web.csproj" />
-    <ProjectReference Include="..\RestaurantManagement.Application\RestaurantManagement.Application.csproj" />
-    <ProjectReference Include="..\RestaurantManagement.Domain\RestaurantManagement.Domain.csproj" />
+    <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
   </ItemGroup>
 
 </Project>

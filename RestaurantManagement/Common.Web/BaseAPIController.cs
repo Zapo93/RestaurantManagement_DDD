@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace RestaurantManagement.Web
+namespace RestaurantManagement.Common.Web
 {
     [ApiController]
     [Route("[controller]")]

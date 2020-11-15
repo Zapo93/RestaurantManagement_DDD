@@ -4,6 +4,7 @@ using RestaurantManagement.Application.Hosting.Commands.AddReservation;
 using RestaurantManagement.Application.Hosting.Commands.CreateTable;
 using RestaurantManagement.Application.Hosting.Commands.DeleteReservation;
 using RestaurantManagement.Application.Hosting.Queries.Tables;
+using RestaurantManagement.Common.Web;
 using System;
 using System.Collections.Generic;
 using System.Text;

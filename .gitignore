@@ -17,3 +17,7 @@
 /RestaurantManagement/Common.Application/bin
 /RestaurantManagement/Common.Infrastructure/obj
 /RestaurantManagement/Common.Infrastructure/bin
+/RestaurantManagement/Comon.Web/obj
+/RestaurantManagement/Comon.Web/bin
+/RestaurantManagement/Common.Web/bin
+/RestaurantManagement/Common.Web/obj

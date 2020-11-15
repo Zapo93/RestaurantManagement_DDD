@@ -2,6 +2,7 @@
 using RestaurantManagement.Application.Identity;
 using RestaurantManagement.Application.Identity.Commands.CreateUser;
 using RestaurantManagement.Application.Identity.Commands.LoginUser;
+using RestaurantManagement.Common.Web;
 using System;
 using System.Collections.Generic;
 using System.Text;
