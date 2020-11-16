@@ -18,16 +18,14 @@ namespace RestaurantManagement.Application
             IConfiguration configuration)
         {
             return services
-                .AddCommonApplication(configuration)
-                .AddKitchenApplication(configuration);
+                .AddCommonApplication(configuration);
         }
 
         public static IServiceCollection AddApplication(
             this IServiceCollection services)
         {
             return services
-                .AddCommonApplication()
-                .AddKitchenApplication();
+                .AddCommonApplication();
         }
     }
 }

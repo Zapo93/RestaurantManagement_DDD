@@ -13,11 +13,12 @@ namespace RestaurantManagement.Common.Web
         public static IServiceCollection AddCommonWebComponents(this IServiceCollection services) 
         {
             services
-                .AddScoped<ICurrentUser, CurrentUserService>()
                 .AddControllers()
                 .AddNewtonsoftJson();
-
             return services;
         }
+
+        public static IServiceCollection AddCurrentUserService(this IServiceCollection services)
+            => services.AddScoped<ICurrentUser, CurrentUserService>();
     }
 }

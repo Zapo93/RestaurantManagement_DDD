@@ -11,7 +11,6 @@ namespace RestaurantManagement.Domain
         {
             return services
                 .AddCommonDomain()
-                .AddKitchenDomain()
                 .AddTransient<ITablesScheduleService,TablesScheduleService>();
         }
     }

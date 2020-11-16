@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Web.Controllers
+namespace RestaurantManagement.Kitchen.Web.Controllers
 {
     public class KitchenController: BaseAPIController
     {

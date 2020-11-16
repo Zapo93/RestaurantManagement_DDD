@@ -28,7 +28,6 @@ namespace RestaurantManagement.Infrastructure
         {
             return services
                     .AddCommonInfrastructure<RestaurantManagementDbContext>(configuration)
-                    .AddKitchenInfrastructure(configuration)
                     .AddDatabase(configuration)
                     .AddIdentity(configuration);
         }
@@ -40,7 +39,6 @@ namespace RestaurantManagement.Infrastructure
         {
             return services
                     .AddCommonInfrastructure<RestaurantManagementDbContext>(dbConnectionString,secret)
-                    .AddKitchenInfrastructure(dbConnectionString, secret)
                     .AddDatabase(dbConnectionString)
                     .AddIdentity(secret);
         }

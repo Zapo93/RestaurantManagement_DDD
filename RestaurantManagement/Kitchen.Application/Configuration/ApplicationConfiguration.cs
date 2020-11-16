@@ -18,7 +18,6 @@ namespace RestaurantManagement.Kitchen.Application
         {
             return services
                 .AddCommonApplication(configuration);
-                
         }
 
         public static IServiceCollection AddKitchenApplication(
