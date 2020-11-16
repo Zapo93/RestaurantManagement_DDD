@@ -208,106 +208,6 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                     b.ToTable("Tables");
                 });
 
-            modelBuilder.Entity("RestaurantManagement.Domain.Kitchen.Models.Ingredient", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<int>("QuantityInGrams")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("Ingredients");
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Kitchen.Models.Recipe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<string>("Preparation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Recipes");
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Kitchen.Models.Request", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatorReferenceId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Requests");
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Kitchen.Models.RequestItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RequestId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
-
-                    b.HasIndex("RequestId");
-
-                    b.ToTable("RequestItems");
-                });
-
             modelBuilder.Entity("RestaurantManagement.Domain.Serving.Models.Dish", b =>
                 {
                     b.Property<int>("Id")
@@ -533,7 +433,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         .WithMany("Reservations")
                         .HasForeignKey("ScheduleId");
 
-                    b.OwnsOne("RestaurantManagement.Domain.Common.DateTimeRange", "TimeRange", b1 =>
+                    b.OwnsOne("RestaurantManagement.Common.Domain.DateTimeRange", "TimeRange", b1 =>
                         {
                             b1.Property<int>("ReservationId")
                                 .ValueGeneratedOnAdd()
@@ -588,7 +488,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         .WithMany("Schedules")
                         .HasForeignKey("TableId");
 
-                    b.OwnsOne("RestaurantManagement.Domain.Common.DateTimeRange", "TimeRange", b1 =>
+                    b.OwnsOne("RestaurantManagement.Common.Domain.DateTimeRange", "TimeRange", b1 =>
                         {
                             b1.Property<int>("ScheduleId")
                                 .ValueGeneratedOnAdd()
@@ -635,65 +535,6 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("TableId");
-                        });
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Kitchen.Models.Ingredient", b =>
-                {
-                    b.HasOne("RestaurantManagement.Domain.Kitchen.Models.Recipe", null)
-                        .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId");
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Kitchen.Models.Request", b =>
-                {
-                    b.OwnsOne("RestaurantManagement.Domain.Kitchen.Models.RequestStatus", "Status", b1 =>
-                        {
-                            b1.Property<int>("RequestId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Value")
-                                .HasColumnType("int");
-
-                            b1.HasKey("RequestId");
-
-                            b1.ToTable("Requests");
-
-                            b1.WithOwner()
-                                .HasForeignKey("RequestId");
-                        });
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Kitchen.Models.RequestItem", b =>
-                {
-                    b.HasOne("RestaurantManagement.Domain.Kitchen.Models.Recipe", "Recipe")
-                        .WithMany()
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RestaurantManagement.Domain.Kitchen.Models.Request", null)
-                        .WithMany("Items")
-                        .HasForeignKey("RequestId");
-
-                    b.OwnsOne("RestaurantManagement.Domain.Kitchen.Models.RequestItemStatus", "Status", b1 =>
-                        {
-                            b1.Property<int>("RequestItemId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<int>("Value")
-                                .HasColumnType("int");
-
-                            b1.HasKey("RequestItemId");
-
-                            b1.ToTable("RequestItems");
-
-                            b1.WithOwner()
-                                .HasForeignKey("RequestItemId");
                         });
                 });
 

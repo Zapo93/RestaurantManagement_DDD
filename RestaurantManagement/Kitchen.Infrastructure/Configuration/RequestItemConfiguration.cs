@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using static RestaurantManagement.Common.Domain.ModelConstants.StringConstants;
 
-namespace RestaurantManagement.Infrastructure.Kitchen.Configuration
+namespace RestaurantManagement.Kitchen.Infrastructure.Configuration
 {
     internal class RequestItemConfiguration : IEntityTypeConfiguration<RequestItem>
     {

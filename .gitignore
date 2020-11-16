@@ -25,3 +25,5 @@
 /RestaurantManagement/Kitchen.Domain/bin
 /RestaurantManagement/Kitchen.Application/obj
 /RestaurantManagement/Kitchen.Application/bin
+/RestaurantManagement/Kitchen.Infrastructure/obj
+/RestaurantManagement/Kitchen.Infrastructure/bin

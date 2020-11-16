@@ -11,12 +11,12 @@ using RestaurantManagement.Infrastructure.Common;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using RestaurantManagement.Infrastructure.Hosting;
 using RestaurantManagement.Infrastructure.Identity;
-using RestaurantManagement.Infrastructure.Kitchen;
 using RestaurantManagement.Infrastructure.Serving;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using RestaurantManagement.Common.Infrastructure;
+using RestaurantManagement.Kitchen.Infrastructure.Configuration;
 
 namespace RestaurantManagement.Infrastructure
 {
@@ -28,6 +28,7 @@ namespace RestaurantManagement.Infrastructure
         {
             return services
                     .AddCommonInfrastructure<RestaurantManagementDbContext>(configuration)
+                    .AddKitchenInfrastructure(configuration)
                     .AddDatabase(configuration)
                     .AddIdentity(configuration);
         }
@@ -39,6 +40,7 @@ namespace RestaurantManagement.Infrastructure
         {
             return services
                     .AddCommonInfrastructure<RestaurantManagementDbContext>(dbConnectionString,secret)
+                    .AddKitchenInfrastructure(dbConnectionString, secret)
                     .AddDatabase(dbConnectionString)
                     .AddIdentity(secret);
         }
@@ -47,7 +49,6 @@ namespace RestaurantManagement.Infrastructure
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddTransient<IInitializer, DatabaseInitializer>();
@@ -56,7 +57,6 @@ namespace RestaurantManagement.Infrastructure
             this IServiceCollection services,
             string dbConnectionString)
             => services
-                .AddScoped<IKitchenDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddTransient<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())//Must be transient
                 .AddTransient<IInitializer, DatabaseInitializer>();

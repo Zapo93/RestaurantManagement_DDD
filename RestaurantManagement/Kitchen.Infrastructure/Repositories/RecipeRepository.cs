@@ -2,7 +2,6 @@
 using RestaurantManagement.Kitchen.Application;
 using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Common.Infrastructure.Persistence;
-using RestaurantManagement.Infrastructure.Common.Persistence;
 using RestaurantManagement.Kitchen.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Infrastructure.Kitchen.Repositories
+namespace RestaurantManagement.Kitchen.Infrastructure.Repositories
 {
     internal class RecipeRepository : DataRepository<IKitchenDbContext, Recipe>,
         IRecipeRepository

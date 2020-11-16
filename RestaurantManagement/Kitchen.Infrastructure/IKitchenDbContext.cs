@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestaurantManagement.Common.Infrastructure.Persistence;
-using RestaurantManagement.Infrastructure.Common.Persistence;
 using RestaurantManagement.Kitchen.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Infrastructure.Kitchen
+namespace RestaurantManagement.Kitchen.Infrastructure
 {
     internal interface IKitchenDbContext: IDbContext
     {

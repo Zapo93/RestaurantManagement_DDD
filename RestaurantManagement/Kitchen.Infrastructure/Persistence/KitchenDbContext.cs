@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RestaurantManagement.Common.Domain.Models;
-using RestaurantManagement.Domain.Hosting.Models;
-using RestaurantManagement.Domain.Serving.Models;
-using RestaurantManagement.Infrastructure.Hosting;
-using RestaurantManagement.Infrastructure.Identity;
-using RestaurantManagement.Infrastructure.Serving;
+using RestaurantManagement.Common.Infrastructure;
+using RestaurantManagement.Kitchen.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,20 +10,17 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using RestaurantManagement.Common.Infrastructure;
-using RestaurantManagement.Kitchen.Domain.Models;
 
-namespace RestaurantManagement.Infrastructure.Common.Persistence
+namespace RestaurantManagement.Kitchen.Infrastructure.Persistence
 {
-    internal class RestaurantManagementDbContext : IdentityDbContext<User>,
-        IServingDbContext,
-        IHostingDbContext
+    internal class KitchenDbContext : DbContext,
+        IKitchenDbContext
     {
         private readonly Stack<object> savesChangesTracker;
         private readonly IEventDispatcher eventDispatcher;
 
-        public RestaurantManagementDbContext(
-            DbContextOptions<RestaurantManagementDbContext> options,
+        public KitchenDbContext(
+            DbContextOptions<KitchenDbContext> options,
             IEventDispatcher eventDispatcher)
             : base(options)
         {
@@ -35,19 +28,13 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence
             this.eventDispatcher = eventDispatcher;
         }
 
-        public DbSet<Dish> Dishes { get; set; } = default!;
+        public DbSet<Recipe> Recipes { get; set; } = default!;
 
-        public DbSet<Order> Orders { get; set; } = default!;
+        public DbSet<Request> Requests { get; set; } = default!;
 
-        public DbSet<Table> Tables { get; set; } = default!;
+        public DbSet<Ingredient> Ingredients { get; set; } = default!;
 
-        public DbSet<Reservation> Reservations{ get; set; } = default!;
-
-        public DbSet<OrderItem> OrderItems { get; set; } = default!;
-
-        public DbSet<Schedule> Schedules { get; set; } = default!;
-
-        public DbSet<KitchenRequest> KitchenRequests { get; set; } = default!;
+        public DbSet<RequestItem> RequestItems { get; set; } = default!;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
