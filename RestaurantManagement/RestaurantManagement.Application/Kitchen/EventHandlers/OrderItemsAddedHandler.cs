@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Application.Kitchen.Commands.CreateRequest;
-using RestaurantManagement.Domain.Kitchen.Factories;
 using RestaurantManagement.Domain.Serving.Events;
 using System;
 using System.Collections.Generic;

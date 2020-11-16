@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using RestaurantManagement.Common.Domain;
-using RestaurantManagement.Domain.Kitchen.Models;
 using RestaurantManagement.Domain.Serving.Models;
 using RestaurantManagement.Domain.Serving.Specificaitons.Orders;
 using System;

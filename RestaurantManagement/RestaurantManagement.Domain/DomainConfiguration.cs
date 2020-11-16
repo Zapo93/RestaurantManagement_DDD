@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Common.Domain.Configuration;
 using RestaurantManagement.Domain.Hosting.Services;
+using RestaurantManagement.Kitchen.Domain;
 
 namespace RestaurantManagement.Domain
 {
@@ -10,6 +11,7 @@ namespace RestaurantManagement.Domain
         {
             return services
                 .AddCommonDomain()
+                .AddKitchenDomain()
                 .AddTransient<ITablesScheduleService,TablesScheduleService>();
         }
     }

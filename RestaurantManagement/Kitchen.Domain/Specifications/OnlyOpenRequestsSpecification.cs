@@ -1,11 +1,11 @@
 ﻿using RestaurantManagement.Common.Domain;
-using RestaurantManagement.Domain.Kitchen.Models;
+using RestaurantManagement.Kitchen.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Kitchen.Specifications
+namespace RestaurantManagement.Kitchen.Domain.Specifications
 {
     public class OnlyOpenRequestsSpecification : Specification<Request>
     {

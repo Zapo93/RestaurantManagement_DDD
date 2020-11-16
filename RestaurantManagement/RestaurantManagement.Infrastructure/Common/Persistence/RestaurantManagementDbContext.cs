@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RestaurantManagement.Common.Domain.Models;
 using RestaurantManagement.Domain.Hosting.Models;
-using RestaurantManagement.Domain.Kitchen.Models;
 using RestaurantManagement.Domain.Serving.Models;
 using RestaurantManagement.Infrastructure.Hosting;
 using RestaurantManagement.Infrastructure.Identity;
@@ -17,6 +16,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using RestaurantManagement.Common.Infrastructure;
+using RestaurantManagement.Kitchen.Domain.Models;
 
 namespace RestaurantManagement.Infrastructure.Common.Persistence
 {

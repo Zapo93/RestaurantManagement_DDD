@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
+    <ProjectReference Include="..\Kitchen.Domain\Kitchen.Domain.csproj" />
   </ItemGroup>
 
 </Project>

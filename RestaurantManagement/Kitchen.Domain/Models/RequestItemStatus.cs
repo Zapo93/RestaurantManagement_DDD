@@ -1,10 +1,10 @@
 ﻿using RestaurantManagement.Common.Domain.Models;
-using RestaurantManagement.Domain.Kitchen.Exceptions;
+using RestaurantManagement.Kitchen.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Kitchen.Models
+namespace RestaurantManagement.Kitchen.Domain.Models
 {
     public class RequestItemStatus : Enumeration
     {

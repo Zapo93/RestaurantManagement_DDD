@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Kitchen.Models
+namespace RestaurantManagement.Kitchen.Domain.Models
 {
     public class RequestItem: Entity<int>
     {

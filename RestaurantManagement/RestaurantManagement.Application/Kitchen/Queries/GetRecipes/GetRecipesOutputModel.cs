@@ -1,4 +1,4 @@
-﻿using RestaurantManagement.Domain.Kitchen.Models;
+﻿using RestaurantManagement.Kitchen.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Kitchen.Models
+namespace RestaurantManagement.Kitchen.Domain.Models
 {
     public class Request: Entity<int>, IAggregateRoot
     {

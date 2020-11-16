@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RestaurantManagement.Domain.Kitchen.Models;
+using RestaurantManagement.Kitchen.Domain.Models;
 using static RestaurantManagement.Common.Domain.ModelConstants.StringConstants;
 
 namespace RestaurantManagement.Infrastructure.Kitchen.Configuration

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Kitchen.Exceptions
+namespace RestaurantManagement.Kitchen.Domain.Exceptions
 {
     public class InvalidStatusException : BaseDomainException
     {

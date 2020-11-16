@@ -2,8 +2,8 @@
 using RestaurantManagement.Application.Kitchen;
 using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Common.Infrastructure.Persistence;
-using RestaurantManagement.Domain.Kitchen.Models;
 using RestaurantManagement.Infrastructure.Common.Persistence;
+using RestaurantManagement.Kitchen.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

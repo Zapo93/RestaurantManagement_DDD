@@ -1,10 +1,10 @@
-﻿using RestaurantManagement.Domain.Kitchen.Exceptions;
-using RestaurantManagement.Domain.Kitchen.Models;
+﻿using RestaurantManagement.Kitchen.Domain.Exceptions;
+using RestaurantManagement.Kitchen.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Kitchen.Factories
+namespace RestaurantManagement.Kitchen.Domain.Factories
 {
     public class RequestFactory : IRequestFactory
     {
