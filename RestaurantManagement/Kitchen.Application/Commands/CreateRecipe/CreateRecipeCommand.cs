@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Kitchen.Commands.CreateRecipe
+namespace RestaurantManagement.Kitchen.Application.Commands.CreateRecipe
 {
     public class CreateRecipeCommand: IRequest<CreateRecipeOutputModel>
     {

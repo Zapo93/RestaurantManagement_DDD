@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Kitchen
+namespace RestaurantManagement.Kitchen.Application
 {
     public interface IRequestRepository : IRepository<Request>
     {

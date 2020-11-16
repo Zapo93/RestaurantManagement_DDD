@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RestaurantManagement.Application.Kitchen.Commands.ChangeRecipeStatus;
-using RestaurantManagement.Application.Kitchen.Commands.CreateRecipe;
-using RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus;
-using RestaurantManagement.Application.Kitchen.Queries.GetRecipes;
-using RestaurantManagement.Application.Kitchen.Queries.GetRequests;
+using RestaurantManagement.Kitchen.Application.Commands.ChangeRecipeStatus;
+using RestaurantManagement.Kitchen.Application.Commands.CreateRecipe;
+using RestaurantManagement.Kitchen.Application.Commands.SetRequestStatus;
+using RestaurantManagement.Kitchen.Application.Queries.GetRecipes;
+using RestaurantManagement.Kitchen.Application.Queries.GetRequests;
 using RestaurantManagement.Common.Web;
 using System;
 using System.Collections.Generic;

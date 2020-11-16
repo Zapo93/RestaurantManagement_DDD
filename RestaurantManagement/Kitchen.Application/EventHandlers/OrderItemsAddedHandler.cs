@@ -1,14 +1,14 @@
 ﻿using MediatR;
 using RestaurantManagement.Common.Application.Contracts;
-using RestaurantManagement.Application.Kitchen.Commands.CreateRequest;
-using RestaurantManagement.Domain.Serving.Events;
+using RestaurantManagement.Kitchen.Application.Commands.CreateRequest;
+using RestaurantManagement.Common.Domain.Events.Serving;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Kitchen.EventHandlers
+namespace RestaurantManagement.Kitchen.Application.EventHandlers
 {
     public class OrderItemsAddedHandler : IEventHandler<OrderItemsAddedEvent>
     {

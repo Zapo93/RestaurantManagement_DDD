@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Kitchen.Commands.ChangeRecipeStatus
+namespace RestaurantManagement.Kitchen.Application.Commands.ChangeRecipeStatus
 {
     public class ChangeRecipeStatusCommand: IRequest<Unit>
     {

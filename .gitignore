@@ -21,3 +21,7 @@
 /RestaurantManagement/Comon.Web/bin
 /RestaurantManagement/Common.Web/bin
 /RestaurantManagement/Common.Web/obj
+/RestaurantManagement/Kitchen.Domain/obj
+/RestaurantManagement/Kitchen.Domain/bin
+/RestaurantManagement/Kitchen.Application/obj
+/RestaurantManagement/Kitchen.Application/bin

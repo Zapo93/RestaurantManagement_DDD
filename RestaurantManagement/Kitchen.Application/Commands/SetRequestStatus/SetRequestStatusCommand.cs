@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus
+namespace RestaurantManagement.Kitchen.Application.Commands.SetRequestStatus
 {
     public class SetRequestStatusCommand: IRequest
     {

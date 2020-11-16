@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>RestaurantManagement.Kitchen.Application</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
@@ -13,9 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
-    <ProjectReference Include="..\Kitchen.Application\Kitchen.Application.csproj" />
     <ProjectReference Include="..\Kitchen.Domain\Kitchen.Domain.csproj" />
-    <ProjectReference Include="..\RestaurantManagement.Domain\RestaurantManagement.Domain.csproj" />
   </ItemGroup>
-
 </Project>

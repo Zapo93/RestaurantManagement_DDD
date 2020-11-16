@@ -1,11 +1,8 @@
-﻿namespace RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus
+﻿namespace RestaurantManagement.Kitchen.Application.Commands.SetRequestStatus
 {
     public class ItemStatus
     {
-        public ItemStatus()
-        {
-
-        }
+        public ItemStatus(){}
         public ItemStatus(int itemId, int newStatus) 
         {
             this.ItemId = itemId;

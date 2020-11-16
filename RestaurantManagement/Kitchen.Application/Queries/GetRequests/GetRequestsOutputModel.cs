@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Kitchen.Queries.GetRequests
+namespace RestaurantManagement.Kitchen.Application.Queries.GetRequests
 {
     public class GetRequestsOutputModel
     {

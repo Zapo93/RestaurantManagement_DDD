@@ -2,11 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RestaurantManagement.Application;
-using RestaurantManagement.Application.Kitchen.Commands.CreateRecipe;
-using RestaurantManagement.Application.Kitchen.Commands.CreateRequest;
-using RestaurantManagement.Application.Kitchen.Commands.SetRequestStatus;
-using RestaurantManagement.Application.Kitchen.Queries.GetRecipes;
-using RestaurantManagement.Application.Kitchen.Queries.GetRequests;
+using RestaurantManagement.Kitchen.Application.Commands.CreateRecipe;
+using RestaurantManagement.Kitchen.Application.Commands.CreateRequest;
+using RestaurantManagement.Kitchen.Application.Commands.SetRequestStatus;
+using RestaurantManagement.Kitchen.Application.Queries.GetRecipes;
+using RestaurantManagement.Kitchen.Application.Queries.GetRequests;
 using RestaurantManagement.Domain;
 using RestaurantManagement.Infrastructure;
 using RestaurantManagement.Kitchen.Domain.Models;

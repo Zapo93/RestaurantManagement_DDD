@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Kitchen.Queries.GetRequests
+namespace RestaurantManagement.Kitchen.Application.Queries.GetRequests
 {
     public class GetRequestsQuery: IRequest<GetRequestsOutputModel>
     {

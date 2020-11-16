@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Kitchen.Commands.CreateRequest
+namespace RestaurantManagement.Kitchen.Application.Commands.CreateRequest
 {
     public class CreateRequestCommand: IRequest<CreateRequestOutputModel>
     {

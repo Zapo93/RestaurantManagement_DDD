@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Kitchen.Commands.CreateRecipe
+namespace RestaurantManagement.Kitchen.Application.Commands.CreateRecipe
 {
     public class CreateRecipeOutputModel
     {
