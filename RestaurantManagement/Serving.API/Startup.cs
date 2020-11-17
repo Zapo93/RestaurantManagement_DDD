@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common.Infrastructure.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RestaurantManagement.Identity.Infrastructure;
 using RestaurantManagement.Kitchen.Web;
 using RestaurantManagement.Serving;
 using RestaurantManagement.Serving.Application.Configuration;
@@ -34,7 +36,7 @@ namespace Serving.API
                 .AddServingApplication(Configuration)
                 .AddServingInfrastructure(Configuration)
                 .AddServingWebComponents()
-                .AddHttpContextAccessor();
+                .AddUserAuthentication(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -48,7 +50,7 @@ namespace Serving.API
 
             app.UseRouting();
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -33,7 +33,7 @@ namespace RestaurantManagement.Serving.Web.Controllers
 
         [HttpPost]
         [Route("Orders")]
-        //[Authorize]
+        [Authorize]
         public async Task<ActionResult<CreateOrderOutputModel>> CreateOrder(CreateOrderCommand createOrderCommand)
         {
             return await Send(createOrderCommand);
