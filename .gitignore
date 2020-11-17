@@ -43,3 +43,5 @@
 /RestaurantManagement/Identity.Infrastructure/bin
 /RestaurantManagement/Common.Infrastructure.Authentication/obj
 /RestaurantManagement/Common.Infrastructure.Authentication/bin
+/RestaurantManagement/Identity.API/obj
+/RestaurantManagement/Identity.API/bin

@@ -4,19 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using RestaurantManagement.Domain;
-using RestaurantManagement.Application;
-using RestaurantManagement.Infrastructure;
-using MediatR;
-using System.Reflection;
-using RestaurantManagement.Web;
+using RestaurantManagement.Identity;
+using RestaurantManagement.Identity.Application;
+using RestaurantManagement.Identity.Infrastructure;
+using RestaurantManagement.Identity.Web;
 
-namespace RestaurantManagement
+namespace Identity.API
 {
     public class Startup
     {
@@ -31,10 +30,9 @@ namespace RestaurantManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddDomain()
-                .AddApplication(Configuration)
-                .AddInfrastructure(Configuration)
-                .AddWebComponents();
+                .AddIdentityApplication(Configuration)
+                .AddIdentityInfrastructure(Configuration)
+                .AddIdentityWebComponents();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +42,8 @@ namespace RestaurantManagement
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

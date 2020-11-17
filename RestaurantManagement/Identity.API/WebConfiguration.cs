@@ -6,14 +6,13 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace RestaurantManagement.Web
+namespace RestaurantManagement.Identity.Web
 {
     public static class WebConfiguration
     {
-        public static IServiceCollection AddWebComponents(this IServiceCollection services) 
+        public static IServiceCollection AddIdentityWebComponents(this IServiceCollection services) 
         {
-            services
-                .AddCommonWebComponents();
+            services.AddCommonWebComponents();
 
             return services;
         }
