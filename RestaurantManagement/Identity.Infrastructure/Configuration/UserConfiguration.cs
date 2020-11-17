@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using RestaurantManagement.Identity.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Text;

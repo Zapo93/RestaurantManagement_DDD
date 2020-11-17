@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RestaurantManagement.Infrastructure.Common.Persistence;
+using RestaurantManagement.Identity.Infrastructure.Persistence;
 
-namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
+namespace RestaurantManagement.Identity.Infrastructure.Persistence.Migrations
 {
-    [DbContext(typeof(RestaurantManagementDbContext))]
-    [Migration("20201117121556_Initial")]
+    [DbContext(typeof(UsersDbContext))]
+    [Migration("20201117174107_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,65 +152,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Reservation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ScheduleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ScheduleId");
-
-                    b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Schedule", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("TableId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TableId");
-
-                    b.ToTable("Schedules");
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Table", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.Property<int>("NumberOfSeats")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RestaurantName")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tables");
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Infrastructure.Identity.User", b =>
+            modelBuilder.Entity("RestaurantManagement.Identity.Infrastructure.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -286,7 +228,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("RestaurantManagement.Infrastructure.Identity.User", null)
+                    b.HasOne("RestaurantManagement.Identity.Infrastructure.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -295,7 +237,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("RestaurantManagement.Infrastructure.Identity.User", null)
+                    b.HasOne("RestaurantManagement.Identity.Infrastructure.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -310,7 +252,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RestaurantManagement.Infrastructure.Identity.User", null)
+                    b.HasOne("RestaurantManagement.Identity.Infrastructure.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -319,122 +261,11 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("RestaurantManagement.Infrastructure.Identity.User", null)
+                    b.HasOne("RestaurantManagement.Identity.Infrastructure.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Reservation", b =>
-                {
-                    b.HasOne("RestaurantManagement.Domain.Hosting.Models.Schedule", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("ScheduleId");
-
-                    b.OwnsOne("RestaurantManagement.Common.Domain.DateTimeRange", "TimeRange", b1 =>
-                        {
-                            b1.Property<int>("ReservationId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<DateTime>("End")
-                                .HasColumnType("datetime2");
-
-                            b1.Property<DateTime>("Start")
-                                .HasColumnType("datetime2");
-
-                            b1.HasKey("ReservationId");
-
-                            b1.ToTable("Reservations");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ReservationId");
-                        });
-
-                    b.OwnsOne("RestaurantManagement.Domain.Hosting.Models.Guest", "Guest", b1 =>
-                        {
-                            b1.Property<int>("ReservationId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<string>("FirstName")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("LastName")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("PhoneNumber")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("ReservationId");
-
-                            b1.ToTable("Reservations");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ReservationId");
-                        });
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Schedule", b =>
-                {
-                    b.HasOne("RestaurantManagement.Domain.Hosting.Models.Table", null)
-                        .WithMany("Schedules")
-                        .HasForeignKey("TableId");
-
-                    b.OwnsOne("RestaurantManagement.Common.Domain.DateTimeRange", "TimeRange", b1 =>
-                        {
-                            b1.Property<int>("ScheduleId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<DateTime>("End")
-                                .HasColumnType("datetime2");
-
-                            b1.Property<DateTime>("Start")
-                                .HasColumnType("datetime2");
-
-                            b1.HasKey("ScheduleId");
-
-                            b1.ToTable("Schedules");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ScheduleId");
-                        });
-                });
-
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Table", b =>
-                {
-                    b.OwnsOne("RestaurantManagement.Domain.Hosting.Models.TableDescription", "Description", b1 =>
-                        {
-                            b1.Property<int>("TableId")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<bool>("AreSmokersAllowed")
-                                .HasColumnType("bit");
-
-                            b1.Property<bool>("IsIndoor")
-                                .HasColumnType("bit");
-
-                            b1.Property<string>("Location")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("TableId");
-
-                            b1.ToTable("Tables");
-
-                            b1.WithOwner()
-                                .HasForeignKey("TableId");
-                        });
                 });
 #pragma warning restore 612, 618
         }

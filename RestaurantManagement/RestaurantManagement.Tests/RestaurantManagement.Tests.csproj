@@ -15,11 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Kitchen.Application\Kitchen.Application.csproj" />
+    <ProjectReference Include="..\Kitchen.Domain\Kitchen.Domain.csproj" />
+    <ProjectReference Include="..\Kitchen.Infrastructure\Kitchen.Infrastructure.csproj" />
     <ProjectReference Include="..\RestaurantManagement.Application\RestaurantManagement.Application.csproj" />
     <ProjectReference Include="..\RestaurantManagement.Domain\RestaurantManagement.Domain.csproj" />
     <ProjectReference Include="..\RestaurantManagement.Infrastructure\RestaurantManagement.Infrastructure.csproj" />
-    <ProjectReference Include="..\RestaurantManagement.Web\RestaurantManagement.Web.csproj" />
-    <ProjectReference Include="..\RestaurantManagement\RestaurantManagement.csproj" />
+    <ProjectReference Include="..\Serving.Application\Serving.Application.csproj" />
+    <ProjectReference Include="..\Serving.Domain\Serving.Domain.csproj" />
+    <ProjectReference Include="..\Serving.Infrastructure\Serving.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

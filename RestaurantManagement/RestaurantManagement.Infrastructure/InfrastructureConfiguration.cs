@@ -10,15 +10,9 @@ using RestaurantManagement.Identity.Application;
 using RestaurantManagement.Infrastructure.Common;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using RestaurantManagement.Infrastructure.Hosting;
-using RestaurantManagement.Infrastructure.Identity;
-using RestaurantManagement.Serving.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using RestaurantManagement.Common.Infrastructure;
-using RestaurantManagement.Kitchen.Infrastructure.Configuration;
 using RestaurantManagement.Common.Infrastructure.Persistence;
-using RestaurantManagement.Serving.Infrastructure.Configuration;
+using RestaurantManagement.Identity.Infrastructure;
 
 namespace RestaurantManagement.Infrastructure
 {
@@ -30,8 +24,8 @@ namespace RestaurantManagement.Infrastructure
         {
             return services
                     .AddCommonInfrastructure<RestaurantManagementDbContext>(configuration)
-                    .AddDatabase(configuration)
-                    .AddIdentity(configuration);
+                    .AddIdentityInfrastructure(configuration)
+                    .AddDatabase(configuration);
         }
 
         public static IServiceCollection AddInfrastructure(//For Test Purposes
@@ -41,8 +35,8 @@ namespace RestaurantManagement.Infrastructure
         {
             return services
                     .AddCommonInfrastructure<RestaurantManagementDbContext>(dbConnectionString, secret)
-                    .AddDatabase(dbConnectionString)
-                    .AddIdentity(secret);
+                    .AddIdentityInfrastructure(dbConnectionString, secret)
+                    .AddDatabase(dbConnectionString);
         }
 
         private static IServiceCollection AddDatabase(
@@ -58,65 +52,5 @@ namespace RestaurantManagement.Infrastructure
             => services
                 .AddTransient<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())//Must be transient
                 .AddTransient<IInitializer, DatabaseInitializer<RestaurantManagementDbContext>>();
-
-        private static IServiceCollection AddIdentity(
-            this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            var secret = configuration
-                .GetSection(nameof(ApplicationSettings))
-                .GetValue<string>(nameof(ApplicationSettings.Secret));
-
-            SetUpIdentity(services, secret);
-
-            return services;
-        }
-
-        private static IServiceCollection AddIdentity(
-            this IServiceCollection services,
-            string secret)
-        {
-            SetUpIdentity(services, secret);
-
-            return services;
-        }
-
-        private static void SetUpIdentity(IServiceCollection services, string secret) 
-        {
-            services
-                .AddIdentity<User, IdentityRole>(options =>
-                {
-                    options.Password.RequiredLength = 6;
-                    options.Password.RequireDigit = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = false;
-                })
-                .AddEntityFrameworkStores<RestaurantManagementDbContext>();
-
-            var key = Encoding.ASCII.GetBytes(secret);
-
-            services
-                .AddAuthentication(authentication =>
-                {
-                    authentication.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    authentication.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(bearer =>
-                {
-                    bearer.RequireHttpsMetadata = false;
-                    bearer.SaveToken = true;
-                    bearer.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
-
-            services.AddTransient<IIdentity, IdentityService>();
-            services.AddTransient<IJwtTokenGenerator, JwtTokenGeneratorService>();
-        }
     }
 }

@@ -18,7 +18,7 @@ using RestaurantManagement.Kitchen.Domain.Models;
 
 namespace RestaurantManagement.Infrastructure.Common.Persistence
 {
-    internal class RestaurantManagementDbContext : IdentityDbContext<User>,
+    internal class RestaurantManagementDbContext : DbContext,
         IHostingDbContext
     {
         private readonly Stack<object> savesChangesTracker;

@@ -1,4 +1,4 @@
-﻿namespace RestaurantManagement.Infrastructure.Identity
+﻿namespace RestaurantManagement.Identity.Infrastructure
 {
     public interface IJwtTokenGenerator
     {

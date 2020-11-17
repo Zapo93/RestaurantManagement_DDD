@@ -7,7 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace RestaurantManagement.Infrastructure.Identity
+namespace RestaurantManagement.Identity.Infrastructure
 {
     internal class JwtTokenGeneratorService : IJwtTokenGenerator
     {

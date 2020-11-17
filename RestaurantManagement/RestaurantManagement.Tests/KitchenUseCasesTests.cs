@@ -1,17 +1,12 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestaurantManagement.Application;
 using RestaurantManagement.Kitchen.Application.Commands.CreateRecipe;
 using RestaurantManagement.Kitchen.Application.Commands.CreateRequest;
 using RestaurantManagement.Kitchen.Application.Commands.SetRequestStatus;
 using RestaurantManagement.Kitchen.Application.Queries.GetRecipes;
 using RestaurantManagement.Kitchen.Application.Queries.GetRequests;
-using RestaurantManagement.Domain;
-using RestaurantManagement.Infrastructure;
 using RestaurantManagement.Kitchen.Domain.Models;
-using RestaurantManagement.Web;
-using RestaurantManagement.Web.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

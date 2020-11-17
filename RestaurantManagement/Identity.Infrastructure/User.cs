@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Infrastructure.Identity
+namespace RestaurantManagement.Identity.Infrastructure
 {
     public class User: IdentityUser,IUser
     {

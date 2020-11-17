@@ -1,0 +1,4 @@
+- To add migrations for a project go to the  package manager console in Visual Studio
+	= Before executing the command switch the "Default project" in the Package Manager Console to the infrastructure project, which contains the Configurations and the DbContext.
+	= Command Add-Migration Initial -o Persistence/Migrations -Context UsersDbContext
+		== Use the -Context parameter if there are more than one contexts in the solution
