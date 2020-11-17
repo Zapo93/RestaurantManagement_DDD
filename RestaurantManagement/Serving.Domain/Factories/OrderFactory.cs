@@ -1,10 +1,10 @@
-﻿using RestaurantManagement.Domain.Serving.Exceptions;
-using RestaurantManagement.Domain.Serving.Models;
+﻿using RestaurantManagement.Serving.Domain.Exceptions;
+using RestaurantManagement.Serving.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Serving.Factories
+namespace RestaurantManagement.Serving.Domain.Factories
 {
     public class OrderFactory : IOrderFactory
     {

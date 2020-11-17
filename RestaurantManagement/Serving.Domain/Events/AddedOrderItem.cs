@@ -1,4 +1,4 @@
-﻿namespace RestaurantManagement.Domain.Serving.Events
+﻿namespace RestaurantManagement.Serving.Domain.Events
 {
     public class AddedOrderItem
     {

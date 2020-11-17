@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RestaurantManagement.Common.Domain;
-using RestaurantManagement.Domain.Serving.Models;
-using RestaurantManagement.Domain.Serving.Specificaitons.Orders;
+using RestaurantManagement.Serving.Domain.Models;
+using RestaurantManagement.Serving.Domain.Specificaitons.Orders;
 using System;
 using System.Collections.Generic;
 using System.Text;

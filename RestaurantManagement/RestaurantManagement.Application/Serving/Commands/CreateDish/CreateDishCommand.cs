@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using RestaurantManagement.Domain.Serving.Exceptions;
-using RestaurantManagement.Domain.Serving.Factories;
-using RestaurantManagement.Domain.Serving.Models;
+using RestaurantManagement.Serving.Domain.Exceptions;
+using RestaurantManagement.Serving.Domain.Factories;
+using RestaurantManagement.Serving.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

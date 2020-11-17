@@ -1,7 +1,7 @@
 ﻿using RestaurantManagement.Common.Domain.Models;
 using System;
 
-namespace RestaurantManagement.Domain.Serving.Models
+namespace RestaurantManagement.Serving.Domain.Models
 {
     public class KitchenRequest: Entity<int>
     {

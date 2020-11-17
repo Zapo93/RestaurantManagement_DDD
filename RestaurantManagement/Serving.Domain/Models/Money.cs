@@ -1,6 +1,6 @@
 ﻿using RestaurantManagement.Common.Domain.Models;
 
-namespace RestaurantManagement.Domain.Serving.Models
+namespace RestaurantManagement.Serving.Domain.Models
 {
     public class Money : ValueObject
     {

@@ -1,12 +1,12 @@
 ﻿using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Common.Domain.Models;
-using RestaurantManagement.Domain.Serving.Events;
-using RestaurantManagement.Domain.Serving.Exceptions;
+using RestaurantManagement.Serving.Domain.Events;
+using RestaurantManagement.Serving.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RestaurantManagement.Domain.Serving.Models
+namespace RestaurantManagement.Serving.Domain.Models
 {
     public class Order: Entity<int>, IAggregateRoot
     {

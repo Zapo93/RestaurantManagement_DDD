@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using RestaurantManagement.Common.Domain.Models;
 using RestaurantManagement.Domain.Hosting.Models;
-using RestaurantManagement.Domain.Serving.Models;
+using RestaurantManagement.Serving.Domain.Models;
 using RestaurantManagement.Infrastructure.Hosting;
 using RestaurantManagement.Infrastructure.Identity;
 using RestaurantManagement.Infrastructure.Serving;

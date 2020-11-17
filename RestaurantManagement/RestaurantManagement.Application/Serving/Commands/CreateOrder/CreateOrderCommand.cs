@@ -2,8 +2,8 @@
 using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Application.Serving.Commands.Common;
 using RestaurantManagement.Application.Serving.Commands.CreateDish;
-using RestaurantManagement.Domain.Serving.Factories;
-using RestaurantManagement.Domain.Serving.Models;
+using RestaurantManagement.Serving.Domain.Factories;
+using RestaurantManagement.Serving.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

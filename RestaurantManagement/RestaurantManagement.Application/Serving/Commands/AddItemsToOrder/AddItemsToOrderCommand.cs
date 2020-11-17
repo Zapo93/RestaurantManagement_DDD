@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RestaurantManagement.Application.Serving.Commands.Common;
 using RestaurantManagement.Application.Serving.Commands.CreateOrder;
-using RestaurantManagement.Domain.Serving.Models;
+using RestaurantManagement.Serving.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

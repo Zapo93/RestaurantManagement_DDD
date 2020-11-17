@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Serving.Events
+namespace RestaurantManagement.Serving.Domain.Events
 {
     public class OrderItemsAddedEvent: IDomainEvent
     {

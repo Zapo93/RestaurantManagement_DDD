@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Serving.Exceptions
+namespace RestaurantManagement.Serving.Domain.Exceptions
 {
-    public class InvalidDishException: BaseDomainException
+    public class InvalidOrderException: BaseDomainException
     {
-        public InvalidDishException(string error) 
+        public InvalidOrderException(string error) 
         {
             Error = error;
         }

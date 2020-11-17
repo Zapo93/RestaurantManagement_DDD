@@ -1,10 +1,10 @@
 ﻿using RestaurantManagement.Common.Domain;
-using RestaurantManagement.Domain.Serving.Models;
+using RestaurantManagement.Serving.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Serving.Factories
+namespace RestaurantManagement.Serving.Domain.Factories
 {
     public interface IOrderFactory: IFactory<Order>
     {
