@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using RestaurantManagement.Common.Application;
 using RestaurantManagement.Common.Application.Contracts;
-using RestaurantManagement.Application.Identity;
+using RestaurantManagement.Identity.Application;
 using RestaurantManagement.Infrastructure.Common;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using RestaurantManagement.Infrastructure.Hosting;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Identity.Commands
+namespace RestaurantManagement.Identity.Application.Commands
 {
     public abstract class UserInputModel
     {

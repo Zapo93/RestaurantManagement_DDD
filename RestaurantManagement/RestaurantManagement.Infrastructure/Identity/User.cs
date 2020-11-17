@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using RestaurantManagement.Application.Identity;
+using RestaurantManagement.Identity.Application;
 using System;
 using System.Collections.Generic;
 using System.Text;

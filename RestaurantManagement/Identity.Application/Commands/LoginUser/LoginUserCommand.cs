@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Identity.Commands.LoginUser
+namespace RestaurantManagement.Identity.Application.Commands.LoginUser
 {
     public class LoginUserCommand:UserInputModel, IRequest<LoginOutputModel>
     {

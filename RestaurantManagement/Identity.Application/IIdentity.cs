@@ -1,11 +1,11 @@
-﻿using RestaurantManagement.Application.Identity.Commands;
-using RestaurantManagement.Application.Identity.Commands.LoginUser;
+﻿using RestaurantManagement.Identity.Application.Commands;
+using RestaurantManagement.Identity.Application.Commands.LoginUser;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Identity
+namespace RestaurantManagement.Identity.Application
 {
     public interface IIdentity
     {

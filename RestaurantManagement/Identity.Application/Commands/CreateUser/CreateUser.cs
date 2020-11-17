@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Identity.Commands.CreateUser
+namespace RestaurantManagement.Identity.Application.Commands.CreateUser
 {
     public class CreateUserCommand: UserInputModel, IRequest<IUser>
     {

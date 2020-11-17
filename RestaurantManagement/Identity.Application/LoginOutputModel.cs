@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Identity.Commands.LoginUser
+namespace RestaurantManagement.Identity.Application.Commands.LoginUser
 {
     public class LoginOutputModel
     {

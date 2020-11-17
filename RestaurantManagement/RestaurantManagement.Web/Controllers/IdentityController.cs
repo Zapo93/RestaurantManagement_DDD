@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestaurantManagement.Application.Identity;
-using RestaurantManagement.Application.Identity.Commands.CreateUser;
-using RestaurantManagement.Application.Identity.Commands.LoginUser;
+using RestaurantManagement.Identity.Application;
+using RestaurantManagement.Identity.Application.Commands.CreateUser;
+using RestaurantManagement.Identity.Application.Commands.LoginUser;
 using RestaurantManagement.Common.Web;
 using System;
 using System.Collections.Generic;

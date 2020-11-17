@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Identity
+namespace RestaurantManagement.Identity.Application
 {
     public interface IUser
     {

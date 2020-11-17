@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Identity.Exceptions
+namespace RestaurantManagement.Identity.Application.Exceptions
 {
     public class LoginFailedException: BaseDomainException
     {

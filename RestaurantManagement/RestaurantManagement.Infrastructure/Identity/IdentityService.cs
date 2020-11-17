@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using RestaurantManagement.Application.Identity;
-using RestaurantManagement.Application.Identity.Commands;
-using RestaurantManagement.Application.Identity.Commands.LoginUser;
-using RestaurantManagement.Application.Identity.Exceptions;
+using RestaurantManagement.Identity.Application;
+using RestaurantManagement.Identity.Application.Commands;
+using RestaurantManagement.Identity.Application.Commands.LoginUser;
+using RestaurantManagement.Identity.Application.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

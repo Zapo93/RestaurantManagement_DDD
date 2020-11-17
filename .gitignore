@@ -37,3 +37,5 @@
 /RestaurantManagement/Serving.Infrastructure/bin
 /RestaurantManagement/Serving.API/obj
 /RestaurantManagement/Serving.API/bin
+/RestaurantManagement/Identity.Application/obj
+/RestaurantManagement/Identity.Application/bin
