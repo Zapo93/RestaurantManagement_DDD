@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using static RestaurantManagement.Common.Domain.ModelConstants.StringConstants;
 
-namespace RestaurantManagement.Infrastructure.Serving.Configuration
+namespace RestaurantManagement.Serving.Infrastructure.Configuration
 {
     public class DishConfiguration : IEntityTypeConfiguration<Dish>
     {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RestaurantManagement.Serving.Domain.Models;
 using static RestaurantManagement.Common.Domain.ModelConstants.StringConstants;
 
-namespace RestaurantManagement.Infrastructure.Serving.Configuration
+namespace RestaurantManagement.Serving.Infrastructure.Configuration
 {
     public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
     {

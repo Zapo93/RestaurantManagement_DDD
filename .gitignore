@@ -33,3 +33,5 @@
 /RestaurantManagement/Serving.Domain/bin
 /RestaurantManagement/Serving.Application/bin
 /RestaurantManagement/Serving.Application/obj
+/RestaurantManagement/Serving.Infrastructure/obj
+/RestaurantManagement/Serving.Infrastructure/bin

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Infrastructure.Serving.Configuration
+namespace RestaurantManagement.Serving.Infrastructure.Configuration
 {
     public class KitchenRequestConfiguration : IEntityTypeConfiguration<KitchenRequest>
     {
