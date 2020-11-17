@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Serving
+namespace RestaurantManagement.Serving.Application
 {
     public interface IOrderRepository : IRepository<Order>
     {

@@ -1,4 +1,4 @@
-﻿namespace RestaurantManagement.Application.Serving.Commands.CreateDish
+﻿namespace RestaurantManagement.Serving.Application.Commands.CreateDish
 {
     public class CreateDishOutputModel
     {

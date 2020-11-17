@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RestaurantManagement.Application.Serving;
+using RestaurantManagement.Serving.Application;
 using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Common.Infrastructure.Persistence;
 using RestaurantManagement.Serving.Domain.Models;

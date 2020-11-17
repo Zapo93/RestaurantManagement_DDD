@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Serving.Queries.GetDishes
+namespace RestaurantManagement.Serving.Application.Queries.GetDishes
 {
     public class DishesQuery: IRequest<GetDishesOutputModel>
     {

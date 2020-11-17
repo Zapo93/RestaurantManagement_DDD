@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Serving.Queries.GetOrders
+namespace RestaurantManagement.Serving.Application.Queries.GetOrders
 {
     public class GetOrdersOutputModel
     {

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RestaurantManagement.Common.Application.Contracts;
-using RestaurantManagement.Application.Serving.Commands.Common;
-using RestaurantManagement.Application.Serving.Commands.CreateDish;
+using RestaurantManagement.Serving.Application.Commands.Common;
+using RestaurantManagement.Serving.Application.Commands.CreateDish;
 using RestaurantManagement.Serving.Domain.Factories;
 using RestaurantManagement.Serving.Domain.Models;
 using System;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
+namespace RestaurantManagement.Serving.Application.Commands.CreateOrder
 {
     public class CreateOrderCommand: IRequest<CreateOrderOutputModel>
     {

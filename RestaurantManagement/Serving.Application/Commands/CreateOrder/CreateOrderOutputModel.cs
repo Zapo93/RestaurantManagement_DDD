@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Serving.Commands.CreateOrder
+namespace RestaurantManagement.Serving.Application.Commands.CreateOrder
 {
     public class CreateOrderOutputModel
     {

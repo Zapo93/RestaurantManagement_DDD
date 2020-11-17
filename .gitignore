@@ -31,3 +31,5 @@
 /RestaurantManagement/Kitchen.API/bin
 /RestaurantManagement/Serving.Domain/obj
 /RestaurantManagement/Serving.Domain/bin
+/RestaurantManagement/Serving.Application/bin
+/RestaurantManagement/Serving.Application/obj

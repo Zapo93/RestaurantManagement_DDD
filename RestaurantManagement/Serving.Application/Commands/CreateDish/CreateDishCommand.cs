@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Serving.Commands.CreateDish
+namespace RestaurantManagement.Serving.Application.Commands.CreateDish
 {
     public class CreateDishCommand: IRequest<CreateDishOutputModel>
     {

@@ -2,33 +2,29 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Common.Application;
-using RestaurantManagement.Kitchen.Application;
-using RestaurantManagement.Serving.Application.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace RestaurantManagement.Application
+namespace RestaurantManagement.Serving.Application.Configuration
 {
 
     public static class ApplicationConfiguration
     {
-        public static IServiceCollection AddApplication(
+        public static IServiceCollection AddServingApplication(
             this IServiceCollection services,
             IConfiguration configuration)
         {
             return services
-                .AddCommonApplication(configuration)
-                .AddServingApplication(configuration);
+                .AddCommonApplication(configuration);
         }
 
-        public static IServiceCollection AddApplication(
+        public static IServiceCollection AddServingApplication(
             this IServiceCollection services)
         {
             return services
-                .AddCommonApplication()
-                .AddServingApplication();
+                .AddCommonApplication();
         }
     }
 }

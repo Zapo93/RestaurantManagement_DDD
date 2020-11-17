@@ -1,4 +1,4 @@
-﻿namespace RestaurantManagement.Application.Serving.Commands.Common
+﻿namespace RestaurantManagement.Serving.Application.Commands.Common
 {
     public class OrderItemInputModel
     {

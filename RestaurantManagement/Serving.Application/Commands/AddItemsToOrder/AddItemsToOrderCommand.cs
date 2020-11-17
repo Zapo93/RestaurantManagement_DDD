@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using RestaurantManagement.Application.Serving.Commands.Common;
-using RestaurantManagement.Application.Serving.Commands.CreateOrder;
+using RestaurantManagement.Serving.Application.Commands.Common;
+using RestaurantManagement.Serving.Application.Commands.CreateOrder;
 using RestaurantManagement.Serving.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Serving.Commands.AddItemsToOrder
+namespace RestaurantManagement.Serving.Application.Commands.AddItemsToOrder
 {
     public class AddItemsToOrderCommand : IRequest<Unit>
     {
