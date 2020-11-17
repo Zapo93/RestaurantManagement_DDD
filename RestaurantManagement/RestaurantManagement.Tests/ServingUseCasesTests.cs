@@ -18,6 +18,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RestaurantManagement.Serving.Domain;
+using RestaurantManagement.Serving.Application.Configuration;
+using RestaurantManagement.Serving.Infrastructure.Configuration;
 
 namespace RestaurantManagement.Tests
 {
@@ -28,9 +31,9 @@ namespace RestaurantManagement.Tests
         public async Task CreateDish_NewDish_SuccessfullRead()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
-                .AddApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+            services.AddServingDomain()
+                .AddServingApplication()
+                .AddServingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
@@ -58,9 +61,9 @@ namespace RestaurantManagement.Tests
         public async Task CreateDish_RecipeAlreadyAdded_ExceptionThrown()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
-                .AddApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+            services.AddServingDomain()
+                .AddServingApplication()
+                .AddServingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
@@ -86,9 +89,9 @@ namespace RestaurantManagement.Tests
         public async Task CreateOrder_NewOrder_SuccessfullRead()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
-                .AddApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T")
+            services.AddServingDomain()
+                .AddServingApplication()
+                .AddServingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T")
                 .AddTransient<ICurrentUser, CurrentUserServiceMock>();
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
@@ -135,9 +138,9 @@ namespace RestaurantManagement.Tests
         public async Task CreateOrder_NonExistingDish_ExceptionThrown()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
-                .AddApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T")
+            services.AddServingDomain()
+                .AddServingApplication()
+                .AddServingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T")
                 .AddTransient<ICurrentUser, CurrentUserServiceMock>(); ;
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
@@ -157,9 +160,9 @@ namespace RestaurantManagement.Tests
         public async Task GetOrders_AllOrders_SuccessfulRead()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
-                .AddApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+            services.AddServingDomain()
+                .AddServingApplication()
+                .AddServingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);

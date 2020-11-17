@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>RestaurantManagement.Serving.API</RootNamespace>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Web\Common.Web.csproj" />
+    <ProjectReference Include="..\Serving.Application\Serving.Application.csproj" />
+    <ProjectReference Include="..\Serving.Infrastructure\Serving.Infrastructure.csproj" />
+  </ItemGroup>
+
+
+</Project>
