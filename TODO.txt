@@ -69,7 +69,7 @@ correct - See DeleteReservation Test.
 
 - Fix API paths - currently there are duplicating paths so there will be conflicts when calling the controller methods. ----X
 
-- Move DatabaseInitializer to the Common projects.
+- Move DatabaseInitializer to the Common projects. ------X
 
 - Add the Status Names to the Requests and DB
 

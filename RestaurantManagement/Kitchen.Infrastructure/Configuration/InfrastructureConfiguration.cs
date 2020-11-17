@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Common.Application;
 using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Infrastructure;
+using RestaurantManagement.Common.Infrastructure.Persistence;
 using RestaurantManagement.Kitchen.Infrastructure.Persistence;
 using System;
 using System.Collections.Generic;
@@ -37,13 +38,13 @@ namespace RestaurantManagement.Kitchen.Infrastructure.Configuration
             IConfiguration configuration)
             => services
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<KitchenDbContext>())
-                .AddTransient<IInitializer, DatabaseInitializer>();
+                .AddTransient<IInitializer, DatabaseInitializer<KitchenDbContext>>();
 
         private static IServiceCollection AddDatabase(//For Test Purposes
             this IServiceCollection services,
             string dbConnectionString)
             => services
                 .AddScoped<IKitchenDbContext>(provider => provider.GetService<KitchenDbContext>())
-                .AddTransient<IInitializer, DatabaseInitializer>();
+                .AddTransient<IInitializer, DatabaseInitializer<KitchenDbContext>>();
     }
 }

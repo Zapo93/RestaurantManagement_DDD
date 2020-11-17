@@ -4,16 +4,17 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace RestaurantManagement.Infrastructure.Common.Persistence
+namespace RestaurantManagement.Common.Infrastructure.Persistence
 {
-    internal class DatabaseInitializer : IInitializer
+    public class DatabaseInitializer<TDbContext> : IInitializer
+        where TDbContext : DbContext
     {
-        private readonly RestaurantManagementDbContext db;
+        private readonly TDbContext db;
         //private readonly IEnumerable<IInitialData> initialDataProviders;
 
         public DatabaseInitializer(
-            RestaurantManagementDbContext db)//,
-            //IEnumerable<IInitialData> initialDataProviders)
+            TDbContext db)//,
+                          //IEnumerable<IInitialData> initialDataProviders)
         {
             this.db = db;
             //this.initialDataProviders = initialDataProviders;

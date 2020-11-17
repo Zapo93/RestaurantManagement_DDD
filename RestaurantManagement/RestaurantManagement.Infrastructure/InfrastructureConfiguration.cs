@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Text;
 using RestaurantManagement.Common.Infrastructure;
 using RestaurantManagement.Kitchen.Infrastructure.Configuration;
+using RestaurantManagement.Common.Infrastructure.Persistence;
 
 namespace RestaurantManagement.Infrastructure
 {
@@ -49,7 +50,7 @@ namespace RestaurantManagement.Infrastructure
             => services
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddScoped<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
-                .AddTransient<IInitializer, DatabaseInitializer>();
+                .AddTransient<IInitializer, DatabaseInitializer<RestaurantManagementDbContext>>();
 
         private static IServiceCollection AddDatabase(//For Test Purposes
             this IServiceCollection services,
@@ -57,7 +58,7 @@ namespace RestaurantManagement.Infrastructure
             => services
                 .AddScoped<IServingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())
                 .AddTransient<IHostingDbContext>(provider => provider.GetService<RestaurantManagementDbContext>())//Must be transient
-                .AddTransient<IInitializer, DatabaseInitializer>();
+                .AddTransient<IInitializer, DatabaseInitializer<RestaurantManagementDbContext>>();
 
         private static IServiceCollection AddIdentity(
             this IServiceCollection services,
