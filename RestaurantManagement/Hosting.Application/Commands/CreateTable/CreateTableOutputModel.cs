@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Application.Hosting.Commands.CreateTable
+namespace RestaurantManagement.Hosting.Application.Commands.CreateTable
 {
     public class CreateTableOutputModel
     {

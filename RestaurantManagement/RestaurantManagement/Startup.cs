@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using RestaurantManagement.Application;
+using RestaurantManagement.Hosting.Application;
 using RestaurantManagement.Infrastructure;
 using MediatR;
 using System.Reflection;
@@ -32,7 +32,7 @@ namespace RestaurantManagement
         {
             services
                 .AddHostingDomain()
-                .AddApplication(Configuration)
+                .AddHostingApplication(Configuration)
                 .AddInfrastructure(Configuration)
                 .AddWebComponents();
         }

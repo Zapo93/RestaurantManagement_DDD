@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Hosting.Commands.AddReservation
+namespace RestaurantManagement.Hosting.Application.Commands.AddReservation
 {
     public class AddReservationCommand: IRequest<AddReservationOutputModel>
     {

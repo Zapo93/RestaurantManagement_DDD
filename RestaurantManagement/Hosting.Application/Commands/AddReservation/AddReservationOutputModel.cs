@@ -1,4 +1,4 @@
-﻿namespace RestaurantManagement.Application.Hosting.Commands.AddReservation
+﻿namespace RestaurantManagement.Hosting.Application.Commands.AddReservation
 {
     public class AddReservationOutputModel
     {

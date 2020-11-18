@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Hosting
+namespace RestaurantManagement.Hosting.Application
 {
     public interface ITableRepository : IRepository<Table>
     {

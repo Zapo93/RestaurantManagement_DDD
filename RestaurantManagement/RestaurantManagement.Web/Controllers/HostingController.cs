@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RestaurantManagement.Application.Hosting.Commands.AddReservation;
-using RestaurantManagement.Application.Hosting.Commands.CreateTable;
-using RestaurantManagement.Application.Hosting.Commands.DeleteReservation;
-using RestaurantManagement.Application.Hosting.Queries.Tables;
+using RestaurantManagement.Hosting.Application.Commands.AddReservation;
+using RestaurantManagement.Hosting.Application.Commands.CreateTable;
+using RestaurantManagement.Hosting.Application.Commands.DeleteReservation;
+using RestaurantManagement.Hosting.Application.Queries.Tables;
 using RestaurantManagement.Common.Web;
 using System;
 using System.Collections.Generic;

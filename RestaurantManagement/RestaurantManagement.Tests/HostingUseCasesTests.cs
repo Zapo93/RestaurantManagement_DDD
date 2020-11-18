@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestaurantManagement.Application;
-using RestaurantManagement.Application.Hosting.Commands.AddReservation;
-using RestaurantManagement.Application.Hosting.Commands.CreateTable;
-using RestaurantManagement.Application.Hosting.Commands.DeleteReservation;
-using RestaurantManagement.Application.Hosting.Queries.Tables;
+using RestaurantManagement.Hosting.Application;
+using RestaurantManagement.Hosting.Application.Commands.AddReservation;
+using RestaurantManagement.Hosting.Application.Commands.CreateTable;
+using RestaurantManagement.Hosting.Application.Commands.DeleteReservation;
+using RestaurantManagement.Hosting.Application.Queries.Tables;
 using RestaurantManagement.Hosting.Domain;
 using RestaurantManagement.Hosting.Domain.Exceptions;
 using RestaurantManagement.Hosting.Domain.Models;
@@ -26,7 +26,7 @@ namespace RestaurantManagement.Tests
         {
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
-                .AddApplication()
+                .AddHostingApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
@@ -62,7 +62,7 @@ namespace RestaurantManagement.Tests
         {
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
-                .AddApplication()
+                .AddHostingApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
@@ -105,7 +105,7 @@ namespace RestaurantManagement.Tests
         {
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
-                .AddApplication()
+                .AddHostingApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
@@ -152,7 +152,7 @@ namespace RestaurantManagement.Tests
         {
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
-                .AddApplication()
+                .AddHostingApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
@@ -169,7 +169,7 @@ namespace RestaurantManagement.Tests
         {
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
-                .AddApplication()
+                .AddHostingApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 

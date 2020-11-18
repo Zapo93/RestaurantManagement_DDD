@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Hosting.Commands.DeleteReservation
+namespace RestaurantManagement.Hosting.Application.Commands.DeleteReservation
 {
     public class DeleteReservationCommand: IRequest<Unit>
     {

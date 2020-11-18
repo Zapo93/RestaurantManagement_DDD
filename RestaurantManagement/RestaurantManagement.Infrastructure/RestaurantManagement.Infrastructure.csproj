@@ -17,8 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Infrastructure\Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\Hosting.Application\Hosting.Application.csproj" />
     <ProjectReference Include="..\Identity.Infrastructure\Identity.Infrastructure.csproj" />
-    <ProjectReference Include="..\RestaurantManagement.Application\RestaurantManagement.Application.csproj" />
   </ItemGroup>
 
 </Project>

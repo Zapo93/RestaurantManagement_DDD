@@ -2,18 +2,17 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Common.Application;
-using RestaurantManagement.Identity.Application;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace RestaurantManagement.Application
+namespace RestaurantManagement.Hosting.Application
 {
 
     public static class ApplicationConfiguration
     {
-        public static IServiceCollection AddApplication(
+        public static IServiceCollection AddHostingApplication(
             this IServiceCollection services,
             IConfiguration configuration)
         {
@@ -21,7 +20,7 @@ namespace RestaurantManagement.Application
                 .AddCommonApplication(configuration);
         }
 
-        public static IServiceCollection AddApplication(
+        public static IServiceCollection AddHostingApplication(
             this IServiceCollection services)
         {
             return services

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Hosting.Queries.Tables
+namespace RestaurantManagement.Hosting.Application.Queries.Tables
 {
     public class GetTablesQuery: IRequest<GetTablesOutputModel>
     {

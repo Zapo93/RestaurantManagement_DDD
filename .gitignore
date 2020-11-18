@@ -47,3 +47,5 @@
 /RestaurantManagement/Identity.API/bin
 /RestaurantManagement/Hosting.Domain/bin
 /RestaurantManagement/Hosting.Domain/obj
+/RestaurantManagement/Hosting.Application/obj
+/RestaurantManagement/Hosting.Application/bin

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Application.Hosting.Commands.CreateTable
+namespace RestaurantManagement.Hosting.Application.Commands.CreateTable
 {
     public class CreateTableCommand: IRequest<CreateTableOutputModel>
     {

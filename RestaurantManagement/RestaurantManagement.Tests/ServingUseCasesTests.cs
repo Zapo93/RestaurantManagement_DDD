@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RestaurantManagement.Application;
 using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Serving.Application.Commands.Common;
 using RestaurantManagement.Serving.Application.Commands.CreateDish;
