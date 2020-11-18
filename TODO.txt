@@ -71,6 +71,8 @@ correct - See DeleteReservation Test.
 
 - Move DatabaseInitializer to the Common projects. ------X
 
+- Move the Authentication logic in Common.Web -------X
+
 - Add the Status Names to the Requests and DB
 
 - Add tests	

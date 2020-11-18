@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Common.Infrastructure.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,8 +34,7 @@ namespace Serving.API
                 .AddServingDomain()
                 .AddServingApplication(Configuration)
                 .AddServingInfrastructure(Configuration)
-                .AddServingWebComponents()
-                .AddUserAuthentication(Configuration);
+                .AddServingWebComponents(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

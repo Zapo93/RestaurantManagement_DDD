@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Web;
 using System;
@@ -10,11 +11,11 @@ namespace RestaurantManagement.Kitchen.Web
 {
     public static class WebConfiguration
     {
-        public static IServiceCollection AddServingWebComponents(this IServiceCollection services) 
+        public static IServiceCollection AddServingWebComponents(this IServiceCollection services, IConfiguration configuration) 
         {
             services
                 .AddCommonWebComponents()
-                .AddCurrentUserService();
+                .AddUserAuthentication(configuration);
 
             return services;
         }
