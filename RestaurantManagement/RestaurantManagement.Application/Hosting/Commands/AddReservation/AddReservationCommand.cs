@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Hosting.Domain.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

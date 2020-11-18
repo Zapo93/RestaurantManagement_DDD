@@ -1,11 +1,11 @@
 ﻿using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Common.Domain.Models;
-using RestaurantManagement.Domain.Hosting.Exceptions;
+using RestaurantManagement.Hosting.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RestaurantManagement.Domain.Hosting.Models
+namespace RestaurantManagement.Hosting.Domain.Models
 {
     public class Schedule : Entity<int>
     {

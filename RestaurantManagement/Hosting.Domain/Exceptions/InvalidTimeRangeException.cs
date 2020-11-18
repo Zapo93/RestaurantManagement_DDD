@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Hosting.Exceptions
+namespace RestaurantManagement.Hosting.Domain.Exceptions
 {
     public class InvalidTimeRangeException: BaseDomainException
     {

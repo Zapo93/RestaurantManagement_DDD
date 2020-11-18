@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Hosting.Models
+namespace RestaurantManagement.Hosting.Domain.Models
 {
     class ModelConstants
     {

@@ -1,11 +1,11 @@
 ﻿using RestaurantManagement.Common.Domain;
-using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Hosting.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Hosting.Specifications
+namespace RestaurantManagement.Hosting.Domain.Specifications
 {
     public class TableMinimumSeatsSpecification: Specification<Table>
     {

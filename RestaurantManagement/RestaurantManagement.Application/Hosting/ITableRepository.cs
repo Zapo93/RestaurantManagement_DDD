@@ -1,6 +1,6 @@
 ﻿using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Domain;
-using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Hosting.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

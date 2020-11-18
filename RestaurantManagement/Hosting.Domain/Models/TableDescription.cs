@@ -1,6 +1,6 @@
 ﻿using RestaurantManagement.Common.Domain.Models;
 
-namespace RestaurantManagement.Domain.Hosting.Models
+namespace RestaurantManagement.Hosting.Domain.Models
 {
     public class TableDescription: ValueObject
     {

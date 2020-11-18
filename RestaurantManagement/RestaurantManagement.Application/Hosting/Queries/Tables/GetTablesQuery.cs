@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using RestaurantManagement.Common.Domain;
-using RestaurantManagement.Domain.Hosting.Models;
-using RestaurantManagement.Domain.Hosting.Services;
-using RestaurantManagement.Domain.Hosting.Specifications;
+using RestaurantManagement.Hosting.Domain.Models;
+using RestaurantManagement.Hosting.Domain.Services;
+using RestaurantManagement.Hosting.Domain.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;

@@ -8,7 +8,6 @@ using RestaurantManagement.Serving.Application.Commands.CreateDish;
 using RestaurantManagement.Serving.Application.Commands.CreateOrder;
 using RestaurantManagement.Serving.Application.Queries.GetDishes;
 using RestaurantManagement.Serving.Application.Queries.GetOrders;
-using RestaurantManagement.Domain;
 using RestaurantManagement.Serving.Domain.Exceptions;
 using RestaurantManagement.Serving.Domain.Models;
 using RestaurantManagement.Infrastructure;

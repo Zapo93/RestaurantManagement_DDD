@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using RestaurantManagement.Domain.Hosting.Factories;
-using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Hosting.Domain.Factories;
+using RestaurantManagement.Hosting.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,10 +1,10 @@
 ﻿using RestaurantManagement.Common.Domain;
-using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Hosting.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Hosting.Factories
+namespace RestaurantManagement.Hosting.Domain.Factories
 {
     public interface ITableFactory: IFactory<Table>
     {

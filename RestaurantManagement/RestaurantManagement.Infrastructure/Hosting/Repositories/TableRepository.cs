@@ -2,7 +2,7 @@
 using RestaurantManagement.Application.Hosting;
 using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Common.Infrastructure.Persistence;
-using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Hosting.Domain.Models;
 using RestaurantManagement.Infrastructure.Common.Persistence;
 using System;
 using System.Collections.Generic;

@@ -1,15 +1,15 @@
 ﻿using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Common.Domain.Models;
-using RestaurantManagement.Domain.Hosting.Exceptions;
+using RestaurantManagement.Hosting.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using static RestaurantManagement.Domain.Hosting.Models.ModelConstants;
+using static RestaurantManagement.Hosting.Domain.Models.ModelConstants;
 
-namespace RestaurantManagement.Domain.Hosting.Models
+namespace RestaurantManagement.Hosting.Domain.Models
 {
     public class Table : Entity<int>, IAggregateRoot
     {

@@ -6,9 +6,9 @@ using RestaurantManagement.Application.Hosting.Commands.AddReservation;
 using RestaurantManagement.Application.Hosting.Commands.CreateTable;
 using RestaurantManagement.Application.Hosting.Commands.DeleteReservation;
 using RestaurantManagement.Application.Hosting.Queries.Tables;
-using RestaurantManagement.Domain;
-using RestaurantManagement.Domain.Hosting.Exceptions;
-using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Hosting.Domain;
+using RestaurantManagement.Hosting.Domain.Exceptions;
+using RestaurantManagement.Hosting.Domain.Models;
 using RestaurantManagement.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace RestaurantManagement.Tests
         public async Task CreateTable_NewTable_SuccessfulRead() 
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
+            services.AddHostingDomain()
                 .AddApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
@@ -61,7 +61,7 @@ namespace RestaurantManagement.Tests
         public async Task AddReservation_NewTable_SuccessfulRead()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
+            services.AddHostingDomain()
                 .AddApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
@@ -104,7 +104,7 @@ namespace RestaurantManagement.Tests
         public async Task DeleteReservation_NewReservation_SuccessfullyMissing()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
+            services.AddHostingDomain()
                 .AddApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
@@ -151,7 +151,7 @@ namespace RestaurantManagement.Tests
         public async Task GetTables()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
+            services.AddHostingDomain()
                 .AddApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
@@ -168,7 +168,7 @@ namespace RestaurantManagement.Tests
         public async Task AddOverlappingReservation_NewReservation_ThrowsError()
         {
             IServiceCollection services = new ServiceCollection();
-            services.AddDomain()
+            services.AddHostingDomain()
                 .AddApplication()
                 .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();

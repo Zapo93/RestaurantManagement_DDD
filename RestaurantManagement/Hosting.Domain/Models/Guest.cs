@@ -1,7 +1,7 @@
 ﻿using RestaurantManagement.Common.Domain.Models;
 using System;
 
-namespace RestaurantManagement.Domain.Hosting.Models
+namespace RestaurantManagement.Hosting.Domain.Models
 {
     public class Guest:ValueObject
     {

@@ -1,10 +1,10 @@
 ﻿
-using RestaurantManagement.Domain.Hosting.Models;
+using RestaurantManagement.Hosting.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Hosting.Services
+namespace RestaurantManagement.Hosting.Domain.Services
 {
     public interface ITablesScheduleService
     {

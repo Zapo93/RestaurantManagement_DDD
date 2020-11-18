@@ -1,10 +1,10 @@
-﻿using RestaurantManagement.Domain.Hosting.Exceptions;
-using RestaurantManagement.Domain.Hosting.Models;
+﻿using RestaurantManagement.Hosting.Domain.Exceptions;
+using RestaurantManagement.Hosting.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Domain.Hosting.Factories
+namespace RestaurantManagement.Hosting.Domain.Factories
 {
     public class TableFactory : ITableFactory
     {
