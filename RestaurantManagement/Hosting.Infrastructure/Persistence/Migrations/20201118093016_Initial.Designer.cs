@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RestaurantManagement.Infrastructure.Common.Persistence;
+using RestaurantManagement.Hosting.Infrastructure.Persistence;
 
-namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
+namespace RestaurantManagement.Hosting.Infrastructure.Persistence.Migrations
 {
-    [DbContext(typeof(RestaurantManagementDbContext))]
-    partial class RestaurantManagementDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(HostingDbContext))]
+    [Migration("20201118093016_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Reservation", b =>
+            modelBuilder.Entity("RestaurantManagement.Hosting.Domain.Models.Reservation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +38,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                     b.ToTable("Reservations");
                 });
 
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Schedule", b =>
+            modelBuilder.Entity("RestaurantManagement.Hosting.Domain.Models.Schedule", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +55,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                     b.ToTable("Schedules");
                 });
 
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Table", b =>
+            modelBuilder.Entity("RestaurantManagement.Hosting.Domain.Models.Table", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,9 +79,9 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                     b.ToTable("Tables");
                 });
 
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Reservation", b =>
+            modelBuilder.Entity("RestaurantManagement.Hosting.Domain.Models.Reservation", b =>
                 {
-                    b.HasOne("RestaurantManagement.Domain.Hosting.Models.Schedule", null)
+                    b.HasOne("RestaurantManagement.Hosting.Domain.Models.Schedule", null)
                         .WithMany("Reservations")
                         .HasForeignKey("ScheduleId");
 
@@ -104,7 +106,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                                 .HasForeignKey("ReservationId");
                         });
 
-                    b.OwnsOne("RestaurantManagement.Domain.Hosting.Models.Guest", "Guest", b1 =>
+                    b.OwnsOne("RestaurantManagement.Hosting.Domain.Models.Guest", "Guest", b1 =>
                         {
                             b1.Property<int>("ReservationId")
                                 .ValueGeneratedOnAdd()
@@ -132,9 +134,9 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Schedule", b =>
+            modelBuilder.Entity("RestaurantManagement.Hosting.Domain.Models.Schedule", b =>
                 {
-                    b.HasOne("RestaurantManagement.Domain.Hosting.Models.Table", null)
+                    b.HasOne("RestaurantManagement.Hosting.Domain.Models.Table", null)
                         .WithMany("Schedules")
                         .HasForeignKey("TableId");
 
@@ -160,9 +162,9 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RestaurantManagement.Domain.Hosting.Models.Table", b =>
+            modelBuilder.Entity("RestaurantManagement.Hosting.Domain.Models.Table", b =>
                 {
-                    b.OwnsOne("RestaurantManagement.Domain.Hosting.Models.TableDescription", "Description", b1 =>
+                    b.OwnsOne("RestaurantManagement.Hosting.Domain.Models.TableDescription", "Description", b1 =>
                         {
                             b1.Property<int>("TableId")
                                 .ValueGeneratedOnAdd()

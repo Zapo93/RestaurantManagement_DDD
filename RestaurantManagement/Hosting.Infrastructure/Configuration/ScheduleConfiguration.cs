@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestaurantManagement.Infrastructure.Hosting.Configuration
+namespace RestaurantManagement.Hosting.Infrastructure.Configuration
 {
     internal class ScheduleConfiguration : IEntityTypeConfiguration<Schedule>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RestaurantManagement.Infrastructure.Common.Persistence.Migrations
+namespace RestaurantManagement.Hosting.Infrastructure.Persistence.Migrations
 {
     public partial class Initial : Migration
     {

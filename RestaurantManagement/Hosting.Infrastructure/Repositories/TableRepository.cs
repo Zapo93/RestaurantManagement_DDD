@@ -3,7 +3,6 @@ using RestaurantManagement.Hosting.Application;
 using RestaurantManagement.Common.Domain;
 using RestaurantManagement.Common.Infrastructure.Persistence;
 using RestaurantManagement.Hosting.Domain.Models;
-using RestaurantManagement.Infrastructure.Common.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RestaurantManagement.Infrastructure.Hosting.Repositories
+namespace RestaurantManagement.Hosting.Infrastructure.Repositories
 {
     internal class TableRepository : DataRepository<IHostingDbContext, Table>,
         ITableRepository

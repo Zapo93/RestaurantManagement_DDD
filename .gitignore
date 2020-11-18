@@ -49,3 +49,5 @@
 /RestaurantManagement/Hosting.Domain/obj
 /RestaurantManagement/Hosting.Application/obj
 /RestaurantManagement/Hosting.Application/bin
+/RestaurantManagement/Hosting.Infrastructure/obj
+/RestaurantManagement/Hosting.Infrastructure/bin

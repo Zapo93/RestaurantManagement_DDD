@@ -9,7 +9,6 @@ using RestaurantManagement.Serving.Application.Queries.GetDishes;
 using RestaurantManagement.Serving.Application.Queries.GetOrders;
 using RestaurantManagement.Serving.Domain.Exceptions;
 using RestaurantManagement.Serving.Domain.Models;
-using RestaurantManagement.Infrastructure;
 using RestaurantManagement.Tests.Mock;
 using System;
 using System.Collections.Generic;

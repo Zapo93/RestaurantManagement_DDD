@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RestaurantManagement.Hosting.Domain.Models;
 using static RestaurantManagement.Common.Domain.ModelConstants.StringConstants;
 
-namespace RestaurantManagement.Infrastructure.Hosting.Configuration
+namespace RestaurantManagement.Hosting.Infrastructure.Configuration
 {
     public class TableConfiguration : IEntityTypeConfiguration<Table>
     {

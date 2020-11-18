@@ -1,29 +1,23 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
 using RestaurantManagement.Common.Domain.Models;
+using RestaurantManagement.Common.Infrastructure;
 using RestaurantManagement.Hosting.Domain.Models;
-using RestaurantManagement.Infrastructure.Hosting;
-using RestaurantManagement.Infrastructure.Identity;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using RestaurantManagement.Common.Infrastructure;
 
-namespace RestaurantManagement.Infrastructure.Common.Persistence
+namespace RestaurantManagement.Hosting.Infrastructure.Persistence
 {
-    internal class RestaurantManagementDbContext : DbContext,
+    internal class HostingDbContext : DbContext,
         IHostingDbContext
     {
         private readonly Stack<object> savesChangesTracker;
         private readonly IEventDispatcher eventDispatcher;
 
-        public RestaurantManagementDbContext(
-            DbContextOptions<RestaurantManagementDbContext> options,
+        public HostingDbContext(
+            DbContextOptions<HostingDbContext> options,
             IEventDispatcher eventDispatcher)
             : base(options)
         {
@@ -33,7 +27,7 @@ namespace RestaurantManagement.Infrastructure.Common.Persistence
 
         public DbSet<Table> Tables { get; set; } = default!;
 
-        public DbSet<Reservation> Reservations{ get; set; } = default!;
+        public DbSet<Reservation> Reservations { get; set; } = default!;
 
         public DbSet<Schedule> Schedules { get; set; } = default!;
 

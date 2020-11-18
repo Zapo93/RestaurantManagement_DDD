@@ -9,7 +9,7 @@ using RestaurantManagement.Hosting.Application.Queries.Tables;
 using RestaurantManagement.Hosting.Domain;
 using RestaurantManagement.Hosting.Domain.Exceptions;
 using RestaurantManagement.Hosting.Domain.Models;
-using RestaurantManagement.Infrastructure;
+using RestaurantManagement.Hosting.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,7 @@ namespace RestaurantManagement.Tests
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
                 .AddHostingApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+                .AddHostingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
@@ -63,7 +63,7 @@ namespace RestaurantManagement.Tests
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
                 .AddHostingApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+                .AddHostingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
@@ -106,7 +106,7 @@ namespace RestaurantManagement.Tests
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
                 .AddHostingApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+                .AddHostingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
@@ -153,7 +153,7 @@ namespace RestaurantManagement.Tests
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
                 .AddHostingApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+                .AddHostingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
@@ -170,7 +170,7 @@ namespace RestaurantManagement.Tests
             IServiceCollection services = new ServiceCollection();
             services.AddHostingDomain()
                 .AddHostingApplication()
-                .AddInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
+                .AddHostingInfrastructure("Server=.;Database=RestaurantManagementSystem;Trusted_Connection=True;MultipleActiveResultSets=true", "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T");
             var serviceProviderFactory = new DefaultServiceProviderFactory();
 
             IServiceProvider serviceProvider = serviceProviderFactory.CreateServiceProvider(services);
