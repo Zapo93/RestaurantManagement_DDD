@@ -1,0 +1,2 @@
+﻿#To connect to the server in ssms without shutting down the pthre server use 127.0.0.1,1434 (yes with coma instead of : vfor the port)
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrongPassword12#!#' -p 1434:1433 -d mcr.microsoft.com/mssql/server:2019-latest

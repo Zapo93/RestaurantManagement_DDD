@@ -73,6 +73,14 @@ correct - See DeleteReservation Test.
 
 - Move the Authentication logic in Common.Web -------X
 
+- Create images for all microservices.
+
+- Add a Get Version request to all APIs
+
+- Create and configure DB container.
+
+- Add support for RabbitMQ in the EventDispatcher.
+
 - Add the Status Names to the Requests and DB
 
 - Add tests	

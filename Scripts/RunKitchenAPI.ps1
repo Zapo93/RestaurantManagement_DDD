@@ -1,0 +1,1 @@
+﻿docker run -p 56902:80 zapryanbekirski/restaurantmanagement_kitchenapi:0.1
