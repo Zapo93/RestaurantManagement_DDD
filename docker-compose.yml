@@ -30,6 +30,23 @@ services:
             - restaurantmanagement_network
         depends_on:
             - data
+            
+    identity:
+        container_name: identity_api
+        image: zapryanbekirski/restaurantmanagement_identityapi:0.1
+        build:
+            context: ./RestaurantManagement
+            dockerfile: ./Identity.API/Dockerfile
+        ports: 
+            - "56747:80"
+        environment:
+            - ApplicationSettings__Secret=S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantManagementSystem;User Id=sa; Password=yourStrongPassword12#!#;MultipleActiveResultSets=true
+        restart: on-failure
+        networks: 
+            - restaurantmanagement_network
+        depends_on:
+            - data
 
 networks:
     restaurantmanagement_network:

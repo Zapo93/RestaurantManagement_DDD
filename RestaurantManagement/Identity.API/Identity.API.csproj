@@ -4,7 +4,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>RestaurantManagement.Identity.API</RootNamespace>
     <Nullable>enable</Nullable>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Web\Common.Web.csproj" />
