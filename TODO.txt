@@ -78,11 +78,11 @@ correct - See DeleteReservation Test.
 	= Connect the DB to a container with API---------X
 	= Add a volume for persistence ---------X
 
-- Add the connections strings as environment variables in the docker-compose file.
+- Add the connections strings as environment variables in the docker-compose file. -------------X
+
+- Add all other Microservices to the docker compose configuration. -----------X
 
 - Add a Get Version request to all APIs
-
-- Add all other Microservices to the docker compose configuration.
 
 - Add support for RabbitMQ in the EventDispatcher.
 
