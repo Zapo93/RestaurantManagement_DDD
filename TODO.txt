@@ -73,14 +73,16 @@ correct - See DeleteReservation Test.
 
 - Move the Authentication logic in Common.Web -------X
 
-- Create images for all microservices.
+- Create and configure DB container. --------X
+	= Add virtual network and connect it --X
+	= Connect the DB to a container with API---------X
+	= Add a volume for persistence ---------X
+
+- Add the connections strings as environment variables in the docker-compose file.
 
 - Add a Get Version request to all APIs
 
-- Create and configure DB container.
-	= Add virtual network and connect it --X
-	= Connect the DB to a container with API---------X
-	= Add a volume for persistence
+- Add all other Microservices to the docker compose configuration.
 
 - Add support for RabbitMQ in the EventDispatcher.
 

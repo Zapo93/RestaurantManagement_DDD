@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+
+    data:
+        container_name: sqlserver
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        ports: 
+            - "1434:1433"
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=yourStrongPassword12#!#
+        volumes: 
+            - sqldata:/var/opt/mssql 
+        networks: 
+            - restaurantmanagement_network
+    
+    kitchen:
+        container_name: kitchen_api
+        image: zapryanbekirski/restaurantmanagement_kitchenapi:0.1
+        build:
+            context: ./RestaurantManagement
+            dockerfile: ./Kitchen.API/Dockerfile
+        ports: 
+            - "56902:80"
+        restart: on-failure
+        networks: 
+            - restaurantmanagement_network
+        depends_on:
+            - data
+
+networks:
+    restaurantmanagement_network:
+
+volumes:
+    sqldata:
