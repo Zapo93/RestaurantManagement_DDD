@@ -1,0 +1,2 @@
+﻿docker network ls
+docker network inspect restaurantmanagement_network

@@ -78,6 +78,9 @@ correct - See DeleteReservation Test.
 - Add a Get Version request to all APIs
 
 - Create and configure DB container.
+	= Add virtual network and connect it --X
+	= Connect the DB to a container with API---------X
+	= Add a volume for persistence
 
 - Add support for RabbitMQ in the EventDispatcher.
 
