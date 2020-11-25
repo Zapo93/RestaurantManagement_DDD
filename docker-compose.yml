@@ -23,6 +23,8 @@ services:
             dockerfile: ./Kitchen.API/Dockerfile
         ports: 
             - "56902:80"
+        environment:
+            - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantManagementSystem;User Id=sa; Password=yourStrongPassword12#!#;MultipleActiveResultSets=true
         restart: on-failure
         networks: 
             - restaurantmanagement_network
