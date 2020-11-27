@@ -14,6 +14,19 @@ services:
             - sqldata:/var/opt/mssql 
         networks: 
             - restaurantmanagement_network
+            
+    messages:
+        container_name: rabbitmq
+        image: rabbitmq:3-management
+        ports: 
+            - "15672:15672"
+            - "5672:5672"
+        hostname: "rabbitmq"
+        environment:
+            - RABBITMQ_DEFAULT_USER=rabbitmquser
+            - RABBITMQ_DEFAULT_PASS=rabbitmqPassword12!
+        networks: 
+            - restaurantmanagement_network
     
     kitchen:
         container_name: kitchen_api
@@ -25,6 +38,9 @@ services:
             - "56902:80"
         environment:
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantManagementSystem;User Id=sa; Password=yourStrongPassword12#!#;MultipleActiveResultSets=true
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmqPassword12!
         restart: on-failure
         networks: 
             - restaurantmanagement_network
@@ -42,6 +58,9 @@ services:
         environment:
             - ApplicationSettings__Secret=S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantManagementSystem;User Id=sa; Password=yourStrongPassword12#!#;MultipleActiveResultSets=true
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmqPassword12!
         restart: on-failure
         networks: 
             - restaurantmanagement_network
@@ -59,6 +78,9 @@ services:
         environment:
             - ApplicationSettings__Secret=S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantManagementSystem;User Id=sa; Password=yourStrongPassword12#!#;MultipleActiveResultSets=true
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmqPassword12!
         restart: on-failure
         networks: 
             - restaurantmanagement_network
@@ -76,6 +98,9 @@ services:
         environment:
             - ApplicationSettings__Secret=S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T
             - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=RestaurantManagementSystem;User Id=sa; Password=yourStrongPassword12#!#;MultipleActiveResultSets=true
+            - MessageQueueSettings__Host=rabbitmq
+            - MessageQueueSettings__UserName=rabbitmquser
+            - MessageQueueSettings__Password=rabbitmqPassword12!
         restart: on-failure
         networks: 
             - restaurantmanagement_network
