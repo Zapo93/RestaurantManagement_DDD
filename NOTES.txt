@@ -10,3 +10,20 @@
 	If you execute the script in the Kitchen.API folder, powershll wont find the Kitchen.API forder since it is in the root directory. 
 	To solve this you must execute the script in the root dir, with option for custom Dockerfile
 	= docker build . -t testbuild -f Kitchen.API/Dockerfile
+	
+- You can not use the web managements interface of rabbit mq to debug mass transit because mass transit wraps 
+the messages in an Envelope.
+
+- To connect to a rabbitMQ container from a project run in IIS Express outside of a container - i.e. for
+debugging, you must set the host to localhost instead of the hostname set at the creation of the container.
+
+- If you start a project in docker for debugging through Visual Studio you should add it to the docker 
+v-network manually if the network is required.
+
+- If you make queues with different names, but publish the same message type, both queues will receive it.
+If you make consumers in 2 apps for the same queue, when you publish a message it will be distributed to a consumers
+on a random principle.
+
+- If you change the Consumer`s Message type you must restart the RabbitMq server, bacause a connection can not 
+be established after this. This may be caused by predefined exchanges with the old Message type, which must be
+deleted, but I don`t know details about the working of the MassTransit. Its just easier to recreate the container.

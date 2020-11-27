@@ -1,0 +1,1 @@
+﻿docker network connect restaurantmanagement_network Kitchen.API

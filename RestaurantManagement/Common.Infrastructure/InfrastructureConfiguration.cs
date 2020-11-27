@@ -1,8 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GreenPipes;
+using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RestaurantManagement.Common.Application;
 using RestaurantManagement.Common.Application.Contracts;
+using RestaurantManagement.Common.Infrastructure.Events;
 using RestaurantManagement.Common.Infrastructure.Persistence;
 using System;
 using System.Collections.Generic;
@@ -26,7 +29,8 @@ namespace RestaurantManagement.Common.Infrastructure
             return services
                     .AddRepositories(callingAssembly)
                     .AddDatabase<TDbContext>(configuration)
-                    .AddTransient<IEventDispatcher, EventDispatcher>();
+                    .AddTransient<IEventDispatcher, EventDispatcher>()
+                    .AddMessaging(configuration);
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -75,5 +79,61 @@ namespace RestaurantManagement.Common.Infrastructure
                         dbConnectionString,
                         sqlServer => sqlServer
                             .MigrationsAssembly(typeof(TDbContext).Assembly.FullName)), ServiceLifetime.Transient); //,ServiceLifetime.Transient
+
+        private static IServiceCollection AddMessaging(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services
+                .AddTransient<IPublisher, Publisher>();
+
+            var messageQueueSettings = GetMessageQueueSettings(configuration);
+
+            Type eventMessageConsumerType = typeof(EventMessageConsumer);
+
+            services
+                .AddMassTransit(mt =>
+                {
+                    mt.AddConsumer(eventMessageConsumerType);
+
+                    mt.AddBus(context => Bus.Factory.CreateUsingRabbitMq(rmq =>
+                    {
+                        rmq.Host(messageQueueSettings.Host, host =>
+                        {
+                            host.Username(messageQueueSettings.UserName);
+                            host.Password(messageQueueSettings.Password);
+                        });
+
+                        rmq.UseHealthCheck(context);
+
+                        var queueName = GetQueueName(eventMessageConsumerType);
+                        rmq.ReceiveEndpoint(queueName, endpoint =>
+                        {
+                            endpoint.PrefetchCount = 6;
+                            endpoint.UseMessageRetry(retry => retry.Interval(5, 200));
+
+                            endpoint.ConfigureConsumer(context, eventMessageConsumerType);
+                        });
+                    }));
+                })
+                .AddMassTransitHostedService();
+
+            return services;
+        }
+
+        private static string GetQueueName(Type consumerType) 
+        {
+            var assemblyShortName = Assembly.GetEntryAssembly().FullName.Split(',')[0];
+            return assemblyShortName + "." + consumerType.Name;
+        }
+
+        private static MessageQueueSettings GetMessageQueueSettings(IConfiguration configuration)
+        {
+            var settings = configuration.GetSection(nameof(MessageQueueSettings));
+
+            return new MessageQueueSettings(
+                settings.GetValue<string>(nameof(MessageQueueSettings.Host)),
+                settings.GetValue<string>(nameof(MessageQueueSettings.UserName)),
+                settings.GetValue<string>(nameof(MessageQueueSettings.Password)));
+        }
     }
 }

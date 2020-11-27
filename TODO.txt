@@ -82,9 +82,10 @@ correct - See DeleteReservation Test.
 
 - Add all other Microservices to the docker compose configuration. -----------X
 
-- Add a Get Version request to all APIs
+- Add support for RabbitMQ in the EventDispatcher. ----X
+	= Make all consumers receive the same universal message.
 
-- Add support for RabbitMQ in the EventDispatcher.
+- Add a Get Version request to all APIs
 
 - Add the Status Names to the Requests and DB
 

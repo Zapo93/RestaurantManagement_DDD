@@ -3,8 +3,10 @@ using System.Collections.Concurrent;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using RestaurantManagement.Common.Application.Contracts;
 using RestaurantManagement.Common.Domain;
+using RestaurantManagement.Common.Infrastructure.Events;
 
 namespace RestaurantManagement.Common.Infrastructure
 {
@@ -24,12 +26,27 @@ namespace RestaurantManagement.Common.Infrastructure
         private static readonly Type EventHandlerFuncType = typeof(Func<Func<object, object, Task>>);
 
         private readonly IServiceProvider serviceProvider;
+        private readonly IPublisher eventPublisher;
 
-        public EventDispatcher(IServiceProvider serviceProvider)
-            => this.serviceProvider = serviceProvider;
+        public EventDispatcher(IServiceProvider serviceProvider, IPublisher eventPublisher)
+        {
+            this.serviceProvider = serviceProvider;
+            this.eventPublisher = eventPublisher;
+        }
 
         public async Task Dispatch(IDomainEvent domainEvent)
         {
+            EventMessage message = new EventMessage();
+            message.EventType = domainEvent.GetType();
+            message.EventPayload = JsonConvert.SerializeObject(domainEvent);
+
+            await eventPublisher.Publish(message);
+        }
+
+        public async Task Handle(EventMessage eventMessage)
+        {
+            IDomainEvent domainEvent = GetDomainEventFromEventMessage(eventMessage);
+
             var eventType = domainEvent.GetType();
 
             var handlerTypes = HandlerTypesCache.GetOrAdd(
@@ -54,6 +71,12 @@ namespace RestaurantManagement.Common.Infrastructure
 
                 await eventHandlerDelegate(domainEvent, eventHandler);
             }
+        }
+
+        private IDomainEvent GetDomainEventFromEventMessage(EventMessage eventMessage) 
+        {
+            IDomainEvent domainEvent = (IDomainEvent)JsonConvert.DeserializeObject(eventMessage.EventPayload, eventMessage.EventType);
+            return domainEvent;
         }
 
         private static Func<object, object, Task> MakeDelegate<TEvent, TEventHandler>()
