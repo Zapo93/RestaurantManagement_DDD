@@ -30,7 +30,7 @@ services:
     
     kitchen:
         container_name: kitchen_api
-        image: zapryanbekirski/restaurantmanagement_kitchenapi:0.1
+        image: zapryanbekirski/restaurantmanagement_kitchenapi
         build:
             context: ./RestaurantManagement
             dockerfile: ./Kitchen.API/Dockerfile
@@ -49,7 +49,7 @@ services:
             
     identity:
         container_name: identity_api
-        image: zapryanbekirski/restaurantmanagement_identityapi:0.1
+        image: zapryanbekirski/restaurantmanagement_identityapi
         build:
             context: ./RestaurantManagement
             dockerfile: ./Identity.API/Dockerfile
@@ -69,7 +69,7 @@ services:
             
     serving:
         container_name: serving_api
-        image: zapryanbekirski/restaurantmanagement_servingapi:0.1
+        image: zapryanbekirski/restaurantmanagement_servingapi
         build:
             context: ./RestaurantManagement
             dockerfile: ./Serving.API/Dockerfile
@@ -89,7 +89,7 @@ services:
             
     hosting:
         container_name: hosting_api
-        image: zapryanbekirski/restaurantmanagement_hostingapi:0.1
+        image: zapryanbekirski/restaurantmanagement_hostingapi
         build:
             context: ./RestaurantManagement
             dockerfile: ./Hosting.API/Dockerfile
