@@ -1,6 +1,6 @@
 ﻿$count = 0
 do {
-    Start-Sleep -Seconds 10
+    Start-Sleep -Seconds 30
     $count++
     Write-Output "[$env:STAGE_NAME] Check if Containers are started [Attempt: $count]"
     
