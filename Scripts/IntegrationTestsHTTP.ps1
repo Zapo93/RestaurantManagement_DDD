@@ -1,15 +1,19 @@
 ﻿$count = 0
 do {
-    Start-Sleep -Seconds 30
+    Start-Sleep -Seconds 10
     $count++
     Write-Output "[$env:STAGE_NAME] Check if Containers are started [Attempt: $count]"
     
-    $testStart = Invoke-WebRequest -Uri http://localhost:56902/Kitchen/Recipes -UseBasicParsing
+    try
+    {
+        $testStart = Invoke-WebRequest -Uri http://localhost:56902/Kitchen/Recipes -UseBasicParsing
     
-    if ($testStart.statuscode -eq '200') {
-        $started = $true
-        Write-Output "[$env:STAGE_NAME] Containers are started - SUCCESS!"
+        if ($testStart.statuscode -eq '200') {
+            $started = $true
+            Write-Output "[$env:STAGE_NAME] Containers are started - SUCCESS!"
+        }
     }
+    catch{}
     
 } until ($started -or ($count -eq 3))
 
@@ -148,6 +152,9 @@ catch
     exit 1
 }
 
+###Wait for connection to RabbitMQ to initialize
+Start-Sleep -Seconds 5
+
 #Get Dishes - the dish corresponding to the recipe should be with the same activation status as the recipe.
 try
 {
@@ -191,6 +198,9 @@ catch
     Write-Output "[$env:STAGE_NAME] Problem With Changing recipe statuss" + $_
     exit 1
 }
+
+###Wait for message to arrive for sure
+Start-Sleep -Seconds 1
 
 #Get Dishes - the dish corresponding to the recipe should be with the same activation status as the recipe.
 try
