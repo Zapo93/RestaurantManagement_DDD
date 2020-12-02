@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-bus
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5672
+    targetPort: 5672
+  selector:
+    messagebus: rabbitmq
+
+---
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rabbitmq
+spec:
+  serviceName: rabbitmq
+  selector:
+    matchLabels: 
+      messagebus: rabbitmq
+  template:
+    metadata:
+      labels:
+        messagebus: rabbitmq
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: rabbitmq
+        image: rabbitmq:3-management
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5672
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: "rabbitmquser"
+        - name: RABBITMQ_DEFAULT_PASS
+          value: "rabbitmqPassword12!"
+    

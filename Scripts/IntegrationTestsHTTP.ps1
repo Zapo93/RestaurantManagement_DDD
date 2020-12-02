@@ -1,6 +1,6 @@
 ﻿$count = 0
 do {
-    Start-Sleep -Seconds 10
+    Start-Sleep -Seconds 120
     $count++
     Write-Output "[$env:STAGE_NAME] Check if Containers are started [Attempt: $count]"
     
@@ -32,7 +32,7 @@ try
 }
 catch
 {
-    Write-Output "[$env:STAGE_NAME] Problem With Kitchen.API"
+    Write-Output "[$env:STAGE_NAME] Problem With Kitchen.API" + $_
     exit 1
 }
 
@@ -46,7 +46,7 @@ try
 }
 catch
 {
-    Write-Output "[$env:STAGE_NAME] Problem With Serving.API"
+    Write-Output "[$env:STAGE_NAME] Problem With Serving.API" + $_
     exit 1
 }
 
@@ -60,7 +60,7 @@ try
 }
 catch
 {
-    Write-Output "[$env:STAGE_NAME] Problem With Hosting.API"
+    Write-Output "[$env:STAGE_NAME] Problem With Hosting.API" + $_
     exit 1
 }
 

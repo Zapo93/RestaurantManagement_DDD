@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: identity-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 56747
+    targetPort: 80
+  selector:
+    web-api: identity-api
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity-api
+spec:
+  selector:
+    matchLabels:
+      web-api: identity-api
+  template:
+    metadata:
+      labels:
+        web-api: identity-api
+    spec:
+      containers:
+      - name: identity-api
+        image: zapryanbekirski/restaurantmanagement_identityapi:0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "250m"
+        env:
+        - name: ConnectionStrings__DefaultConnection
+          value: "Server=sqlserver;Database=RestaurantManagementSystem;User Id=sa; Password=yourStrongPassword12#!#;MultipleActiveResultSets=true"
+        - name: MessageQueueSettings__Host
+          value: "event-bus"
+        - name: MessageQueueSettings__UserName
+          value: "rabbitmquser"
+        - name: MessageQueueSettings__Password
+          value: "rabbitmqPassword12!"
+        - name: ApplicationSettings__Secret
+          value: "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T"
+     

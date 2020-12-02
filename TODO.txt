@@ -85,12 +85,22 @@ correct - See DeleteReservation Test.
 - Add support for RabbitMQ in the EventDispatcher. ----X
 	= Make all consumers receive the same universal message.
 
+- See the branching strategy again to revise the steps of the plan if needed. It is in the Jenkins video -
+	video #2 around 2nd hour and 15 min.
+- See the way to make volumes in local environment - it is mentioned while explaining static volumes
+- See rolling updates in the Advanced Clusterization - it is before the midpoint of the video
+- See persisiting volumes in the Advanced Clusterization ot is after the midpoint of the video
+- See configure kubectl command for changing the connection from local cluster to cloud cluster - in advanced clusterization video around 2h 51m
+- See putting it all together for local deploy of cluster and putting it all together - in advanced clusterization around 2h 50min
+- The DB requires 2gb ram so you need a bigger nodes on the dev cluster.
+
 - Plan for Jenkins
 	= Make Development Branch and after that push all changes to it only.
 	= Jenkins file steps:
 		= build all images
 		= run images in docker from docker compose file.
 		= test images with a powershell test script
+		= push the images to docker hub with tag vx.x_dev for example
 		= run images in local kubernetes (when the kubernetes config is ready)
 		= test images with a powershell test script. If possible reuse the existing one
 		= push images to docker hub
