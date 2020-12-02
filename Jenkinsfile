@@ -30,7 +30,7 @@ pipeline {
 	    }
       }
     }
-	stage('Stop Containers') {
+	stage('Stop Containers? ACTION REQUIRED') {
       steps {
 		input(message:'Stop Containers?')
         powershell(script: 'docker-compose down')    
@@ -74,7 +74,7 @@ pipeline {
 	    }
       }
     }
-	stage('Clear local Kubernetes cluster') {
+	stage('Clear local Kubernetes cluster? ACTION REQUIRED') {
       steps {
 		input(message:'Clear local Kubernetes cluster?')
         powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfig.ps1')
