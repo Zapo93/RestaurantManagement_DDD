@@ -39,7 +39,7 @@ pipeline {
 	stage('Push Development Images') {
       steps {
         script {
-          docker.withRegistry('https://index.docker.io/v1/', 'DockerHub') {
+          docker.withRegistry('https://index.docker.io/v1/', 'DockerHubCredentials') {
             def kitchen_image = docker.image("zapryanbekirski/restaurantmanagement_kitchenapi")
             //kitchen_image.push("1.${env.BUILD_ID}_dev")
 			kitchen_image.push("0.1")
