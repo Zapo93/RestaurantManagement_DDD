@@ -61,7 +61,7 @@ pipeline {
 		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesCluster.ps1')
       }
     }
-	stage('Execute integration tests') {
+	stage('Execute local kubernetes integration tests') {
       steps {
         powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
       }
