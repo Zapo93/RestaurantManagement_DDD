@@ -58,7 +58,7 @@ pipeline {
     } 
 	stage('Deploy local Kubernetes cluster') {
       steps {
-		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesCluster.ps1')
+		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1)
       }
     }
 	stage('Execute local kubernetes integration tests') {
@@ -77,7 +77,7 @@ pipeline {
 	stage('Clear local Kubernetes cluster? ACTION REQUIRED') {
       steps {
 		input(message:'Clear local Kubernetes cluster?')
-        powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfig.ps1')
+        powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
       }
     }
   }
