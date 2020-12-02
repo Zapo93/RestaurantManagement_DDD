@@ -94,6 +94,8 @@ correct - See DeleteReservation Test.
 - See putting it all together for local deploy of cluster and putting it all together - in advanced clusterization around 2h 50min
 - The DB requires 2gb ram so you need a bigger nodes on the dev cluster.
 
+- Figure out how to deal with the versions in the Jenkins file.
+
 - Plan for Jenkins
 	= Make Development Branch and after that push all changes to it only.
 	= Jenkins file steps:
