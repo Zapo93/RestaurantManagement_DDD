@@ -58,7 +58,7 @@ pipeline {
     } 
 	stage('Deploy local Kubernetes cluster') {
       steps {
-		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1)
+		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
       }
     }
 	stage('Execute local kubernetes integration tests') {
