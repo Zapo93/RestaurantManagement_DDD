@@ -54,7 +54,10 @@ spec:
         - name: ACCEPT_EULA
           value: "Y"
         - name: SA_PASSWORD
-          value: "yourStrongPassword12#!#"
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: database-sa-password
         volumeMounts:
         - name: sqldata
           mountPath: /var/opt/mssql

@@ -37,13 +37,28 @@ spec:
             cpu: "250m"
         env:
         - name: ConnectionStrings__DefaultConnection
-          value: "Server=sqlserver;Database=RestaurantManagementSystem;User Id=sa; Password=yourStrongPassword12#!#;MultipleActiveResultSets=true"
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: database-connection-string
         - name: MessageQueueSettings__Host
-          value: "event-bus"
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: event-bus-host
         - name: MessageQueueSettings__UserName
-          value: "rabbitmquser"
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: event-bus-user
         - name: MessageQueueSettings__Password
-          value: "rabbitmqPassword12!"
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: event-bus-password
         - name: ApplicationSettings__Secret
-          value: "S0M3 M4G1C UN1C0RNS G3N3R4T3D TH1S S3CR3T"
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: security-token-secret
      

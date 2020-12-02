@@ -39,7 +39,13 @@ spec:
             cpu: "500m"
         env:
         - name: RABBITMQ_DEFAULT_USER
-          value: "rabbitmquser"
+          valueFrom:
+            configMapKeyRef:
+              name: environment-settings
+              key: event-bus-user
         - name: RABBITMQ_DEFAULT_PASS
-          value: "rabbitmqPassword12!"
+          valueFrom:
+            secretKeyRef:
+              name: environment-secrets
+              key: event-bus-password
     
