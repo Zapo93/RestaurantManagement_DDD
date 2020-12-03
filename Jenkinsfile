@@ -80,5 +80,37 @@ pipeline {
         powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
       }
     }
+	
+	stage('Deploy cloud Kubernetes cluster') {
+      steps {
+		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
+		}
+      }
+    }
+	stage('Execute cloud kubernetes integration tests') {
+      steps {
+		input(message:'Start tests? ACTION REQUIRED')
+		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+			powershell(script: './Scripts/DevCloudIntegrationTestsHTTP.ps1')   
+		} 
+      }
+	  post {
+	    success {
+	      echo "Tests successfull! Nice! :)"
+	    }
+	    failure {
+	      echo "Tests failed! Back to work! :("
+	    }
+      }
+    }
+	stage('Clear cloud Kubernetes cluster? ACTION REQUIRED') {
+      steps {
+		input(message:'Clear local Kubernetes cluster?')
+		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+			powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
+		}
+      }
+    }
   }
 }

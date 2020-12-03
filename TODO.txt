@@ -107,6 +107,8 @@ See Putting it all together vodeo at 2hrs.48min
 
 - Figure out how to deal with the versions in the Jenkins file.
 
+- Add parameters to Jenkinsfile. I.E. for cloud cluster endpoint.
+
 - Plan for Jenkins
 	= Make Development Branch and after that push all changes to it only.
 	= Jenkins file steps:

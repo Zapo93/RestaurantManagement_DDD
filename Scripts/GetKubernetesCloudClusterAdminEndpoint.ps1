@@ -1,0 +1,2 @@
+﻿# gcloud container clusters describe {cluster-name} --zone={cluster-zone} --format"value(endpoint)"
+gcloud container clusters describe restaurant-management-dev --zone=us-central1-c --format "value(endpoint)"
