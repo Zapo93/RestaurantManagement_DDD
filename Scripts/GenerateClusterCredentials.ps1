@@ -10,4 +10,4 @@ kubectl create rolebinding jenkins-robot-binding --clusterrole=cluster-admin --s
 kubectl describe sa jenkins-robot
 
 # Retrieve the token and decode it using base64.
-$ kubectl get secrets jenkins-robot-token-tkv9s
+kubectl describe secret jenkins-robot-token-tkv9s
