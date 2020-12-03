@@ -40,6 +40,8 @@ spec:
         database: common
     spec:
       terminationGracePeriodSeconds: 60
+      securityContext:
+        fsGroup: 10001
       containers:
       - name: sqlserver
         image: mcr.microsoft.com/mssql/server:2019-latest
@@ -49,7 +51,7 @@ spec:
         resources:
           limits:
             memory: "2Gi"
-            cpu: "1000m"
+            cpu: "500m"
         env:
         - name: ACCEPT_EULA
           value: "Y"

@@ -93,6 +93,17 @@ correct - See DeleteReservation Test.
 - See configure kubectl command for changing the connection from local cluster to cloud cluster - in advanced clusterization video around 2h 51m
 - See putting it all together for local deploy of cluster and putting it all together - in advanced clusterization around 2h 50min
 - The DB requires 2gb ram so you need a bigger nodes on the dev cluster.
+- See configuring Jenkins` connection to kubernetes cluster for local cluster. 
+See Putting it all together vodeo at 2hrs.48min
+- See the 2 ways to change the images` version/tags in the video Putting it all together.
+
+- Add security context to the kubernetes configuration for the DB and other objects if needed
+	= See video Putting it all together 1h21min
+	
+- Make the database service headless, by changing ClusterIp to none. See configuration from courses.
+	= Headless means that there is no "Load Balancer" proxy and the client pods directly connect to the target 
+	pod
+	= Do this for RabbitMq also
 
 - Figure out how to deal with the versions in the Jenkins file.
 
@@ -102,10 +113,10 @@ correct - See DeleteReservation Test.
 		= build all images
 		= run images in docker from docker compose file.
 		= test images with a powershell test script
-		= push the images to docker hub with tag vx.x_dev for example
+		= push the images to docker hub with tag vx.x-dev for example
 		= run images in local kubernetes (when the kubernetes config is ready)
 		= test images with a powershell test script. If possible reuse the existing one
-		= push images to docker hub
+		= push images to docker hub - not needed - they are already pushed 
 		= deploy to development environment in cloud
 		= test deployment using script
 		= merge and push to master. Try doing it using jenkins.
