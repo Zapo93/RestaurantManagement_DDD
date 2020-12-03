@@ -9,17 +9,17 @@ pipeline {
 	stage('Docker Build') {
 		steps {
 			powershell(script: 'docker-compose build')     
-			powershell(script: 'docker images -a')
+			//powershell(script: 'docker images -a')
 		}
 	}
 	stage('Docker Run Locally') {
       steps {
-        powershell(script: 'docker-compose up -d')    
+        //powershell(script: 'docker-compose up -d')    
       }
     }
 	stage('Execute integration tests') {
       steps {
-        powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
+        //powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
       }
 	  post {
 	    success {
@@ -32,8 +32,8 @@ pipeline {
     }
 	stage('Stop Containers? ACTION REQUIRED') {
       steps {
-		input(message:'Stop Containers?')
-        powershell(script: 'docker-compose down')    
+		//input(message:'Stop Containers?')
+        //powershell(script: 'docker-compose down')    
       }
     }
 	stage('Push Development Images') {
@@ -58,12 +58,12 @@ pipeline {
     } 
 	stage('Deploy local Kubernetes cluster') {
       steps {
-		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
+		//powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
       }
     }
 	stage('Execute local kubernetes integration tests') {
       steps {
-        powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
+        //powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
       }
 	  post {
 	    success {
@@ -76,16 +76,15 @@ pipeline {
     }
 	stage('Clear local Kubernetes cluster? ACTION REQUIRED') {
       steps {
-		input(message:'Clear local Kubernetes cluster?')
-        powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
+		//input(message:'Clear local Kubernetes cluster?')
+        //powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
       }
     }
 	
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
 		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
-			sh 'kubectl get pods'
-			//powershell(script:'kubectl get pods')
+			powershell(script:'kubectl get pods')
 			//powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		}
       }
