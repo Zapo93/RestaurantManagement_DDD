@@ -34,8 +34,7 @@ pipeline {
     }
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
-		powershell(script:'gcloud container clusters get-credentials restaurant-management-dev --zone us-central1-c --project restaurantmanagement')
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+		withKubeConfig([credentialsId: 'NoSuchCreds', serverUrl: 'https://35.223.60.82']) {
 			powershell(script:'kubectl get pods')
 			//powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		}
