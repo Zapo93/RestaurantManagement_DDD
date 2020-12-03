@@ -12,30 +12,6 @@ pipeline {
 			//powershell(script: 'docker images -a')
 		}
 	}
-	stage('Docker Run Locally') {
-      steps {
-        //powershell(script: 'docker-compose up -d')    
-      }
-    }
-	stage('Execute integration tests') {
-      steps {
-        //powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
-      }
-	  post {
-	    success {
-	      echo "Tests successfull! Nice! :)"
-	    }
-	    failure {
-	      echo "Tests failed! Back to work! :("
-	    }
-      }
-    }
-	stage('Stop Containers? ACTION REQUIRED') {
-      steps {
-		//input(message:'Stop Containers?')
-        //powershell(script: 'docker-compose down')    
-      }
-    }
 	stage('Push Development Images') {
       steps {
         script {
@@ -55,32 +31,7 @@ pipeline {
           }
         }
       }
-    } 
-	stage('Deploy local Kubernetes cluster') {
-      steps {
-		//powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
-      }
     }
-	stage('Execute local kubernetes integration tests') {
-      steps {
-        //powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
-      }
-	  post {
-	    success {
-	      echo "Tests successfull! Nice! :)"
-	    }
-	    failure {
-	      echo "Tests failed! Back to work! :("
-	    }
-      }
-    }
-	stage('Clear local Kubernetes cluster? ACTION REQUIRED') {
-      steps {
-		//input(message:'Clear local Kubernetes cluster?')
-        //powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
-      }
-    }
-	
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
 		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
