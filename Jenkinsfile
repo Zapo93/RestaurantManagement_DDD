@@ -34,8 +34,10 @@ pipeline {
     }
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
-		withKubeConfig([credentialsId: 'jenkins-robot', serverUrl: 'https://35.223.60.82', namespace: 'default']) {
+		withKubeConfig([credentialsId: 'jenkins-robot', serverUrl: 'https://35.223.60.82', namespace: 'default', clusterName:'restaurant-management-dev']) {
 			powershell(script: 'kubectl config view')
+			echo "Using temporary file '${env.KUBECONFIG}'"
+			input(message:'Continue?')
 			powershell(script: 'kubectl apply -f ./.k8s/Environment/LocalEnvironmentVariables.yml')
 			//powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		}
@@ -44,7 +46,7 @@ pipeline {
 	stage('Execute cloud kubernetes integration tests') {
       steps {
 		input(message:'Start tests? ACTION REQUIRED')
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {		
 			powershell(script: './Scripts/DevCloudIntegrationTestsHTTP.ps1')   
 		} 
       }
