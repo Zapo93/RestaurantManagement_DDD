@@ -34,8 +34,8 @@ pipeline {
     }
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
-			powershell(script: 'kubectl apply -f ./.k8s/Environment/LocalEnvironmentVariables.yml')
+		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://192.23.123.32']) {
+			powershell(script: 'kubectl get pods')
 			//powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		}
       }
