@@ -34,7 +34,7 @@ pipeline {
     }
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
-		withKubeConfig([credentialsId: 'jenkins-robot', namespace: 'default']) {
+		withKubeConfig([credentialsId: 'jenkins-robot', serverUrl: 'https://35.223.60.82', namespace: 'default']) {
 			powershell(script: 'kubectl config view')
 			powershell(script: 'kubectl apply -f ./.k8s/Environment/LocalEnvironmentVariables.yml')
 			//powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
