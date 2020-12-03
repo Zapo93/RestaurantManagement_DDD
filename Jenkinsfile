@@ -44,6 +44,7 @@ pipeline {
       steps {
 		input(message:'Start tests? ACTION REQUIRED')
 		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+			powershell(script:'gcloud container clusters get-credentials restaurant-management-dev --zone us-central1-c --project restaurantmanagement')
 			powershell(script: './Scripts/DevCloudIntegrationTestsHTTP.ps1')   
 		} 
       }
