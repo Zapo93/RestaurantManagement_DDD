@@ -27,3 +27,6 @@ on a random principle.
 - If you change the Consumer`s Message type you must restart the RabbitMq server, bacause a connection can not 
 be established after this. This may be caused by predefined exchanges with the old Message type, which must be
 deleted, but I don`t know details about the working of the MassTransit. Its just easier to recreate the container.
+
+- The token for withKubeConfig MUST be copied in PURE NOTEPAD NOT NOTEPAD++ otherwise its wrong. If you have 
+problems you could check it by including the input step and going to the path printed by the echo command.
