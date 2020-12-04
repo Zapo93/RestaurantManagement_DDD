@@ -48,7 +48,7 @@ pipeline {
     }
 	stage('Stop Containers? ACTION REQUIRED') {
       steps {
-		input(message:'Stop Containers?')
+		//input(message:'Stop Containers?')
         powershell(script: 'docker-compose down')    
       }
     }
@@ -84,13 +84,13 @@ pipeline {
     }
 	stage('Clear local Kubernetes cluster? ACTION REQUIRED') {
       steps {
-		input(message:'Clear local Kubernetes cluster?')
+		//input(message:'Clear local Kubernetes cluster?')
         powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
       }
     }
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
-		withKubeConfig([credentialsId: params.DevClusterCredentials, serverUrl: 'https://{params.DevClusterIP}']) {
+		withKubeConfig([credentialsId: params.DevClusterCredentials, serverUrl: 'https://${params.DevClusterIP}']) {
 			powershell(script: 'kubectl config view')
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
