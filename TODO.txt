@@ -18,14 +18,14 @@
 	This is done so the method could generate an event which generates a request in the kitchen bounded context.
 	= Add items to order ----------X
 	
-- Add events
+- Add events ------X
 	= OrderItemsAdded - the request reference id is created in the serving bounded context and is set to the kitchen bounded context ----------X
 	with the event in order to be used later for reference from the kitchen domain
 	= Request status changed----------X
 	= Order status changed - contains order id, request id, table id, and assignee id and is primarily used to notify the assignee for the change.
 	= Recipe activated/deactivated - the corresponding dish must be deactivated/activated---------X
 	
-- Add event handlers
+- Add event handlers ----------X
 	= OrderItemsAdded - the kitchen bounded context handles this by creating a request -----X
 	with the eventId as a reference to the order.
 	= RequestStatusChanged - the serving bounded context calls method to change the status of the order, -------X
@@ -87,27 +87,27 @@ correct - See DeleteReservation Test.
 
 - See the branching strategy again to revise the steps of the plan if needed. It is in the Jenkins video -
 	video #2 around 2nd hour and 15 min.
-- See the way to make volumes in local environment - it is mentioned while explaining static volumes
-- See rolling updates in the Advanced Clusterization - it is before the midpoint of the video
-- See persisiting volumes in the Advanced Clusterization ot is after the midpoint of the video
-- See configure kubectl command for changing the connection from local cluster to cloud cluster - in advanced clusterization video around 2h 51m
+- See the way to make volumes in local environment - it is mentioned while explaining static volumes -------X
+- See rolling updates in the Advanced Clusterization - it is before the midpoint of the video ---------X
+- See persisiting volumes in the Advanced Clusterization ot is after the midpoint of the video ------X
+- See configure kubectl command for changing the connection from local cluster to cloud cluster - in advanced clusterization video around 2h 51m --------X
 - See putting it all together for local deploy of cluster and putting it all together - in advanced clusterization around 2h 50min
 - The DB requires 2gb ram so you need a bigger nodes on the dev cluster.
-- See configuring Jenkins` connection to kubernetes cluster for local cluster. 
+- See configuring Jenkins` connection to kubernetes cluster for local cluster.  ------X
 See Putting it all together vodeo at 2hrs.48min
-- See the 2 ways to change the images` version/tags in the video Putting it all together.
+- See the 2 ways to change the images` version/tags in the video Putting it all together. -------X
 
-- Add security context to the kubernetes configuration for the DB and other objects if needed
+- Add security context to the kubernetes configuration for the DB and other objects if needed ---------X
 	= See video Putting it all together 1h21min
 	
-- Make the database service headless, by changing ClusterIp to none. See configuration from courses.
+- Make the database service headless, by changing ClusterIp to none. See configuration from courses. ----------X
 	= Headless means that there is no "Load Balancer" proxy and the client pods directly connect to the target 
 	pod
 	= Do this for RabbitMq also
 
-- Figure out how to deal with the versions in the Jenkins file.
+- Figure out how to deal with the versions in the Jenkins file. -------X
 
-- Add parameters to Jenkinsfile. I.E. for cloud cluster endpoint.
+- Add parameters to Jenkinsfile. I.E. for cloud cluster endpoint. -----------X
 
 - Plan for Jenkins
 	= Make Development Branch and after that push all changes to it only.

@@ -16,7 +16,7 @@ kind: Service
 metadata:
   name: sqlserver
 spec:
-  type: ClusterIP
+  clusterIP: None
   ports:
   - port: 1433
     targetPort: 1433
