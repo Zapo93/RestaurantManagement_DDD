@@ -126,6 +126,8 @@ See Putting it all together vodeo at 2hrs.48min
 		
 - Add a Get Version request to all APIs
 
+- Add test for update, using versions in some way.
+
 - Add the Status Names to the Requests and DB
 
 - Add tests	

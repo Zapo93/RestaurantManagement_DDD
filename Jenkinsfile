@@ -60,7 +60,7 @@ pipeline {
 			def identity_image = docker.image("zapryanbekirski/restaurantmanagement_identityapi")
             identity_image.push("1.${env.BUILD_ID}-dev")
 			def serving_image = docker.image("zapryanbekirski/restaurantmanagement_servingapi")
-            serving_image.push("1.${env.BUsILD_ID}-dev")
+            serving_image.push("1.${env.BUILD_ID}-dev")
 			def hosting_image = docker.image("zapryanbekirski/restaurantmanagement_hostingapi")
             hosting_image.push("1.${env.BUILD_ID}-dev")
           }
