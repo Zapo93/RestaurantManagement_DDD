@@ -23,7 +23,7 @@ spec:
       web-api: identity-api
   minReadySeconds: 2
   strategy:
-    type:RollingUpdate
+    type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
       maxSurge: 1
