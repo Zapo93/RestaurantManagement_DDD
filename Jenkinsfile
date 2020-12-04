@@ -17,6 +17,7 @@ pipeline {
 							trim: true
 						)
 					])
+				])
 			}
 			echo "$git_branch"
 		}
