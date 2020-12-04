@@ -70,6 +70,10 @@ pipeline {
 	stage('Deploy local Kubernetes cluster') {
       steps {
 		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
+		powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:1.${env.BUILD_ID}-dev")
+		powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapii:1.${env.BUILD_ID}-dev")
+		powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:1.${env.BUILD_ID}-dev")
+		powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:1.${env.BUILD_ID}-dev")
       }
     }
 	stage('Execute local kubernetes integration tests') {
@@ -90,10 +94,10 @@ pipeline {
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
 			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
-			powershell(script: "kubectl set image deployments/hosting-api user-client=zapryanbekirski/restaurantmanagement_hostingapi:1.${env.BUILD_ID}-dev")
-			powershell(script: "kubectl set image deployments/identity-api user-client=zapryanbekirski/restaurantmanagement_identityapii:1.${env.BUILD_ID}-dev")
-			powershell(script: "kubectl set image deployments/serving-api user-client=zapryanbekirski/restaurantmanagement_servingapi:1.${env.BUILD_ID}-dev")
-			powershell(script: "kubectl set image deployments/kitchen-api user-client=zapryanbekirski/restaurantmanagement_kitchenapi:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapii:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:1.${env.BUILD_ID}-dev")
 		}
       }
     }
