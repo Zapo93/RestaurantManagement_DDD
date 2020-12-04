@@ -71,7 +71,7 @@ pipeline {
       steps {
 		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:1.${env.BUILD_ID}-dev")
-		powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapii:1.${env.BUILD_ID}-dev")
+		powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:1.${env.BUILD_ID}-dev")
 		powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:1.${env.BUILD_ID}-dev")
 		powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:1.${env.BUILD_ID}-dev")
       }
@@ -95,7 +95,7 @@ pipeline {
 			//input(message:'Continue?') //Used to check the temp file.
 			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 			powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:1.${env.BUILD_ID}-dev")
-			powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapii:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:1.${env.BUILD_ID}-dev")
 			powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:1.${env.BUILD_ID}-dev")
 			powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:1.${env.BUILD_ID}-dev")
 		}

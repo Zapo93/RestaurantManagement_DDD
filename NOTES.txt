@@ -35,3 +35,9 @@ also erase them from Notepad++!!! :D
 
 - In Jenkinsfile to use formatting you must use this format - "https//:${params.SomeParam}"!
 If you use '' instead it wont work.
+
+- If you dont have enough resources the update of the configuration may not start. If you have 3 replicas and
+you want to upgrade them the cluster first must add the new ones and then remove the old ones. However if
+you don`t have resources to run the 3 old and 3 new simultaneously you can`t finish the update. 
+This could be solved by rolling undates, because only one new at a time is added and one old is deleted.
+This is only speculation :D
