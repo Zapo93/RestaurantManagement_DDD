@@ -90,7 +90,7 @@ pipeline {
     }
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
-		withKubeConfig([credentialsId: $params.DevClusterCredentials, serverUrl: 'https://{$params.DevClusterIP}']) {
+		withKubeConfig([credentialsId: params.DevClusterCredentials, serverUrl: 'https://{params.DevClusterIP}']) {
 			powershell(script: 'kubectl config view')
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
