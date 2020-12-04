@@ -1,8 +1,8 @@
 ﻿###Config
-$KitchenAPIIp = "34.66.61.107"
-$ServingAPIIp = "35.239.48.111"
-$HostingAPIIp = "35.224.167.198"
-$IdentityAPIIp = "34.69.236.25"
+$KitchenAPIIp = "34.66.231.90"
+$ServingAPIIp = "35.238.139.194"
+$HostingAPIIp = "35.222.9.89"
+$IdentityAPIIp = "104.155.155.110"
 
 ###Code
 $count = 0

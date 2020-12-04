@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hosting-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 52008
+    targetPort: 80
+  selector:
+    web-api: hosting-api
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: identity-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 56747
+    targetPort: 80
+  selector:
+    web-api: identity-api
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kitchen-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 56902
+    targetPort: 80
+  selector:
+    web-api: kitchen-api
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: serving-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 54695
+    targetPort: 80
+  selector:
+    web-api: serving-api

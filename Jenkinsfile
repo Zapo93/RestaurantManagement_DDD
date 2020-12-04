@@ -83,7 +83,7 @@ pipeline {
 	
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://34.66.62.54']) {
 			powershell(script: 'kubectl config view')
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
@@ -93,7 +93,7 @@ pipeline {
     }
 	stage('Execute cloud kubernetes integration tests') {
       steps {
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://34.66.62.54']) {
 			powershell(script: './Scripts/DevCloudIntegrationTestsHTTP.ps1')   
 		} 
       }
@@ -109,7 +109,7 @@ pipeline {
 	stage('Clear cloud Kubernetes cluster? ACTION REQUIRED') {
       steps {
 		input(message:'Clear cloud Kubernetes cluster?')
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
+		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://34.66.62.54']) {
 			powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
 		}
       }

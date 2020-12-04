@@ -51,7 +51,7 @@ spec:
         resources:
           limits:
             memory: "2Gi"
-            cpu: "500m"
+            cpu: "1000m"
         env:
         - name: ACCEPT_EULA
           value: "Y"
