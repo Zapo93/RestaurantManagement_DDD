@@ -30,3 +30,5 @@ deleted, but I don`t know details about the working of the MassTransit. Its just
 
 - The token for withKubeConfig MUST be copied in PURE NOTEPAD NOT NOTEPAD++ otherwise its wrong. If you have 
 problems you could check it by including the input step and going to the path printed by the echo command.
+NOT ONLY that you have to copy it from PURE NOTEPAD but you also have to ERASE THE NEW LINES! Maybe you could
+also erase them from Notepad++!!! :D
