@@ -86,7 +86,7 @@ pipeline {
 		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://35.223.60.82']) {
 			powershell(script: 'kubectl config view')
 			echo "Using temporary file '${env.KUBECONFIG}'"
-			//input(message:'Continue?') //Used to check the temp file.
+			input(message:'Continue?') //Used to check the temp file.
 			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		}
       }
