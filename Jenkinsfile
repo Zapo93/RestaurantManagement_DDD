@@ -1,11 +1,26 @@
 pipeline {
   agent any
   stages {
-    stage('Verify Branch') {
-      steps {
-        echo "$git_branch"
-      }
-    }
+	stage('Setup') {
+		steps {
+			script { 
+				properties([
+					parameters([
+						string(
+							defaultValue: 'GoogleCloudDevCluster', 
+							name: 'DevClusterCredentials', 
+							trim: true
+						),
+						string(
+							defaultValue: '34.66.62.54', 
+							name: 'DevClusterIP', 
+							trim: true
+						)
+					])
+			}
+			echo "$git_branch"
+		}
+	}
 	stage('Docker Build') {
 		steps {
 			powershell(script: 'docker-compose build')     
@@ -65,14 +80,6 @@ pipeline {
       steps {
         powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
       }
-	  post {
-	    success {
-	      echo "Tests successfull! Nice! :)"
-	    }
-	    failure {
-	      echo "Tests failed! Back to work! :("
-	    }
-      }
     }
 	stage('Clear local Kubernetes cluster? ACTION REQUIRED') {
       steps {
@@ -80,10 +87,9 @@ pipeline {
         powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
       }
     }
-	
 	stage('Deploy cloud Kubernetes cluster') {
       steps {
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://34.66.62.54']) {
+		withKubeConfig([credentialsId: $params.DevClusterCredentials, serverUrl: 'https://{$params.DevClusterIP}']) {
 			powershell(script: 'kubectl config view')
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
@@ -96,14 +102,6 @@ pipeline {
 		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://34.66.62.54']) {
 			powershell(script: './Scripts/DevCloudIntegrationTestsHTTP.ps1')   
 		} 
-      }
-	  post {
-	    success {
-	      echo "Tests successfull! Nice! :)"
-	    }
-	    failure {
-	      echo "Tests failed! Back to work! :("
-	    }
       }
     }
 	stage('Clear cloud Kubernetes cluster? ACTION REQUIRED') {
