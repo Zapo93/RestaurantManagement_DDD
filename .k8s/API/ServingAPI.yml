@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: serving-api
-        image: zapryanbekirski/restaurantmanagement_servingapi:0.1
+        image: zapryanbekirski/restaurantmanagement_servingapi
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80

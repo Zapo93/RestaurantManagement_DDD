@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: kitchen-api
-        image: zapryanbekirski/restaurantmanagement_kitchenapi:0.1
+        image: zapryanbekirski/restaurantmanagement_kitchenapi
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80

@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: identity-api
-        image: zapryanbekirski/restaurantmanagement_identityapi:0.1
+        image: zapryanbekirski/restaurantmanagement_identityapi
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80

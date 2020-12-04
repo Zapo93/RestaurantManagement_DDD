@@ -25,7 +25,6 @@ pipeline {
 	stage('Docker Build') {
 		steps {
 			powershell(script: 'docker-compose build')     
-			//powershell(script: 'docker images -a')
 		}
 	}
 	stage('Docker Run Locally') {
@@ -46,7 +45,7 @@ pipeline {
 	    }
       }
     }
-	stage('Stop Containers? ACTION REQUIRED') {
+	stage('Stop Containers') {
       steps {
 		//input(message:'Stop Containers?')
         powershell(script: 'docker-compose down')    
@@ -57,17 +56,13 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'DockerHubCredentials') {
             def kitchen_image = docker.image("zapryanbekirski/restaurantmanagement_kitchenapi")
-            //kitchen_image.push("1.${env.BUILD_ID}_dev")
-			kitchen_image.push("0.1")
+            kitchen_image.push("1.${env.BUILD_ID}-dev")
 			def identity_image = docker.image("zapryanbekirski/restaurantmanagement_identityapi")
-            //identity_image.push("1.${env.BUILD_ID}_dev")
-			identity_image.push("0.1")
+            identity_image.push("1.${env.BUILD_ID}-dev")
 			def serving_image = docker.image("zapryanbekirski/restaurantmanagement_servingapi")
-            //serving_image.push("1.${env.BUsILD_ID}_dev")
-			serving_image.push("0.1")
+            serving_image.push("1.${env.BUsILD_ID}-dev")
 			def hosting_image = docker.image("zapryanbekirski/restaurantmanagement_hostingapi")
-            //hosting_image.push("1.${env.BUILD_ID}_dev")
-			hosting_image.push("0.1")
+            hosting_image.push("1.${env.BUILD_ID}-dev")
           }
         }
       }
@@ -82,7 +77,7 @@ pipeline {
         powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
       }
     }
-	stage('Clear local Kubernetes cluster? ACTION REQUIRED') {
+	stage('Clear local Kubernetes cluster') {
       steps {
 		//input(message:'Clear local Kubernetes cluster?')
         powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
@@ -95,12 +90,16 @@ pipeline {
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
 			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
+			powershell(script: "kubectl set image deployments/hosting-api user-client=zapryanbekirski/restaurantmanagement_hostingapi:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/identity-api user-client=zapryanbekirski/restaurantmanagement_identityapii:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/serving-api user-client=zapryanbekirski/restaurantmanagement_servingapi:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/kitchen-api user-client=zapryanbekirski/restaurantmanagement_kitchenapi:1.${env.BUILD_ID}-dev")
 		}
       }
     }
 	stage('Execute cloud kubernetes integration tests') {
       steps {
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://34.66.62.54']) {
+		withKubeConfig([credentialsId: params.DevClusterCredentials, serverUrl: "https://${params.DevClusterIP}"]) {
 			powershell(script: './Scripts/DevCloudIntegrationTestsHTTP.ps1')   
 		} 
       }
@@ -108,7 +107,7 @@ pipeline {
 	stage('Clear cloud Kubernetes cluster? ACTION REQUIRED') {
       steps {
 		input(message:'Clear cloud Kubernetes cluster?')
-		withKubeConfig([credentialsId: 'GoogleCloudDevCluster', serverUrl: 'https://34.66.62.54']) {
+		withKubeConfig([credentialsId: params.DevClusterCredentials, serverUrl: "https://${params.DevClusterIP}"]) {
 			powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
 		}
       }
