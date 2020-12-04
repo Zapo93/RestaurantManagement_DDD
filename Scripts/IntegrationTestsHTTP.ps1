@@ -1,6 +1,6 @@
 ﻿$count = 0
 do {
-    Start-Sleep -Seconds 120
+    Start-Sleep -Seconds 60
     $count++
     Write-Output "[$env:STAGE_NAME] Check if Containers are started [Attempt: $count]"
     
@@ -200,7 +200,7 @@ catch
 }
 
 ###Wait for message to arrive for sure
-Start-Sleep -Seconds 1
+Start-Sleep -Seconds 5
 
 #Get Dishes - the dish corresponding to the recipe should be with the same activation status as the recipe.
 try

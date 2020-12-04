@@ -208,7 +208,7 @@ catch
 }
 
 ###Wait for message to arrive for sure
-Start-Sleep -Seconds 1
+Start-Sleep -Seconds 5
 
 #Get Dishes - the dish corresponding to the recipe should be with the same activation status as the recipe.
 try
