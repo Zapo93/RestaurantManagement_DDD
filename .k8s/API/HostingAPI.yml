@@ -17,6 +17,7 @@ kind: Deployment
 metadata:
   name: hosting-api
 spec:
+  replicas: 3
   selector:
     matchLabels:
       web-api: hosting-api

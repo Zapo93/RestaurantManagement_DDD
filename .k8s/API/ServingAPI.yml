@@ -17,6 +17,7 @@ kind: Deployment
 metadata:
   name: serving-api
 spec:
+  replicas: 3
   selector:
     matchLabels:
       web-api: serving-api

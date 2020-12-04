@@ -32,3 +32,6 @@ deleted, but I don`t know details about the working of the MassTransit. Its just
 problems you could check it by including the input step and going to the path printed by the echo command.
 NOT ONLY that you have to copy it from PURE NOTEPAD but you also have to ERASE THE NEW LINES! Maybe you could
 also erase them from Notepad++!!! :D
+
+- In Jenkinsfile to use formatting you must use this format - "https//:${params.SomeParam}"!
+If you use '' instead it wont work.
