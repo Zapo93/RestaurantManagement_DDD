@@ -23,28 +23,11 @@ pipeline {
 			powershell(script: 'docker-compose build')     
 		}
 	}
-	stage('Docker Run Locally') {
+	stage('Docker Run Locall Tests') {
       steps {
         powershell(script: 'docker-compose up -d')    
-      }
-    }
-	stage('Execute integration tests') {
-      steps {
-        powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
-      }
-	  post {
-	    success {
-	      echo "Tests successfull! Nice! :)"
-	    }
-	    failure {
-	      echo "Tests failed! Back to work! :("
-	    }
-      }
-    }
-	stage('Stop Containers') {
-      steps {
-		//input(message:'Stop Containers?')
-        powershell(script: 'docker-compose down')    
+		powershell(script: './Scripts/IntegrationTestsHTTP.ps1')
+		powershell(script: 'docker-compose down')
       }
     }
 	stage('Push Development Images') {
@@ -63,24 +46,17 @@ pipeline {
         }
       }
     } 
-	stage('Deploy local Kubernetes cluster') {
+	stage('Kubernetes Run Local Test') {
       steps {
 		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:${env.TargetVersion}")
 		powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:${env.TargetVersion}")
 		powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:${env.TargetVersion}")
 		powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:${env.TargetVersion}")
-      }
-    }
-	stage('Execute local kubernetes integration tests') {
-      steps {
-        powershell(script: './Scripts/IntegrationTestsHTTP.ps1')    
-      }
-    }
-	stage('Clear local Kubernetes cluster') {
-      steps {
-		//input(message:'Clear local Kubernetes cluster?')
-        powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
+		
+		powershell(script: './Scripts/IntegrationTestsHTTP.ps1')
+		
+		powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
       }
     }
 	stage('Deploy Dev Cloud Kubernetes cluster') {
