@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment { 
-        TargetVersion = 0.1
+        TargetVersion = GetTargetVersion()
 	}
   stages {
 	stage('Setup') {
