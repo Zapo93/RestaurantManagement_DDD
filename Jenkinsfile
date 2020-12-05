@@ -1,13 +1,18 @@
+string GetTargetVersion() {
+    def targetVersion = "1.${env.BUILD_ID}-dev";
+	if(git_branch == "main")
+	{
+		targetVersion = "1.${env.BUILD_ID}";
+	}
+	
+	return targetVersion;
+}
+
 pipeline {
   agent any
   environment { 
-		def targetVersion = "1.${env.BUILD_ID}-dev";
-		if(git_branch == "main")
-		{
-			targetVersion = "1.${env.BUILD_ID}";
-		}
 		
-        TargetVersion = targetVersion
+        TargetVersion = GetTargetVersion()
 	}
   stages {
 	stage('Setup') {
