@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment { 
 		
-        TargetVersion = GetTargetVersion()
+        TargetVersion = 0.1
 	}
   stages {
 	stage('Setup') {
@@ -38,6 +38,8 @@ pipeline {
 					])
 				])
 			}
+			
+			echo GetTargetVersion()
 			
 			echo "$git_branch"
 			echo "${env.TargetVersion}"
