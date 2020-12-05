@@ -4,6 +4,14 @@ pipeline {
 	stage('Setup') {
 		steps {
 			script { 
+				
+				def targetVersion = "1.${env.BUILD_ID}-dev";
+				
+				if(git_branch == "main")
+				{
+					targetVersion = "1.${env.BUILD_ID}";
+				}
+				
 				properties([
 					parameters([
 						string(
@@ -27,21 +35,12 @@ pipeline {
 							trim: true
 						),
 						string(
-							defaultValue: '0.1', 
+							defaultValue: targetVersion, 
 							name: 'TargetVersion', 
 							trim: true
 						)
 					])
 				])
-			
-				if(git_branch == "main")
-				{
-					params.TargetVersion = "1.${env.BUILD_ID}";
-				}
-				else
-				{
-					params.TargetVersion = "1.${env.BUILD_ID}-dev";
-				}
 			}
 			
 			echo "$git_branch"
