@@ -15,7 +15,7 @@ pipeline {
 							defaultValue: '34.71.199.17', 
 							name: 'DevClusterIP', 
 							trim: true
-						)
+						),
 						string(
 							defaultValue: 'GoogleCloudPrdCluster', 
 							name: 'PrdClusterCredentials', 
@@ -25,7 +25,7 @@ pipeline {
 							defaultValue: '35.232.93.84', 
 							name: 'PrdClusterIP', 
 							trim: true
-						)
+						),
 						string(
 							defaultValue: '0.1', 
 							name: 'TargetVersion', 
