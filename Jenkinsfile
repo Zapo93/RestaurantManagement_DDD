@@ -2,9 +2,9 @@ pipeline {
   agent any
   environment { 
         TargetVersion = GetTargetVersion()
-		DevClusterCredentials = GoogleCloudDevCluster
+		DevClusterCredentials = 'GoogleCloudDevCluster'
 		DevClusterIP = '34.71.199.17'
-		PrdClusterCredentials = GoogleCloudPrdCluster
+		PrdClusterCredentials = 'GoogleCloudPrdCluster'
 		PrdClusterIP = '35.232.93.84'
 	}
   stages {
