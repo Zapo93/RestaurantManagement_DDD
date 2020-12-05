@@ -1,17 +1,18 @@
 pipeline {
   agent any
+  environment { 
+		def targetVersion = "1.${env.BUILD_ID}-dev";
+		if(git_branch == "main")
+		{
+			targetVersion = "1.${env.BUILD_ID}";
+		}
+		
+        TargetVersion = targetVersion
+	}
   stages {
 	stage('Setup') {
 		steps {
-			script { 
-				
-				def targetVersion = "1.${env.BUILD_ID}-dev";
-				
-				if(git_branch == "main")
-				{
-					targetVersion = "1.${env.BUILD_ID}";
-				}
-				
+			script { 				
 				properties([
 					parameters([
 						string(
@@ -35,7 +36,7 @@ pipeline {
 							trim: true
 						),
 						string(
-							defaultValue: targetVersion, 
+							defaultValue: env.TargetVersion, 
 							name: 'TargetVersion', 
 							trim: true
 						)
@@ -44,6 +45,7 @@ pipeline {
 			}
 			
 			echo "$git_branch"
+			echo "${env.TargetVersion}"
 			echo "${params.TargetVersion}"
 		}
 	}
