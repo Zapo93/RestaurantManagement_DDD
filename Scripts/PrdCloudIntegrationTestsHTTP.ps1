@@ -161,7 +161,7 @@ catch
 }
 
 ###Wait for connection to RabbitMQ to initialize
-Start-Sleep -Seconds 5
+Start-Sleep -Seconds 10
 
 #Get Dishes - the dish corresponding to the recipe should be with the same activation status as the recipe.
 try
@@ -208,7 +208,7 @@ catch
 }
 
 ###Wait for message to arrive for sure
-Start-Sleep -Seconds 5
+Start-Sleep -Seconds 10
 
 #Get Dishes - the dish corresponding to the recipe should be with the same activation status as the recipe.
 try

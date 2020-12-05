@@ -83,8 +83,9 @@ pipeline {
         powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
       }
     }
-	stage('Deploy cloud Kubernetes cluster') {
-      steps {
+	stage('Deploy Dev Cloud Kubernetes cluster') {
+      when{branch 'development'}
+	  steps {
 		withKubeConfig([credentialsId: env.DevClusterCredentials, serverUrl: "https://${env.DevClusterIP}"]) {
 			powershell(script: 'kubectl config view')
 			echo "Using temporary file '${env.KUBECONFIG}'"
@@ -97,10 +98,35 @@ pipeline {
 		}
       }
     }
-	stage('Execute cloud kubernetes integration tests') {
-      steps {
+	stage('Execute Dev Cloud kubernetes integration tests') {
+      when{branch 'development'}
+	  steps {
 		withKubeConfig([credentialsId: env.DevClusterCredentials, serverUrl: "https://${env.DevClusterIP}"]) {
 			powershell(script: './Scripts/DevCloudIntegrationTestsHTTP.ps1')   
+		} 
+      }
+    }
+	stage('Deploy Production Cloud Kubernetes cluster ACTION REQUIRED') {
+      when{branch 'main'}
+	  steps {
+	    input(message:'Deploy To Production?')
+		withKubeConfig([credentialsId: env.PrdClusterCredentials, serverUrl: "https://${env.PrdClusterIP}"]) {
+			powershell(script: 'kubectl config view')
+			echo "Using temporary file '${env.KUBECONFIG}'"
+			//input(message:'Continue?') //Used to check the temp file.
+			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
+			powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:${env.TargetVersion}")
+			powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:${env.TargetVersion}")
+			powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:${env.TargetVersion}")
+			powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:${env.TargetVersion}")
+		}
+      }
+    }
+	stage('Execute Production Cloud kubernetes integration tests') {
+      when{branch 'main'}
+	  steps {
+		withKubeConfig([credentialsId: env.PrdClusterCredentials, serverUrl: "https://${env.PrdClusterIP}"]) {
+			powershell(script: './Scripts/PrdCloudIntegrationTestsHTTP.ps1')   
 		} 
       }
     }
