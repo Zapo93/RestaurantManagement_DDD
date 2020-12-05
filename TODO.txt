@@ -85,14 +85,14 @@ correct - See DeleteReservation Test.
 - Add support for RabbitMQ in the EventDispatcher. ----X
 	= Make all consumers receive the same universal message.
 
-- See the branching strategy again to revise the steps of the plan if needed. It is in the Jenkins video -
+- See the branching strategy again to revise the steps of the plan if needed. It is in the Jenkins video ------X
 	video #2 around 2nd hour and 15 min.
 - See the way to make volumes in local environment - it is mentioned while explaining static volumes -------X
 - See rolling updates in the Advanced Clusterization - it is before the midpoint of the video ---------X
 - See persisiting volumes in the Advanced Clusterization ot is after the midpoint of the video ------X
 - See configure kubectl command for changing the connection from local cluster to cloud cluster - in advanced clusterization video around 2h 51m --------X
-- See putting it all together for local deploy of cluster and putting it all together - in advanced clusterization around 2h 50min
-- The DB requires 2gb ram so you need a bigger nodes on the dev cluster.
+- See putting it all together for local deploy of cluster and putting it all together - in advanced clusterization around 2h 50min--------X
+- The DB requires 2gb ram so you need a bigger nodes on the dev cluster.----------X
 - See configuring Jenkins` connection to kubernetes cluster for local cluster.  ------X
 See Putting it all together vodeo at 2hrs.48min
 - See the 2 ways to change the images` version/tags in the video Putting it all together. -------X
@@ -109,6 +109,10 @@ See Putting it all together vodeo at 2hrs.48min
 
 - Add parameters to Jenkinsfile. I.E. for cloud cluster endpoint. -----------X
 
+- Remove the environment files from the powershell script and apply them in the Jenkinsfile explicitly
+
+- Remove the step for clearing the cloud cluster
+
 - Plan for Jenkins
 	= Make Development Branch and after that push all changes to it only.
 	= Jenkins file steps:
@@ -121,12 +125,19 @@ See Putting it all together vodeo at 2hrs.48min
 		= push images to docker hub - not needed - they are already pushed 
 		= deploy to development environment in cloud
 		= test deployment using script
-		= merge and push to master. Try doing it using jenkins.
-		= make the same steps for master but before deployment to production use a buttin in jenkins to confirm.
+		= merge and push to master.
+		= in master build and test locally
+		= create and test images with -prd or only with version for production.
+		= test on dev kluster?
+		= but before deployment to production use a buttin in jenkins to confirm.
 		
 - Add a Get Version request to all APIs
 
 - Add test for update, using versions in some way.
+	= Setting versions as environment variables is not a valid test - the environment variables are loaded when the app is loaded, so if the app is 
+	only restarted for some reason and not updated it will update its environment variables. 
+	= You could write a script to check the deployments` statuses instead (or pods or other objects) or in other way check if the update is successful for the 
+	cluster and not broken for some reason and the containers can not start.
 
 - Add the Status Names to the Requests and DB
 

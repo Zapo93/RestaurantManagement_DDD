@@ -12,14 +12,40 @@ pipeline {
 							trim: true
 						),
 						string(
-							defaultValue: '34.66.62.54', 
+							defaultValue: '34.71.199.17', 
 							name: 'DevClusterIP', 
+							trim: true
+						)
+						string(
+							defaultValue: 'GoogleCloudPrdCluster', 
+							name: 'PrdClusterCredentials', 
+							trim: true
+						),
+						string(
+							defaultValue: '35.232.93.84', 
+							name: 'PrdClusterIP', 
+							trim: true
+						)
+						string(
+							defaultValue: '0.1', 
+							name: 'TargetVersion', 
 							trim: true
 						)
 					])
 				])
+			
+				if(git_branch == main)
+				{
+					params.TargetVersion = "1.${env.BUILD_ID}";
+				}
+				else
+				{
+					params.TargetVersion = "1.${env.BUILD_ID}-dev";
+				}
 			}
+			
 			echo "$git_branch"
+			echo "${params.TargetVersion}"
 		}
 	}
 	stage('Docker Build') {
@@ -56,13 +82,13 @@ pipeline {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'DockerHubCredentials') {
             def kitchen_image = docker.image("zapryanbekirski/restaurantmanagement_kitchenapi")
-            kitchen_image.push("1.${env.BUILD_ID}-dev")
+            kitchen_image.push(params.TargetVersion)
 			def identity_image = docker.image("zapryanbekirski/restaurantmanagement_identityapi")
-            identity_image.push("1.${env.BUILD_ID}-dev")
+            identity_image.push(params.TargetVersion)
 			def serving_image = docker.image("zapryanbekirski/restaurantmanagement_servingapi")
-            serving_image.push("1.${env.BUILD_ID}-dev")
+            serving_image.push(params.TargetVersion)
 			def hosting_image = docker.image("zapryanbekirski/restaurantmanagement_hostingapi")
-            hosting_image.push("1.${env.BUILD_ID}-dev")
+            hosting_image.push(params.TargetVersion)
           }
         }
       }
@@ -70,10 +96,10 @@ pipeline {
 	stage('Deploy local Kubernetes cluster') {
       steps {
 		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
-		powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:1.${env.BUILD_ID}-dev")
-		powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:1.${env.BUILD_ID}-dev")
-		powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:1.${env.BUILD_ID}-dev")
-		powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:1.${env.BUILD_ID}-dev")
+		powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:${params.TargetVersion}")
+		powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:${params.TargetVersion}")
+		powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:${params.TargetVersion}")
+		powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:${params.TargetVersion}")
       }
     }
 	stage('Execute local kubernetes integration tests') {
@@ -94,10 +120,10 @@ pipeline {
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
 			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
-			powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:1.${env.BUILD_ID}-dev")
-			powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:1.${env.BUILD_ID}-dev")
-			powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:1.${env.BUILD_ID}-dev")
-			powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:1.${env.BUILD_ID}-dev")
+			powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:${params.TargetVersion}")
+			powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:${params.TargetVersion}")
+			powershell(script: "kubectl set image deployments/serving-api serving-api=zapryanbekirski/restaurantmanagement_servingapi:${params.TargetVersion}")
+			powershell(script: "kubectl set image deployments/kitchen-api kitchen-api=zapryanbekirski/restaurantmanagement_kitchenapi:${params.TargetVersion}")
 		}
       }
     }
@@ -106,14 +132,6 @@ pipeline {
 		withKubeConfig([credentialsId: params.DevClusterCredentials, serverUrl: "https://${params.DevClusterIP}"]) {
 			powershell(script: './Scripts/DevCloudIntegrationTestsHTTP.ps1')   
 		} 
-      }
-    }
-	stage('Clear cloud Kubernetes cluster? ACTION REQUIRED') {
-      steps {
-		input(message:'Clear cloud Kubernetes cluster?')
-		withKubeConfig([credentialsId: params.DevClusterCredentials, serverUrl: "https://${params.DevClusterIP}"]) {
-			powershell(script: './Scripts/Kubernetes/ClearLocalKubernetesConfigFromJenkins.ps1')
-		}
       }
     }
   }
