@@ -107,7 +107,7 @@ pipeline {
       }
     }
 	stage('Deploy Production Cloud Kubernetes cluster ACTION REQUIRED') {
-      when{branch 'main'}
+      when{branch 'master'}
 	  steps {
 	    input(message:'Deploy To Production?')
 		withKubeConfig([credentialsId: env.PrdClusterCredentials, serverUrl: "https://${env.PrdClusterIP}"]) {
@@ -123,7 +123,7 @@ pipeline {
       }
     }
 	stage('Execute Production Cloud kubernetes integration tests') {
-      when{branch 'main'}
+      when{branch 'master'}
 	  steps {
 		withKubeConfig([credentialsId: env.PrdClusterCredentials, serverUrl: "https://${env.PrdClusterIP}"]) {
 			powershell(script: './Scripts/PrdCloudIntegrationTestsHTTP.ps1')   
@@ -135,7 +135,7 @@ pipeline {
 
 def GetTargetVersion() {
     def targetVersion = "1.${env.BUILD_ID}-dev";
-	if(git_branch == "main")
+	if(git_branch == "master")
 	{
 		targetVersion = "1.${env.BUILD_ID}";
 	}
