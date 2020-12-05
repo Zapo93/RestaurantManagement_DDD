@@ -34,7 +34,7 @@ pipeline {
 					])
 				])
 			
-				if(git_branch == main)
+				if(git_branch == "main")
 				{
 					params.TargetVersion = "1.${env.BUILD_ID}";
 				}
