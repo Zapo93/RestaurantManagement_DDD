@@ -3,9 +3,9 @@ pipeline {
   environment { 
         TargetVersion = GetTargetVersion()
 		DevClusterCredentials = GoogleCloudDevCluster
-		DevClusterIP = 34.71.199.17
+		DevClusterIP = '34.71.199.17'
 		PrdClusterCredentials = GoogleCloudPrdCluster
-		PrdClusterIP = 35.232.93.84
+		PrdClusterIP = '35.232.93.84'
 	}
   stages {
 	stage('Setup') {
