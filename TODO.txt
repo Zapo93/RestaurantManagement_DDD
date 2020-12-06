@@ -109,9 +109,9 @@ See Putting it all together vodeo at 2hrs.48min
 
 - Add parameters to Jenkinsfile. I.E. for cloud cluster endpoint. -----------X
 
-- Remove the environment files from the powershell script and apply them in the Jenkinsfile explicitly
+- Remove the environment files from the powershell script and apply them in the Jenkinsfile explicitly -------X
 
-- Remove the step for clearing the cloud cluster
+- Remove the step for clearing the cloud cluster --------X
 
 - Plan for Jenkins
 	= Make Development Branch and after that push all changes to it only.
@@ -125,7 +125,7 @@ See Putting it all together vodeo at 2hrs.48min
 		= push images to docker hub - not needed - they are already pushed 
 		= deploy to development environment in cloud
 		= test deployment using script
-		= merge and push to master.
+		= merge and push to master. (manually)
 		= in master build and test locally
 		= create and test images with -prd or only with version for production.
 		= test on dev kluster?

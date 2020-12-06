@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: environment-settings
+data:
+  event-bus-host: event-bus
+  event-bus-user: rabbitmquser
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: environment-secrets
+data:
+  database-sa-password: eW91ckJhdGVCYXRlVmVyeVN0cm9uZ1Bhc3N3b3JkMTIjISM=
+  database-connection-string: U2VydmVyPXNxbHNlcnZlcjtEYXRhYmFzZT1SZXN0YXVyYW50TWFuYWdlbWVudFN5c3RlbTtVc2VyIElkPXNhOyBQYXNzd29yZD15b3VyQmF0ZUJhdGVWZXJ5U3Ryb25nUGFzc3dvcmQxMiMhIztNdWx0aXBsZUFjdGl2ZVJlc3VsdFNldHM9dHJ1ZQ==
+  security-token-secret: UzBNMyBNNEcxQyBCNFQzIEI0VDMgVU4xQzBSTlMgRzNOM1I0VDNEIFRIMVMgUzNDUjNU
+  event-bus-password: cmFiYml0bXFCYXRlQmF0ZVBhc3N3b3JkMTIh

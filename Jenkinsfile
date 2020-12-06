@@ -48,6 +48,7 @@ pipeline {
     } 
 	stage('Kubernetes Run Local Test') {
       steps {
+	    powershell(script: 'kubectl apply -f ./.k8s/Environment/DevEnvironmentVariables.yml')
 		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:${env.TargetVersion}")
 		powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:${env.TargetVersion}")
@@ -66,6 +67,7 @@ pipeline {
 			powershell(script: 'kubectl config view')
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
+			powershell(script: 'kubectl apply -f ./.k8s/Environment/DevEnvironmentVariables.yml')
 			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 			powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:${env.TargetVersion}")
 			powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:${env.TargetVersion}")
@@ -90,6 +92,7 @@ pipeline {
 			powershell(script: 'kubectl config view')
 			echo "Using temporary file '${env.KUBECONFIG}'"
 			//input(message:'Continue?') //Used to check the temp file.
+			powershell(script: 'kubectl apply -f ./.k8s/Environment/ProdEnvironmentVariables.yml')
 			powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 			powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:${env.TargetVersion}")
 			powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:${env.TargetVersion}")
