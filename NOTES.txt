@@ -43,3 +43,6 @@ This could be solved by rolling undates, because only one new at a time is added
 This is only speculation :D
 
 - To delete unused kubernetes context (for deleted clusters) edit the config file in the userFolder/.kube
+
+- When you change the environment settings sometimes you must also delete the storage in the cluster. I.E. if you change the database password you should also delete the storage because the 
+user is saved there and won`t be able to connect with the new password!!!
