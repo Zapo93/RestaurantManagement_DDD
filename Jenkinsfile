@@ -23,14 +23,14 @@ pipeline {
 			powershell(script: 'docker-compose build')     
 		}
 	}
-	stage('Docker Run Locall Tests') {
+	stage('Docker Run Local Tests') {
       steps {
         powershell(script: 'docker-compose up -d')    
 		powershell(script: './Scripts/IntegrationTestsHTTP.ps1')
 		powershell(script: 'docker-compose down')
       }
     }
-	stage('Push Development Images') {
+	stage('Push Images') {
       steps {
         script {
           docker.withRegistry('https://index.docker.io/v1/', 'DockerHubCredentials') {
@@ -48,7 +48,7 @@ pipeline {
     } 
 	stage('Kubernetes Run Local Test') {
       steps {
-	    powershell(script: 'kubectl apply -f ./.k8s/Environment/DevEnvironmentVariables.yml')
+	    powershell(script: 'kubectl apply -f ./.k8s/Environment/ProdEnvironmentVariables.yml')
 		powershell(script: './Scripts/Kubernetes/DeployToLocalKubernetesClusterFromJenkins.ps1')
 		powershell(script: "kubectl set image deployments/hosting-api hosting-api=zapryanbekirski/restaurantmanagement_hostingapi:${env.TargetVersion}")
 		powershell(script: "kubectl set image deployments/identity-api identity-api=zapryanbekirski/restaurantmanagement_identityapi:${env.TargetVersion}")
